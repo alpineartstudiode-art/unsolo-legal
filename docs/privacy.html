@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnowBuddy - Privacy Policy</title>
+    <title>UnSolo - Privacy Policy</title>
     <style>
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; scroll-behavior: smooth; background-color: #f8fafc; }
         nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); padding: 15px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; z-index: 100; backdrop-filter: blur(5px); }
@@ -19,6 +19,7 @@
         .email { color: #2563eb; font-weight: bold; }
         footer { text-align: center; color: #94a3b8; font-size: 12px; margin-bottom: 40px; }
         .bold { font-weight: bold; }
+        a { color: #2563eb; }
     </style>
 </head>
 <body>
@@ -35,440 +36,456 @@
 
     <section id="en">
         <h1>Privacy Policy (English)</h1>
-        <p>This privacy policy is applicable to the SnowBuddy app (hereinafter referred to as "Application") for mobile devices, which was developed by AlpineArtStudio (hereinafter referred to as "Service Provider") as a Free service. This service is provided "AS IS".</p>
+        <p>This privacy policy is applicable to the UnSolo app (hereinafter referred to as "Application") for mobile devices, which was developed by AlpineArtStudio (hereinafter referred to as "Service Provider") as a Free service. AlpineArtStudio is the Data Controller for your personal data. This service is provided "AS IS".</p>
 
         <h2>1. What information does the Application obtain and how is it used?</h2>
         <h3>User Provided Information</h3>
-        <p>The Application acquires the information you supply when you download and register the Application. Registration is required to access the core features of the Application (matching with other users and messaging).</p>
-        <p>When you register and use the Application, you provide:</p>
+        <p>The Application collects information you provide during onboarding and while using the app. You may use UnSolo as a guest after completing onboarding, or optionally link an Apple or Google account to save your profile across devices.</p>
+        <p>Depending on how you use the Application, you may provide:</p>
         <ul>
-            <li><span class="bold">Personally Identifiable Information:</span> Full name, email address, and profile photo.</li>
+            <li><span class="bold">Account information:</span> Display name and profile photo. If you link Apple Sign-In or Google Sign-In, we also receive your email address and account identifier from that provider.</li>
             <li><span class="bold">User Content:</span> Preferred languages, sporting activities (equipment), skill levels, travel destinations (locations), travel dates, personal bio, and trip goals.</li>
-            <li><span class="bold">Transaction Information:</span> Information you provide when you contact us for help.</li>
+            <li><span class="bold">Messages and interactions:</span> Chat messages and matching activity with other users.</li>
+            <li><span class="bold">Optional payments:</span> If you choose to send an optional tip, payment is processed entirely by Apple or Google; we do not receive or store your payment card details.</li>
         </ul>
 
         <h3>Automatically Collected Information</h3>
-        <p>The Application may collect certain information automatically, including the type of mobile device you use, your mobile device's unique device ID, the IP address of your mobile device, your mobile operating system, and information about the way you use the Application.</p>
+        <p>The Application and our service providers may automatically process certain technical information necessary to operate the service, including device type, operating system, app version, push notification tokens, and network connectivity status. If you opt in to partner offers on the Offers tab, Google AdMob may process advertising identifiers and related device data for ad delivery and measurement. Our backend providers (such as Supabase) may process IP addresses and request metadata for security and service delivery. We do not use third-party analytics SDKs (such as Firebase Analytics or Mixpanel) in the current release.</p>
 
-        <h2>2. Does the Application collect precise real time location information?</h2>
-        <p>This Application collects your device's location (via Google Places or GPS), which helps the Service Provider to:</p>
-        <ul>
-            <li>Provide location-based matching with other travelers.</li>
-            <li>Suggest relevant sporting spots and destinations.</li>
-            <li>Analyze user trends to improve the Application.</li>
-        </ul>
+        <h2>2. Location information</h2>
+        <p>UnSolo does <span class="bold">not</span> continuously track your real-time GPS location in the background. When you search for or select a trip destination, we process the place information you choose (such as place name, address, and coordinates) using the Google Places API. Other users see the destination you set in your profile for matching purposes. You may optionally open a selected place in your device's maps app via an external link.</p>
 
         <h2>3. Do third parties see and/or have access to information?</h2>
-        <p>Yes. We share your information with third-party service providers that help us run the Application. Below are the links to their Privacy Policies:</p>
+        <p>Yes. We share information with trusted third-party service providers that help us run the Application. Their use of your data is governed by their respective privacy policies:</p>
         <ul>
-            <li>Supabase (Database and Authentication): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Google Play Services & Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (for Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> For secure user authentication (including guest accounts), database storage, chat messages, profile photos, and push token storage. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> For destination search and place details when you edit your profile. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> For delivering push notifications to your device. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> For optional sign-in (Apple Sign-In, Google Sign-In) and optional in-app tips (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> For optional partner offers, only after you opt in on the Offers tab. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> For delivering push notifications on iOS and Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. What are my opt-out and Data Deletion rights?</h2>
-        <p><span class="bold">Uninstall:</span> You can stop all collection of information by uninstalling the Application. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
-        <p><span class="bold">Account Deletion (Required):</span> You can delete your account and all associated personal data (profile, photos, activities) directly within the Application's Settings. Once deleted, this data cannot be recovered.</p>
-        <p><span class="bold">Email Request:</span> You can also request data deletion by contacting us at: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Uninstall:</span> You can stop all collection of information by uninstalling the Application.</p>
+        <p><span class="bold">Account Deletion (Required):</span> You can delete your account and all associated personal data directly within the Application's Settings. Once deleted, this data cannot be recovered.</p>
+        <p><span class="bold">Email Request:</span> You can also request data deletion by contacting us at: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Your GDPR Rights (for European Users)</h2>
-        <p>If you are located in the European Economic Area (EEA), you have the following rights:</p>
-        <ul>
-            <li>The right to access, update, or delete the information we have on you.</li>
-            <li>The right of rectification (to fix incorrect info).</li>
-            <li>The right to object to our processing of your personal data.</li>
-            <li>The right to data portability.</li>
-        </ul>
+        <p>If you are located in the European Economic Area (EEA), you have the right to access, update, rectify, object to the processing of, or request the deletion and portability of your personal data. You may also lodge a complaint with your local data protection supervisory authority.</p>
 
-        <h2>6. Children's Privacy</h2>
-        <p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. If we discover that a child under 13 has provided personal information, we will immediately delete this from our servers.</p>
+        <h2>6. User Safety and Reporting</h2>
+        <p>UnSolo is committed to maintaining a safe environment. Users can report inappropriate content or behavior from chat, Discover, and profiles. See our <a href="community-guidelines.html">Community Guidelines</a> for prohibited content and enforcement.</p>
+        <h3>Report data we store</h3>
+        <p>When you submit a report, we store your user ID, the reported user's ID, the category you select, optional details you provide, the context (chat, Discover, or profile), a content snapshot (such as profile fields or recent messages) to help our review, timestamps, and review status. We use this data to investigate violations and enforce our policies. Reports are not shared with the reported user. We retain report records as needed for safety, legal compliance, and dispute resolution.</p>
 
-        <h2>7. Security</h2>
+        <h2>7. Children's Privacy</h2>
+        <p>The Application is intended for users aged 18 and older. We do not knowingly collect personal information from individuals under 18. If we discover that a user under 18 has provided personal information, we will immediately delete it.</p>
+
+        <h2>8. Security</h2>
         <p>We provide physical, electronic, and procedural safeguards to protect your information. However, please be aware that no security system can prevent all potential security breaches.</p>
 
-        <h2>8. Changes to this Privacy Policy</h2>
-        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. Continued use is deemed approval of all changes.</p>
+        <h2>9. Changes to this Privacy Policy</h2>
+        <p>We may update our Privacy Policy from time to time. Continued use of the Application is deemed approval of all changes.</p>
         <p><span class="bold">Effective Date: 2026-12-30</span></p>
 
-        <h2>9. Contact Us</h2>
-        <p>If you have any questions, please contact us via email at: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Contact Us</h2>
+        <p>If you have any questions, please contact us at:</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        Email: <span class="email">unsolo.box@gmail.com</span></p>
     </section>
     
     <section id="de">
         <h1>Datenschutzerklärung (Deutsch)</h1>
-        <p>Diese Datenschutzerklärung gilt für die SnowBuddy-App (im Folgenden als „Anwendung“ bezeichnet) für mobile Geräte, die von AlpineArtStudio (im Folgenden als „Dienstanbieter“ bezeichnet) als kostenloser Dienst entwickelt wurde. Dieser Dienst wird im Ist-Zustand („AS IS“) bereitgestellt.</p>
+        <p>Diese Datenschutzerklärung gilt für die UnSolo-App (im Folgenden als „Anwendung“ bezeichnet) für mobile Geräte, die von AlpineArtStudio (im Folgenden als „Dienstanbieter“ bezeichnet) als kostenloser Dienst entwickelt wurde. AlpineArtStudio ist der Verantwortliche für Ihre personenbezogenen Daten. Dieser Dienst wird im Ist-Zustand („AS IS“) bereitgestellt.</p>
 
         <h2>1. Welche Informationen erfasst die Anwendung und wie werden sie verwendet?</h2>
         <h3>Vom Nutzer bereitgestellte Informationen</h3>
-        <p>Die Anwendung erfasst die Informationen, die Sie bei der Registrierung angeben. Eine Registrierung ist erforderlich, um auf die Kernfunktionen der Anwendung (Matching mit anderen Nutzern und Messaging) zuzugreifen.</p>
-        <p>Wenn Sie sich registrieren und die Anwendung nutzen, geben Sie folgende Daten an:</p>
+        <p>Die Anwendung erfasst Informationen, die Sie während des Onboardings und bei der Nutzung angeben. Sie können UnSolo nach dem Onboarding als Gast nutzen oder optional ein Apple- oder Google-Konto verknüpfen, um Ihr Profil geräteübergreifend zu speichern.</p>
+        <p>Je nach Nutzung können Sie folgende Daten angeben:</p>
         <ul>
-            <li><span class="bold">Personenbezogene Daten:</span> Vollständiger Name, E-Mail-Adresse und Profilfoto.</li>
+            <li><span class="bold">Kontoinformationen:</span> Anzeigename und Profilfoto. Wenn Sie Apple Sign-In oder Google Sign-In verknüpfen, erhalten wir außerdem Ihre E-Mail-Adresse und Kontokennung von diesem Anbieter.</li>
             <li><span class="bold">Benutzerinhalte:</span> Bevorzugte Sprachen, sportliche Aktivitäten (Ausrüstung), Kenntnisstand, Reiseziele (Standorte), Reisedaten, persönliche Biografie und Reiseziele.</li>
-            <li><span class="bold">Transaktionsinformationen:</span> Informationen, die Sie uns zur Verfügung stellen, wenn Sie uns um Hilfe bitten.</li>
+            <li><span class="bold">Nachrichten und Interaktionen:</span> Chat-Nachrichten und Matching-Aktivität mit anderen Nutzern.</li>
+            <li><span class="bold">Optionale Zahlungen:</span> Wenn Sie ein optionales Trinkgeld senden, wird die Zahlung vollständig von Apple oder Google abgewickelt; wir erhalten oder speichern keine Zahlungskartendaten.</li>
         </ul>
 
         <h3>Automatisch erfasste Informationen</h3>
-        <p>Die Anwendung kann bestimmte Informationen automatisch erfassen, unter anderem den Typ des von Ihnen verwendeten mobilen Geräts, die eindeutige Geräte-ID Ihres mobilen Geräts, die IP-Adresse Ihres mobilen Geräts, Ihr mobiles Betriebssystem, den Typ des von Ihnen verwendeten mobilen Internetbrowsers und Informationen darüber, wie Sie die Anwendung nutzen.</p>
+        <p>Die Anwendung und unsere Dienstanbieter können bestimmte technische Informationen verarbeiten, die für den Betrieb des Dienstes erforderlich sind, einschließlich Gerätetyp, Betriebssystem, App-Version, Push-Benachrichtigungstoken und Netzwerkverbindungsstatus. Wenn Sie auf dem Tab „Angebote“ Partner-Angebote aktivieren, kann Google AdMob Werbe-IDs und zugehörige Gerätedaten für die Auslieferung und Messung von Anzeigen verarbeiten. Unsere Backend-Anbieter (z. B. Supabase) können IP-Adressen und Anfragemetadaten für Sicherheit und Dienstbereitstellung verarbeiten. Wir verwenden in der aktuellen Version keine Analytics-SDKs von Drittanbietern (z. B. Firebase Analytics oder Mixpanel).</p>
 
-        <h2>2. Erfasst die Anwendung präzise Standortinformationen des Geräts in Echtzeit?</h2>
-        <p>Diese Anwendung erfasst den Standort Ihres Geräts (über Google Places oder GPS), was dem Dienstanbieter hilft:</p>
-        <ul>
-            <li>Standortbasiertes Matching mit anderen Reisenden bereitzustellen.</li>
-            <li>Relevante Sportorte und Reiseziele vorzuschlagen.</li>
-            <li>Nutzertrends zu analysieren, um die Anwendung zu verbessern.</li>
-        </ul>
+        <h2>2. Standortinformationen</h2>
+        <p>UnSolo verfolgt <span class="bold">nicht</span> kontinuierlich Ihren GPS-Standort in Echtzeit im Hintergrund. Wenn Sie ein Reiseziel suchen oder auswählen, verarbeiten wir die von Ihnen gewählten Ortsinformationen (z. B. Ortsname, Adresse und Koordinaten) über die Google Places API. Andere Nutzer sehen das in Ihrem Profil festgelegte Reiseziel zum Zweck des Matchings. Sie können einen ausgewählten Ort optional über einen externen Link in der Karten-App Ihres Geräts öffnen.</p>
 
-        <h2>3. Sehen Dritte die vom Anwendung erhaltenen Informationen und/oder haben sie Zugriff darauf?</h2>
-        <p>Ja. Wir teilen Ihre Informationen mit Drittanbietern, die uns beim Betrieb der Anwendung unterstützen. Nachfolgend finden Sie die Links zu deren Datenschutzerklärungen:</p>
+        <h2>3. Sehen Dritte die Informationen oder haben sie Zugriff darauf?</h2>
+        <p>Ja. Wir teilen Informationen mit vertrauenswürdigen Drittanbietern, die uns beim Betrieb der Anwendung unterstützen. Deren Datennutzung unterliegt ihren jeweiligen Datenschutzbestimmungen:</p>
         <ul>
-            <li>Supabase (Datenbank und Authentifizierung): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Google Play Services & Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (für Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> Für sichere Benutzerauthentifizierung (einschließlich Gastkonten), Datenbank-Speicherung, Chat-Nachrichten, Profilfotos und Push-Token-Speicherung. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> Für die Suche nach Reisezielen und Ortsdetails bei der Profilbearbeitung. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> Für die Zustellung von Push-Benachrichtigungen an Ihr Gerät. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> Für optionale Anmeldung (Apple Sign-In, Google Sign-In) und optionale In-App-Trinkgelder (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> Für optionale Partner-Angebote, nur nach Ihrer Zustimmung auf dem Tab „Angebote“. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> Für Push-Benachrichtigungen auf iOS und Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. Was sind meine Opt-out- und Datenlöschungsrechte?</h2>
-        <p><span class="bold">Deinstallation:</span> Sie können die gesamte Datenerfassung durch die Anwendung einfach beenden, indem Sie die Anwendung deinstallieren. Sie können die Standard-Deinstallationsprozesse nutzen, die auf Ihrem mobilen Gerät oder über den App Store zur Verfügung stehen.</p>
-        <p><span class="bold">Kontolöschung (Erforderlich):</span> Sie können Ihr Konto und alle damit verbundenen persönlichen Daten (Profil, Fotos, Aktivitäten) direkt in den Einstellungen der Anwendung löschen. Einmal gelöscht, können diese Daten nicht wiederhergestellt werden.</p>
-        <p><span class="bold">E-Mail-Anfrage:</span> Sie können die Löschung Ihrer Daten auch beantragen, indem Sie uns kontaktieren unter: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Deinstallation:</span> Sie können die Datenerfassung durch die Anwendung jederzeit beenden, indem Sie die Anwendung deinstallieren.</p>
+        <p><span class="bold">Kontolöschung (Erforderlich):</span> Sie können Ihr Konto und alle damit verbundenen persönlichen Daten direkt in den Einstellungen der Anwendung löschen. Einmal gelöscht, können diese Daten nicht wiederhergestellt werden.</p>
+        <p><span class="bold">E-Mail-Anfrage:</span> Sie können die Löschung Ihrer Daten auch beantragen, indem Sie uns kontaktieren unter: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Ihre DSGVO-Rechte (für europäische Nutzer)</h2>
-        <p>Wenn Sie sich im Europäischen Wirtschaftsraum (EWR) befinden, haben Sie die folgenden Rechte:</p>
-        <ul>
-            <li>Das Recht auf Auskunft, Aktualisierung oder Löschung der Informationen, die wir über Sie haben.</li>
-            <li>Das Recht auf Berichtigung (Korrektur falscher Daten).</li>
-            <li>Das Recht auf Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten.</li>
-            <li>Das Recht auf Datenübertragbarkeit.</li>
-        </ul>
+        <p>Wenn Sie sich im Europäischen Wirtschaftsraum (EWR) befinden, haben Sie das Recht auf Auskunft, Aktualisierung, Berichtigung, Widerspruch gegen die Verarbeitung sowie Löschung und Übertragbarkeit Ihrer personenbezogenen Daten. Sie können außerdem Beschwerde bei Ihrer örtlichen Datenschutzaufsichtsbehörde einlegen.</p>
 
-        <h2>6. Privatsphäre von Kindern</h2>
-        <p>Die Anwendung richtet sich nicht an Personen unter 13 Jahren. Der Dienstanbieter erfasst wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Sollten wir feststellen, dass ein Kind unter 13 Jahren personenbezogene Daten bereitgestellt hat, werden wir diese umgehend von unseren Servern löschen.</p>
+        <h2>6. Sicherheit und Meldung von Inhalten</h2>
+        <p>UnSolo verpflichtet sich zur Wahrung einer sicheren Umgebung. Nutzer können unangemessene Inhalte oder Verhaltensweisen aus Chat, Discover und Profilen melden. Details zu verbotenen Inhalten und Durchsetzung finden Sie in unseren <a href="community-guidelines.html">Community-Richtlinien</a>.</p>
+        <h3>Gespeicherte Meldedaten</h3>
+        <p>Wenn Sie eine Meldung einreichen, speichern wir Ihre Nutzer-ID, die ID des gemeldeten Nutzers, die gewählte Kategorie, optional von Ihnen angegebene Details, den Kontext (Chat, Discover oder Profil), einen Inhalts-Snapshot (z. B. Profilfelder oder aktuelle Nachrichten) zur Prüfung, Zeitstempel und Prüfstatus. Wir verwenden diese Daten zur Untersuchung von Verstößen und zur Durchsetzung unserer Richtlinien. Meldungen werden nicht an den gemeldeten Nutzer weitergegeben. Wir bewahren Meldungen so lange auf, wie es für Sicherheit, Rechtscompliance und Streitbeilegung erforderlich ist.</p>
 
-        <h2>7. Sicherheit</h2>
-        <p>Wir setzen physische, elektronische und verfahrenstechnische Sicherheitsmaßnahmen ein, um Ihre Informationen zu schützen. Bitte beachten Sie jedoch, dass kein Sicherheitssystem alle potenziellen Sicherheitsverletzungen verhindern kann.</p>
+        <h2>7. Privatsphäre von Kindern</h2>
+        <p>Die Anwendung richtet sich an Benutzer ab 18 Jahren. Wir erfassen wissentlich keine personenbezogenen Daten von Personen unter 18 Jahren. Sollten wir feststellen, dass ein Benutzer unter 18 Jahren uns personenbezogene Daten bereitgestellt hat, werden wir diese umgehend löschen.</p>
 
-        <h2>8. Änderungen dieser Datenschutzerklärung</h2>
-        <p>Diese Datenschutzerklärung kann von Zeit zu Zeit aktualisiert werden. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen. Die fortgesetzte Nutzung gilt als Zustimmung zu allen Änderungen.</p>
+        <h2>8. Sicherheit</h2>
+        <p>Wir setzen physische, elektronische und verfahrenstechnische Sicherheitsmaßnahmen ein, um Ihre Informationen zu schützen. Bitte beachten Sie jedoch, dass kein Sicherheitssystem alle potenziellen Sicherheitsverletzungen vollständig verhindern kann.</p>
+
+        <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Diese Datenschutzerklärung kann von Zeit zu Zeit aktualisiert werden. Die fortgesetzte Nutzung der Anwendung gilt als Zustimmung zu allen Änderungen.</p>
         <p><span class="bold">Gültigkeitsdatum: 30.12.2026</span></p>
 
-        <h2>9. Kontakt</h2>
-        <p>Wenn Sie Fragen zum Datenschutz haben, kontaktieren Sie uns bitte per E-Mail unter: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Kontakt</h2>
+        <p>Wenn Sie Fragen zum Datenschutz haben, kontaktieren Sie uns bitte unter:</p>
+        <p>
+            AlpineArtStudio<br>
+            Veilchenweg 16<br>
+            88046 Friedrichshafen<br>
+            GERMANY<br>
+            E-Mail: <span class="email">unsolo.box@gmail.com</span>
+        </p>
     </section>
 
     <section id="fr">
         <h1>Politique de Confidentialité (Français)</h1>
-        <p>Cette politique de confidentialité s'applique à l'application SnowBuddy (ci-après dénommée « l'Application ») pour les appareils mobiles, développée par AlpineArtStudio (ci-après dénommé « le Fournisseur de Services ») en tant que service gratuit. Ce service est fourni « EN L'ÉTAT ».</p>
+        <p>Cette politique de confidentialité s'applique à l'application UnSolo (ci-après dénommée « l'Application ») pour les appareils mobiles, développée par AlpineArtStudio (ci-après dénommé « le Fournisseur de Services ») en tant que service gratuit. AlpineArtStudio est le responsable du traitement de vos données personnelles. Ce service est fourni « EN L'ÉTAT ».</p>
 
         <h2>1. Quelles informations l'Application obtient-elle et comment sont-elles utilisées ?</h2>
         <h3>Informations fournies par l'utilisateur</h3>
-        <p>L'Application recueille les informations que vous fournissez lors de votre inscription. L'inscription est obligatoire pour accéder aux fonctionnalités principales de l'Application (mise en relation avec d'autres utilisateurs et messagerie).</p>
-        <p>Lorsque vous vous inscrivez et utilisez l'Application, vous fournissez :</p>
+        <p>L'Application collecte les informations que vous fournissez lors de l'intégration et de l'utilisation. Vous pouvez utiliser UnSolo en tant qu'invité après l'intégration, ou lier optionnellement un compte Apple ou Google pour sauvegarder votre profil sur plusieurs appareils.</p>
+        <p>Selon votre utilisation, vous pouvez fournir :</p>
         <ul>
-            <li><span class="bold">Informations d'identification personnelle :</span> Nom complet, adresse e-mail et photo de profil.</li>
+            <li><span class="bold">Informations de compte :</span> Nom affiché et photo de profil. Si vous liez Apple Sign-In ou Google Sign-In, nous recevons également votre adresse e-mail et l'identifiant de compte de ce fournisseur.</li>
             <li><span class="bold">Contenu utilisateur :</span> Langues préférées, activités sportives (équipement), niveaux de compétence, destinations de voyage (lieux), dates de voyage, biographie personnelle et objectifs de voyage.</li>
-            <li><span class="bold">Informations sur les transactions :</span> Informations que vous fournissez lorsque vous nous contactez pour obtenir de l'aide.</li>
+            <li><span class="bold">Messages et interactions :</span> Messages de chat et activité de mise en relation avec d'autres utilisateurs.</li>
+            <li><span class="bold">Paiements optionnels :</span> Si vous choisissez d'envoyer un pourboire optionnel, le paiement est entièrement traité par Apple ou Google ; nous ne recevons ni ne stockons vos coordonnées bancaires.</li>
         </ul>
 
         <h3>Informations collectées automatiquement</h3>
-        <p>L'Application peut collecter certaines informations automatiquement, notamment le type d'appareil mobile que vous utilisez, l'identifiant unique de votre appareil mobile, l'adresse IP de votre appareil mobile, votre système d'exploitation mobile, le type de navigateurs Internet mobiles que vous utilisez et des informations sur la façon dont vous utilisez l'Application.</p>
+        <p>L'Application et nos prestataires peuvent traiter automatiquement certaines informations techniques nécessaires au fonctionnement du service, notamment le type d'appareil, le système d'exploitation, la version de l'application, les jetons de notification push et l'état de la connexion réseau. Si vous activez les offres partenaires dans l'onglet Offres, Google AdMob peut traiter des identifiants publicitaires et des données d'appareil associées pour la diffusion et la mesure des annonces. Nos fournisseurs backend (tels que Supabase) peuvent traiter des adresses IP et des métadonnées de requête pour la sécurité et la fourniture du service. Nous n'utilisons pas de SDK d'analyse tiers (tels que Firebase Analytics ou Mixpanel) dans la version actuelle.</p>
 
-        <h2>2. L'Application collecte-t-elle des informations de localisation précises en temps réel ?</h2>
-        <p>Cette Application collecte la localisation de votre appareil (via Google Places ou GPS), ce qui aide le Fournisseur de Services à :</p>
-        <ul>
-            <li>Fournir une mise en relation basée sur la localisation avec d'autres voyageurs.</li>
-            <li>Suggérer des lieux de sport et des destinations pertinents.</li>
-            <li>Analyser les tendances des utilisateurs pour améliorer l'Application.</li>
-        </ul>
+        <h2>2. Informations de localisation</h2>
+        <p>UnSolo ne suit <span class="bold">pas</span> en continu votre position GPS en temps réel en arrière-plan. Lorsque vous recherchez ou sélectionnez une destination de voyage, nous traitons les informations sur le lieu que vous choisissez (nom, adresse et coordonnées) via l'API Google Places. Les autres utilisateurs voient la destination que vous définissez dans votre profil à des fins de mise en relation. Vous pouvez optionnellement ouvrir un lieu sélectionné dans l'application cartes de votre appareil via un lien externe.</p>
 
         <h2>3. Les tiers voient-ils et/ou ont-ils accès aux informations ?</h2>
-        <p>Oui. Nous partageons vos informations avec des prestataires de services tiers qui nous aident à faire fonctionner l'Application. Vous trouverez ci-dessous les liens vers leurs politiques de confidentialité :</p>
+        <p>Oui. Nous partageons des informations avec des prestataires de services tiers de confiance qui nous aident à faire fonctionner l'Application. L'utilisation de vos données par ces tiers est régie par leurs politiques de confidentialité respectives :</p>
         <ul>
-            <li>Supabase (Base de données et authentification) : <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Services Google Play et Google Maps : <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo : <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (pour Apple Sign-In) : <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase :</span> Pour l'authentification sécurisée (y compris les comptes invités), le stockage de la base de données, les messages de chat, les photos de profil et le stockage des jetons push. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API :</span> Pour la recherche de destinations et les détails des lieux lors de la modification de votre profil. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications :</span> Pour la livraison des notifications push sur votre appareil. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google :</span> Pour la connexion optionnelle (Apple Sign-In, Google Sign-In) et les pourboires optionnels in-app (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob :</span> Pour des offres partenaires optionnelles, uniquement après votre consentement dans l'onglet Offres. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM) :</span> Pour la livraison des notifications push sur iOS et Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. Quels sont mes droits de désinscription et de suppression des données ?</h2>
-        <p><span class="bold">Désinstallation :</span> Vous pouvez arrêter toute collecte d'informations par l'Application en la désinstallant. Vous pouvez utiliser les processus de désinstallation standard disponibles sur votre appareil mobile ou via la boutique d'applications.</p>
-        <p><span class="bold">Suppression de compte (Obligatoire) :</span> Vous pouvez supprimer votre compte et toutes les données personnelles associées (profil, photos, activités) directement dans les paramètres de l'Application. Une fois supprimées, ces données ne peuvent pas être récupérées.</p>
-        <p><span class="bold">Demande par e-mail :</span> Vous pouvez également demander la suppression de vos données en nous contactant à : <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Désinstallation :</span> Vous pouvez arrêter toute collecte d'informations en désinstallant l'Application.</p>
+        <p><span class="bold">Suppression de compte (Obligatoire) :</span> Vous pouvez supprimer votre compte et toutes les données personnelles associées directement dans les paramètres de l'Application. Une fois supprimées, ces données ne peuvent pas être récupérées.</p>
+        <p><span class="bold">Demande par e-mail :</span> Vous pouvez également demander la suppression de vos données en nous contactant à : <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Vos droits RGPD (pour les utilisateurs européens)</h2>
-        <p>Si vous êtes situé dans l'Espace économique européen (EEE), vous disposez des droits suivants :</p>
-        <ul>
-            <li>Le droit d'accéder, de mettre à jour ou de supprimer les informations que nous détenons à votre sujet.</li>
-            <li>Le droit de rectification (pour corriger des informations erronées).</li>
-            <li>Le droit d'opposition au traitement de vos données personnelles.</li>
-            <li>Le droit à la portabilité des données.</li>
-        </ul>
+        <p>Si vous êtes situé dans l'Espace économique européen (EEE), vous avez le droit d'accéder, de mettre à jour, de rectifier, de vous opposer au traitement, ou de demander la suppression et la portabilité de vos données personnelles. Vous pouvez également déposer une plainte auprès de votre autorité locale de protection des données.</p>
 
-        <h2>6. Confidentialité des enfants</h2>
-        <p>L'Application ne s'adresse à personne de moins de 13 ans. Le Fournisseur de Services ne recueille pas sciemment d'informations d'identification personnelle auprès d'enfants de moins de 13 ans. Si nous découvrons qu'un enfant de moins de 13 ans a fourni des informations personnelles, nous les supprimerons immédiatement de nos serveurs.</p>
+        <h2>6. Sécurité et signalement des utilisateurs</h2>
+        <p>UnSolo s'engage à maintenir un environnement sûr. Les utilisateurs peuvent signaler des contenus ou comportements inappropriés depuis le chat, Discover et les profils. Consultez nos <a href="community-guidelines.html">Règles de la communauté</a> pour les contenus interdits et l'application des règles.</p>
+        <h3>Données de signalement que nous conservons</h3>
+        <p>Lorsque vous soumettez un signalement, nous conservons votre identifiant utilisateur, celui de la personne signalée, la catégorie choisie, les détails optionnels que vous fournissez, le contexte (chat, Discover ou profil), un instantané du contenu (champs de profil ou messages récents) pour faciliter l'examen, les horodatages et le statut de l'examen. Nous utilisons ces données pour enquêter sur les violations et faire respecter nos règles. Les signalements ne sont pas communiqués à la personne signalée. Nous conservons les signalements aussi longtemps que nécessaire pour la sécurité, la conformité juridique et le règlement des litiges.</p>
 
-        <h2>7. Sécurité</h2>
-        <p>Nous fournissons des mesures de protection physiques, électroniques et procédurales pour protéger vos informations. Cependant, sachez qu'aucun système de sécurité ne peut prévenir toutes les failles de sécurité potentielles.</p>
+        <h2>7. Confidentialité des enfants</h2>
+        <p>L'Application est destinée aux utilisateurs âgés de 18 ans et plus. Nous ne collectons pas sciemment d'informations personnelles auprès de personnes de moins de 18 ans. Si nous découvrons qu'un utilisateur de moins de 18 ans a fourni des informations personnelles, nous les supprimerons immédiatement.</p>
 
-        <h2>8. Modifications de cette politique de confidentialité</h2>
-        <p>Nous pouvons mettre à jour notre politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page. L'utilisation continue est considérée comme une approbation de tous les changements.</p>
-        <p><span class="bold">Date d'entrée en vigueur : 2026-12-30</span></p>
+        <h2>8. Sécurité</h2>
+        <p>Nous mettons en œuvre des mesures de protection physiques, électroniques et procédurales pour protéger vos informations. Cependant, veuillez noter qu'aucun système de sécurité ne peut empêcher toutes les violations potentielles de la sécurité.</p>
 
-        <h2>9. Contactez-nous</h2>
-        <p>Si vous avez des questions, veuillez nous contacter par e-mail à : <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>9. Modifications de cette politique de confidentialité</h2>
+        <p>Nous pouvons mettre à jour notre politique de confidentialité de temps à autre. L'utilisation continue de l'Application est considérée comme une approbation de tous les changements.</p>
+        <p><span class="bold">Date d'entrée en vigueur : 30-12-2026</span></p>
+
+        <h2>10. Contactez-nous</h2>
+        <p>Si vous avez des questions, veuillez nous contacter à :</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        E-mail : <span class="email">unsolo.box@gmail.com</span></p>
     </section>
 
     <section id="it">
         <h1>Informativa sulla Privacy (Italiano)</h1>
-        <p>La presente informativa sulla privacy è applicabile all'app SnowBuddy (di seguito denominata "Applicazione") per dispositivi mobili, sviluppata da AlpineArtStudio (di seguito denominato "Fornitore del Servizio") come servizio gratuito. Questo servizio viene fornito "COSI COM'È" (AS IS).</p>
+        <p>La presente informativa sulla privacy è applicabile all'app UnSolo (di seguito denominata "Applicazione") per dispositivi mobili, sviluppata da AlpineArtStudio (di seguito denominato "Fornitore del Servizio") come servizio gratuito. AlpineArtStudio è il titolare del trattamento dei dati personali. Questo servizio viene fornito "COSI COM'È" (AS IS).</p>
 
         <h2>1. Quali informazioni ottiene l'Applicazione e come vengono utilizzate?</h2>
         <h3>Informazioni fornite dall'utente</h3>
-        <p>L'Applicazione acquisisce le informazioni fornite al momento della registrazione. La registrazione è obbligatoria per accedere alle funzioni principali dell'Applicazione (matching con altri utenti e messaggistica).</p>
-        <p>Quando ti registri e utilizzi l'Applicazione, fornisci:</p>
+        <p>L'Applicazione raccoglie le informazioni fornite durante l'onboarding e l'utilizzo. Puoi usare UnSolo come ospite dopo l'onboarding, oppure collegare facoltativamente un account Apple o Google per salvare il profilo su più dispositivi.</p>
+        <p>A seconda dell'utilizzo, puoi fornire:</p>
         <ul>
-            <li><span class="bold">Informazioni di identificazione personale:</span> Nome completo, indirizzo email e foto del profilo.</li>
+            <li><span class="bold">Informazioni account:</span> Nome visualizzato e foto del profilo. Se colleghi Apple Sign-In o Google Sign-In, riceviamo anche l'indirizzo email e l'identificativo dell'account da quel provider.</li>
             <li><span class="bold">Contenuto dell'utente:</span> Lingue preferite, attività sportive (attrezzatura), livelli di abilità, destinazioni di viaggio (località), date del viaggio, biografia personale e obiettivi del viaggio.</li>
-            <li><span class="bold">Informazioni sulle transazioni:</span> Informazioni fornite quando ci contatti per assistenza.</li>
+            <li><span class="bold">Messaggi e interazioni:</span> Messaggi di chat e attività di matching con altri utenti.</li>
+            <li><span class="bold">Pagamenti opzionali:</span> Se scegli di inviare una mancia opzionale, il pagamento è gestito interamente da Apple o Google; non riceviamo né conserviamo i dati della carta di pagamento.</li>
         </ul>
 
         <h3>Informazioni raccolte automaticamente</h3>
-        <p>L'Applicazione può raccogliere automaticamente alcune informazioni, tra cui, a titolo esemplificativo, il tipo di dispositivo mobile utilizzato, l'ID univoco del dispositivo mobile, l'indirizzo IP del dispositivo mobile, il sistema operativo mobile, il tipo di browser Internet mobile utilizzato e informazioni sulle modalità di utilizzo dell'Applicazione.</p>
+        <p>L'Applicazione e i nostri fornitori di servizi possono elaborare automaticamente alcune informazioni tecniche necessarie al funzionamento del servizio, tra cui tipo di dispositivo, sistema operativo, versione dell'app, token per le notifiche push e stato della connessione di rete. Se attivi le offerte partner nella scheda Offerte, Google AdMob può elaborare identificatori pubblicitari e dati del dispositivo correlati per la distribuzione e la misurazione degli annunci. I nostri provider backend (come Supabase) possono elaborare indirizzi IP e metadati delle richieste per sicurezza e fornitura del servizio. Non utilizziamo SDK di analisi di terze parti (come Firebase Analytics o Mixpanel) nella versione attuale.</p>
 
-        <h2>2. L'Applicazione raccoglie informazioni precise sulla posizione del dispositivo in tempo reale?</h2>
-        <p>Questa Applicazione raccoglie la posizione del tuo dispositivo (tramite Google Places o GPS), che aiuta il Fornitore del Servizio a:</p>
-        <ul>
-            <li>Fornire il matching basato sulla posizione con altri viaggiatori.</li>
-            <li>Suggerire località sportive e destinazioni pertinenti.</li>
-            <li>Analizzare le tendenze degli utenti per migliorare l'Applicazione.</li>
-        </ul>
+        <h2>2. Informazioni sulla posizione</h2>
+        <p>UnSolo <span class="bold">non</span> traccia continuamente la posizione GPS in tempo reale in background. Quando cerchi o selezioni una destinazione di viaggio, elaboriamo le informazioni sul luogo che scegli (nome, indirizzo e coordinate) tramite l'API Google Places. Gli altri utenti vedono la destinazione impostata nel tuo profilo a fini di matching. Puoi aprire facoltativamente un luogo selezionato nell'app mappe del dispositivo tramite un link esterno.</p>
 
         <h2>3. I terzi vedono e/o hanno accesso alle informazioni?</h2>
-        <p>Sì. Condividiamo le tue informazioni con fornitori di servizi terzi che ci aiutano a gestire l'Applicazione. Di seguito sono riportati i link alle loro Informative sulla Privacy:</p>
+        <p>Sì. Condividiamo informazioni con fornitori di servizi terzi di fiducia che ci aiutano a gestire l'Applicazione. L'utilizzo dei tuoi dati da parte di tali terzi è regolato dalle rispettive informative sulla privacy:</p>
         <ul>
-            <li>Supabase (Database e Autenticazione): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Servizi Google Play e Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (per Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> Per l'autenticazione sicura (inclusi account ospite), l'archiviazione del database, i messaggi di chat, le foto del profilo e l'archiviazione dei token push. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> Per la ricerca delle destinazioni e i dettagli dei luoghi durante la modifica del profilo. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> Per la consegna delle notifiche push al dispositivo. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> Per l'accesso opzionale (Apple Sign-In, Google Sign-In) e mance opzionali in-app (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> Per offerte partner opzionali, solo dopo il consenso nella scheda Offerte. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> Per le notifiche push su iOS e Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. Quali sono i miei diritti di rinuncia e di cancellazione dei dati?</h2>
-        <p><span class="bold">Disinstallazione:</span> Puoi interrompere qualsiasi raccolta di informazioni da parte dell'Applicazione disinstallandola. Puoi utilizzare i processi di disinstallazione standard disponibili sul tuo dispositivo mobile o tramite il marketplace delle applicazioni mobili.</p>
-        <p><span class="bold">Cancellazione dell'Account (Obbligatoria):</span> Puoi eliminare il tuo account e tutti i dati personali associati (profilo, foto, attività) direttamente nelle Impostazioni dell'Applicazione. Una volta eliminati, questi dati non possono essere recuperati.</p>
-        <p><span class="bold">Richiesta via Email:</span> Puoi anche richiedere la cancellazione dei dati contattandoci all'indirizzo: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Disinstallazione:</span> Puoi interrompere qualsiasi raccolta di informazioni disinstallando l'Applicazione.</p>
+        <p><span class="bold">Cancellazione dell'Account (Obbligatoria):</span> Puoi eliminare il tuo account e tutti i dati personali associati direttamente nelle Impostazioni dell'Applicazione. Una volta eliminati, questi dati non possono essere recuperati.</p>
+        <p><span class="bold">Richiesta via Email:</span> Puoi anche richiedere la cancellazione dei dati contattandoci all'indirizzo: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. I tuoi diritti GDPR (per gli utenti europei)</h2>
-        <p>Se ti trovi nello Spazio Economico Europeo (SEE), hai i seguenti diritti:</p>
-        <ul>
-            <li>Il diritto di accedere, aggiornare o eliminare le informazioni che abbiamo su di te.</li>
-            <li>Il diritto di rettifica (per correggere informazioni errate).</li>
-            <li>Il diritto di opporsi al nostro trattamento dei tuoi dati personali.</li>
-            <li>Il diritto alla portabilità dei dati.</li>
-        </ul>
+        <p>Se ti trovi nello Spazio Economico Europeo (SEE), hai il diritto di accedere, aggiornare, rettificare, opporti al trattamento, richiedere la cancellazione e la portabilità dei tuoi dati personali. Puoi anche presentare reclamo presso l'autorità locale per la protezione dei dati.</p>
 
-        <h2>6. Privacy dei bambini</h2>
-        <p>L'Applicazione non si rivolge a minori di 13 anni. Il Fornitore del Servizio non raccoglie consapevolmente informazioni di identificazione personale da bambini di età inferiore ai 13 anni. Nel caso in cui dovessimo scoprire che un bambino di età inferiore ai 13 anni ci ha fornito informazioni personali, le cancelleremo immediatamente dai nostri server.</p>
+        <h2>6. Sicurezza degli utenti e segnalazioni</h2>
+        <p>UnSolo si impegna a mantenere un ambiente sicuro. Gli utenti possono segnalare contenuti o comportamenti inappropriati da chat, Discover e profili. Consulta le nostre <a href="community-guidelines.html">Linee guida della community</a> per i contenuti vietati e l'applicazione delle regole.</p>
+        <h3>Dati di segnalazione che conserviamo</h3>
+        <p>Quando invii una segnalazione, conserviamo il tuo ID utente, l'ID dell'utente segnalato, la categoria scelta, i dettagli opzionali forniti, il contesto (chat, Discover o profilo), un'istantanea del contenuto (campi del profilo o messaggi recenti) per la revisione, i timestamp e lo stato della revisione. Utilizziamo questi dati per indagare sulle violazioni e far rispettare le nostre policy. Le segnalazioni non vengono condivise con l'utente segnalato. Conserviamo le segnalazioni per il tempo necessario a sicurezza, conformità legale e risoluzione delle controversie.</p>
 
-        <h2>7. Sicurezza</h2>
-        <p>Forniamo misure di sicurezza fisiche, elettroniche e procedurali per proteggere le tue informazioni. Tuttavia, tieni presente che nessun sistema di sicurezza può prevenire tutte le potenziali violazioni della sicurezza.</p>
+        <h2>7. Privacy dei bambini</h2>
+        <p>L'Applicazione è destinata a utenti di età pari o superiore ai 18 anni. Non raccogliamo consapevolmente informazioni personali di persone di età inferiore ai 18 anni. Se scopriamo che un utente di età inferiore ai 18 anni ci ha fornito informazioni personali, le elimineremo immediatamente.</p>
 
-        <h2>8. Modifiche alla presente Informativa sulla Privacy</h2>
-        <p>Potremmo aggiornare la nostra Informativa sulla Privacy di volta in volta. Ti informeremo di eventuali modifiche pubblicando la nuova Informativa sulla Privacy in questa pagina. L'uso continuato è considerato come approvazione di tutte le modifiche.</p>
+        <h2>8. Sicurezza</h2>
+        <p>Forniamo salvaguardie fisiche, elettroniche e procedurali per proteggere le tue informazioni. Tuttavia, tieni presente che nessun sistema di sicurezza può prevenire tutte le potenziali violazioni della sicurezza.</p>
+
+        <h2>9. Modifiche alla presente Informativa sulla Privacy</h2>
+        <p>Potremmo aggiornare la nostra Informativa sulla Privacy di volta in volta. L'uso continuato dell'Applicazione è considerato approvazione di tutte le modifiche.</p>
         <p><span class="bold">Data di decorrenza: 30-12-2026</span></p>
 
-        <h2>9. Contattaci</h2>
-        <p>In caso di domande sulla privacy, contattaci via email all'indirizzo: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Contattaci</h2>
+        <p>In caso di domande, contattaci all'indirizzo:</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        Email: <span class="email">unsolo.box@gmail.com</span></p>
     </section>
 
     <section id="es">
         <h1>Política de Privacidad (Español)</h1>
-        <p>Esta política de privacidad es aplicable a la aplicación SnowBuddy (en adelante, la "Aplicación") para dispositivos móviles, desarrollada por AlpineArtStudio (en adelante, el "Proveedor de Servicios") como un servicio gratuito. Este servicio se proporciona "TAL CUAL" (AS IS).</p>
+        <p>Esta política de privacidad es aplicable a la aplicación UnSolo (en adelante, la "Aplicación") para dispositivos móviles, desarrollada por AlpineArtStudio (en adelante, el "Proveedor de Servicios") como un servicio gratuito. AlpineArtStudio es el responsable del tratamiento de sus datos personales. Este servicio se proporciona "TAL CUAL" (AS IS).</p>
 
-        <h2>1. ¿Qué información obtiene la Aplicación и cómo se utiliza?</h2>
+        <h2>1. ¿Qué información obtiene la Aplicación y cómo se utiliza?</h2>
         <h3>Información proporcionada por el usuario</h3>
-        <p>La Aplicación adquiere la información que usted suministra al registrarse. El registro es obligatorio para acceder a las funciones principales de la Aplicación (emparejamiento con otros usuarios y mensajería).</p>
-        <p>Al registrarse y utilizar la Aplicación, usted proporciona:</p>
+        <p>La Aplicación recopila la información que usted proporciona durante la incorporación y el uso. Puede usar UnSolo como invitado tras completar la incorporación, o vincular opcionalmente una cuenta de Apple o Google para guardar su perfil en varios dispositivos.</p>
+        <p>Según su uso, puede proporcionar:</p>
         <ul>
-            <li><span class="bold">Información de identificación personal:</span> Nombre completo, dirección de correo electrónico y foto de perfil.</li>
-            <li><span class="bold">Contenido del usuario:</span> Idiomas preferidos, actividades deportivas (equipo), niveles de habilidad, destinos de viaje (ubicaciones), fechas de viaje, biografía personal и objetivos del viaje.</li>
-            <li><span class="bold">Información de transacciones:</span> Información que usted proporciona cuando se pone en contacto con nosotros para obtener ayuda.</li>
+            <li><span class="bold">Información de cuenta:</span> Nombre mostrado y foto de perfil. Si vincula Apple Sign-In o Google Sign-In, también recibimos su dirección de correo electrónico e identificador de cuenta de ese proveedor.</li>
+            <li><span class="bold">Contenido del usuario:</span> Idiomas preferidos, actividades deportivas (equipo), niveles de habilidad, destinos de viaje (ubicaciones), fechas de viaje, biografía personal y objetivos del viaje.</li>
+            <li><span class="bold">Mensajes e interacciones:</span> Mensajes de chat y actividad de emparejamiento con otros usuarios.</li>
+            <li><span class="bold">Pagos opcionales:</span> Si elige enviar una propina opcional, el pago lo procesa íntegramente Apple o Google; no recibimos ni almacenamos los datos de su tarjeta de pago.</li>
         </ul>
 
         <h3>Información recopilada automáticamente</h3>
-        <p>La Aplicación puede recopilar cierta información automáticamente, incluyendo, entre otros, el tipo de dispositivo móvil que utiliza, el ID único de su dispositivo móvil, la dirección IP de su dispositivo móvil, su sistema operativo móvil, el tipo de navegadores de Internet móviles que utiliza e información sobre la forma en que utiliza la Aplicación.</p>
+        <p>La Aplicación y nuestros proveedores de servicios pueden procesar automáticamente cierta información técnica necesaria para el funcionamiento del servicio, incluidos el tipo de dispositivo, el sistema operativo, la versión de la aplicación, los tokens de notificaciones push y el estado de la conexión de red. Si activa las ofertas de socios en la pestaña Ofertas, Google AdMob puede procesar identificadores publicitarios y datos del dispositivo relacionados para la entrega y medición de anuncios. Nuestros proveedores backend (como Supabase) pueden procesar direcciones IP y metadatos de solicitudes por seguridad y prestación del servicio. No utilizamos SDK de analítica de terceros (como Firebase Analytics o Mixpanel) en la versión actual.</p>
 
-        <h2>2. ¿Recopila la Aplicación información de ubicación precisa del dispositivo en tiempo real?</h2>
-        <p>Esta Aplicación recopila la ubicación de su dispositivo (a través de Google Places o GPS), lo que ayuda al Proveedor de Servicios a:</p>
-        <ul>
-            <li>Proporcionar emparejamiento basado en la ubicación con otros viajeros.</li>
-            <li>Sugerir lugares deportivos y destinos relevantes.</li>
-            <li>Analizar las tendencias de los usuarios para mejorar la Aplicación.</li>
-        </ul>
+        <h2>2. Información de ubicación</h2>
+        <p>UnSolo <span class="bold">no</span> rastrea continuamente su ubicación GPS en tiempo real en segundo plano. Cuando busca o selecciona un destino de viaje, procesamos la información del lugar que elige (nombre, dirección y coordenadas) mediante la API de Google Places. Otros usuarios ven el destino que establece en su perfil con fines de emparejamiento. Puede abrir opcionalmente un lugar seleccionado en la aplicación de mapas de su dispositivo mediante un enlace externo.</p>
 
-        <h2>3. ¿Ven los terceros la información obtenida por la Aplicación y/o tienen acceso a ella?</h2>
-        <p>Sí. Compartimos su información con terceros proveedores de servicios que nos ayudan a operar la Aplicación. A continuación se presentan los enlaces a sus Políticas de Privacidad:</p>
+        <h2>3. ¿Ven los terceros la información o tienen acceso a ella?</h2>
+        <p>Sí. Compartimos información con proveedores de servicios externos de confianza que nos ayudan a operar la Aplicación. El uso de sus datos por parte de estos terceros se rige por sus respectivas políticas de privacidad:</p>
         <ul>
-            <li>Supabase (Base de datos y autenticación): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Servicios de Google Play и Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (para Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> Para autenticación segura (incluidas cuentas de invitado), almacenamiento en base de datos, mensajes de chat, fotos de perfil y almacenamiento de tokens push. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> Para búsqueda de destinos y detalles de lugares al editar su perfil. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> Para la entrega de notificaciones push a su dispositivo. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> Para inicio de sesión opcional (Apple Sign-In, Google Sign-In) y propinas opcionales in-app (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> Para ofertas de socios opcionales, solo después de su consentimiento en la pestaña Ofertas. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> Para notificaciones push en iOS y Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. ¿Cuáles son mis derechos de exclusión y de eliminación de datos?</h2>
-        <p><span class="bold">Desinstalación:</span> Puede detener toda la recopilación de información por parte de la Aplicación fácilmente desinstalándola. Puede utilizar los procesos de desinstalación estándar disponibles en su dispositivo móvil o a través del mercado de aplicaciones móviles.</p>
-        <p><span class="bold">Eliminación de la cuenta (Obligatorio):</span> Puede eliminar su cuenta y todos los datos personales asociados (perfil, fotos, actividades) directamente en los Ajustes de la Aplicación. Una vez eliminados, estos datos no se pueden recuperar.</p>
-        <p><span class="bold">Solicitud por correo electrónico:</span> También puede solicitar la eliminación de sus datos poniéndose en contacto con nosotros en: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Desinstalación:</span> Puede detener toda la recopilación de información desinstalando la Aplicación.</p>
+        <p><span class="bold">Eliminación de la cuenta (Obligatorio):</span> Puede eliminar su cuenta y todos los datos personales asociados directamente en los Ajustes de la Aplicación. Una vez eliminados, estos datos no se pueden recuperar.</p>
+        <p><span class="bold">Solicitud por correo electrónico:</span> También puede solicitar la eliminación de sus datos poniéndose en contacto con nosotros en: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Sus derechos del RGPD (para usuarios europeos)</h2>
-        <p>Si se encuentra en el Espacio Económico Europeo (EEE), tiene los siguientes derechos:</p>
-        <ul>
-            <li>El derecho a acceder, actualizar o eliminar la información que tenemos sobre usted.</li>
-            <li>El derecho de rectificación (para corregir información incorrecta).</li>
-            <li>El derecho a oponerse a nuestro tratamiento de sus datos personales.</li>
-            <li>El derecho a la portabilidad de los datos.</li>
-        </ul>
+        <p>Si se encuentra en el Espacio Económico Europeo (EEE), tiene derecho a acceder, actualizar, rectificar, oponerse al tratamiento, o solicitar la eliminación y portabilidad de sus datos personales. También puede presentar una reclamación ante su autoridad local de protección de datos.</p>
 
-        <h2>6. Privacidad de los niños</h2>
-        <p>La Aplicación no se dirige a menores de 13 años. El Proveedor de Servicios no recopila conscientemente información de identificación personal de niños menores de 13 años. En caso de que descubramos que un niño menor de 13 años nos ha facilitado información personal, la eliminaremos inmediatamente de nuestros servidores.</p>
+        <h2>6. Seguridad y denuncia de usuarios</h2>
+        <p>UnSolo se compromete a mantener un entorno seguro. Los usuarios pueden denunciar contenido o comportamientos inapropiados desde el chat, Discover y perfiles. Consulta nuestras <a href="community-guidelines.html">Normas de la comunidad</a> sobre contenido prohibido y aplicación de reglas.</p>
+        <h3>Datos de denuncia que almacenamos</h3>
+        <p>Cuando envías una denuncia, almacenamos tu ID de usuario, el ID del usuario denunciado, la categoría elegida, los detalles opcionales que proporciones, el contexto (chat, Discover o perfil), una instantánea del contenido (campos del perfil o mensajes recientes) para la revisión, marcas de tiempo y estado de revisión. Usamos estos datos para investigar infracciones y hacer cumplir nuestras políticas. Las denuncias no se comparten con el usuario denunciado. Conservamos los registros de denuncias el tiempo necesario para seguridad, cumplimiento legal y resolución de disputas.</p>
 
-        <h2>7. Seguridad</h2>
-        <p>Proporcionamos salvaguardas físicas, electrónicas y de procedimiento para proteger su información. Sin embargo, tenga en cuenta que ningún sistema de seguridad puede prevenir todas las posibles brechas de seguridad.</p>
+        <h2>7. Privacidad de menores</h2>
+        <p>La Aplicación está destinada a usuarios mayores de 18 años. No recopilamos información personal de menores de 18 años a sabiendas. Si descubrimos que un usuario menor de 18 años ha proporcionado información personal, la eliminaremos inmediatamente.</p>
 
-        <h2>8. Cambios en esta Política de Privacidad</h2>
-        <p>Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página. El uso continuado se considera la aprobación de todos los cambios.</p>
+        <h2>8. Seguridad</h2>
+        <p>Proporcionamos salvaguardias físicas, electrónicas y de procedimiento para proteger su información. Sin embargo, tenga en cuenta que ningún sistema de seguridad puede prevenir todas las posibles brechas de seguridad.</p>
+
+        <h2>9. Cambios en esta Política de Privacidad</h2>
+        <p>Podemos actualizar nuestra Política de Privacidad de vez en cuando. El uso continuado de la Aplicación se considera la aprobación de todos los cambios.</p>
         <p><span class="bold">Fecha de entrada en vigor: 30-12-2026</span></p>
 
-        <h2>9. Contacto</h2>
-        <p>Si tiene alguna pregunta sobre la privacidad, póngase en contacto con nosotros por correo electrónico en: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Contacto</h2>
+        <p>Si tiene alguna pregunta, póngase en contacto con nosotros en:</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        Email: <span class="email">unsolo.box@gmail.com</span></p>
     </section>
 
     <section id="ru">
         <h1>Политика конфиденциальности (Русский)</h1>
-        <p>Настоящая политика конфиденциальности применима к приложению SnowBuddy (далее — «Приложение») для мобильных устройств, разработанному AlpineArtStudio (далее — «Сервис-провайдер»), как к бесплатному сервису. Данный сервис предоставляется на условиях «КАК ЕСТЬ» (AS IS).</p>
+        <p>Настоящая политика конфиденциальности применима к приложению UnSolo (далее — «Приложение») для мобильных устройств, разработанному AlpineArtStudio (далее — «Сервис-провайдер») как бесплатный сервис. AlpineArtStudio является оператором ваших персональных данных. Данный сервис предоставляется на условиях «КАК ЕСТЬ» (AS IS).</p>
 
         <h2>1. Какую информацию собирает Приложение и как она используется?</h2>
         <h3>Информация, предоставляемая пользователем</h3>
-        <p>Приложение получает информацию, которую вы предоставляете при регистрации. Регистрация обязательна для доступа к основным функциям Приложения (поиск попутчиков и обмен сообщениями).</p>
-        <p>При регистрации и использовании Приложения вы предоставляете:</p>
+        <p>Приложение собирает информацию, которую вы предоставляете во время онбординга и при использовании. Вы можете пользоваться UnSolo как гость после онбординга или по желанию привязать аккаунт Apple или Google, чтобы сохранить профиль на разных устройствах.</p>
+        <p>В зависимости от использования вы можете предоставить:</p>
         <ul>
-            <li><span class="bold">Персональные данные:</span> Полное имя, адрес электронной почты и фото профиля.</li>
+            <li><span class="bold">Данные аккаунта:</span> Отображаемое имя и фото профиля. При привязке Apple Sign-In или Google Sign-In мы также получаем ваш email и идентификатор аккаунта от этого провайдера.</li>
             <li><span class="bold">Контент пользователя:</span> Предпочитаемые языки, виды спорта (снаряжение), уровень навыков, места поездок (локации), даты поездок, личная биография и цели поездки.</li>
-            <li><span class="bold">Транзакционная информация:</span> Информация, которую вы предоставляете при обращении к нам за помощью.</li>
+            <li><span class="bold">Сообщения и взаимодействия:</span> Сообщения в чате и активность матчинга с другими пользователями.</li>
+            <li><span class="bold">Дополнительные платежи:</span> Если вы отправляете опциональные чаевые, платёж полностью обрабатывается Apple или Google; мы не получаем и не храним данные платёжной карты.</li>
         </ul>
 
         <h3>Автоматически собираемая информация</h3>
-        <p>Приложение может собирать определенную информацию автоматически, включая, помимо прочего, тип используемого вами мобильного устройства, уникальный идентификатор вашего мобильного устройства (Device ID), IP-адрес вашего мобильного устройства, вашу мобильную операционную систему, тип используемого вами мобильного интернет-браузера и информацию о том, как вы используете Приложение.</p>
+        <p>Приложение и наши поставщики услуг могут автоматически обрабатывать техническую информацию, необходимую для работы сервиса: тип устройства, ОС, версия приложения, push-токены и статус сетевого подключения. Если вы соглашаетесь на партнёрские предложения во вкладке «Предложения», Google AdMob может обрабатывать рекламные идентификаторы и связанные данные устройства для показа и измерения рекламы. Backend-провайдеры (например, Supabase) могут обрабатывать IP-адреса и метаданные запросов для безопасности и доставки сервиса. В текущей версии мы не используем сторонние analytics SDK (например, Firebase Analytics или Mixpanel).</p>
 
-        <h2>2. Собирает ли Приложение точную информацию о местоположении устройства в реальном времени?</h2>
-        <p>Данное Приложение собирает данные о местоположении вашего устройства (через Google Places или GPS), что помогает Сервис-провайдеру:</p>
-        <ul>
-            <li>Обеспечивать подбор попутчиков на основе их местоположения.</li>
-            <li>Предлагать подходящие спортивные объекты и направления.</li>
-            <li>Анализировать пользовательские тренды для улучшения Приложения.</li>
-        </ul>
+        <h2>2. Информация о местоположении</h2>
+        <p>UnSolo <span class="bold">не</span> отслеживает ваш GPS в реальном времени в фоновом режиме. Когда вы ищете или выбираете место поездки, мы обрабатываем выбранную вами информацию о месте (название, адрес и координаты) через Google Places API. Другие пользователи видят пункт назначения, указанный в вашем профиле, для целей матчинга. Вы можете по желанию открыть выбранное место во внешнем приложении карт по ссылке.</p>
 
-        <h2>3. Имеют ли третьи лица доступ к информации, полученной Приложением?</h2>
-        <p>Да. Мы передаем вашу информацию сторонним поставщикам услуг, которые помогают нам в работе Приложения. Ниже приведены ссылки на их политики конфиденциальности:</p>
+        <h2>3. Имеют ли третьи лица доступ к информации?</h2>
+        <p>Да. Мы передаём информацию доверенным сторонним поставщикам, которые помогают обеспечивать работу Приложения. Использование ваших данных ими регулируется их политиками конфиденциальности:</p>
         <ul>
-            <li>Supabase (База данных и аутентификация): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Google Play Services и Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (для Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> Безопасная аутентификация (включая гостевые аккаунты), хранение БД, сообщения чата, фото профиля и push-токены. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> Поиск направлений и детали мест при редактировании профиля. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> Доставка push-уведомлений на устройство. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> Опциональный вход (Apple Sign-In, Google Sign-In) и опциональные чаевые in-app (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> Опциональные партнёрские предложения — только после согласия во вкладке «Предложения». <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> Push-уведомления на iOS и Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. Каковы мои права на отказ и удаление данных?</h2>
-        <p><span class="bold">Удаление Приложения:</span> Вы можете легко прекратить сбор всей информации Приложением, удалив его. Вы можете использовать стандартные процессы удаления, доступные на вашем мобильном устройстве или через магазин приложений.</p>
-        <p><span class="bold">Удаление аккаунта (Обязательно):</span> Вы можете удалить свой аккаунт и все связанные с ним персональные данные (профиль, фотографии, активности) непосредственно в Настройках Приложения. После удаления эти данные не могут быть восстановлены.</p>
-        <p><span class="bold">Запрос по электронной почте:</span> Вы также можете запросить удаление ваших данных, связавшись с нами по адресу: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Удаление Приложения:</span> Вы можете прекратить сбор всей информации, удалив Приложение.</p>
+        <p><span class="bold">Удаление аккаунта (Обязательно):</span> Вы можете удалить свой аккаунт и все связанные с ним персональные данные непосредственно в Настройках Приложения. После удаления эти данные не могут быть восстановлены.</p>
+        <p><span class="bold">Запрос по электронной почте:</span> Вы также можете запросить удаление ваших данных, связавшись с нами по адресу: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Ваши права в соответствии с GDPR (для пользователей из Европы)</h2>
-        <p>Если вы находитесь в Европейской экономической зоне (ЕЭЗ), у вас есть следующие права:</p>
-        <ul>
-            <li>Право на доступ, обновление или удаление информации, которую мы храним о вас.</li>
-            <li>Право на исправление (исправление неверной информации).</li>
-            <li>Право на возражение против обработки ваших персональных данных.</li>
-            <li>Право на переносимость данных.</li>
-        </ul>
+        <p>Если вы находитесь в Европейской экономической зоне (ЕЭЗ), вы имеете право на доступ, обновление, исправление, возражение против обработки, удаление и переносимость ваших персональных данных. Вы также можете подать жалобу в местный надзорный орган по защите данных.</p>
 
-        <h2>6. Конфиденциальность данных детей</h2>
-        <p>Приложение не предназначено для лиц младше 13 лет. Сервис-провайдер намеренно не собирает персональные данные детей младше 13 лет. В случае, если мы обнаружим, что ребенок младше 13 лет предоставил нам личную информацию, мы немедленно удалим ее с наших серверов.</p>
+        <h2>6. Безопасность пользователей и жалобы</h2>
+        <p>UnSolo стремится обеспечить безопасную среду. Пользователи могут жаловаться на неподобающий контент или поведение из чата, Discover и профилей. Подробности о запрещённом контенте и мерах — в <a href="community-guidelines.html">Правилах сообщества</a>.</p>
+        <h3>Данные жалоб, которые мы храним</h3>
+        <p>При отправке жалобы мы сохраняем ваш ID, ID пользователя, на которого пожаловались, категорию, необязательные детали, контекст (чат, Discover или профиль), снимок контента (поля профиля или недавние сообщения), метки времени и статус рассмотрения. Эти данные используются для расследования нарушений и применения правил. Жалобы не передаются пользователю, на которого пожаловались. Мы храним записи столько, сколько нужно для безопасности, соблюдения закона и разрешения споров.</p>
 
-        <h2>7. Безопасность</h2>
-        <p>Мы обеспечиваем физические, электронные и процедурные меры предосторожности для защиты вашей информации. Однако имейте в виду, что ни одна система безопасности не может предотвратить все потенциальные нарушения безопасности.</p>
+        <h2>7. Конфиденциальность детей</h2>
+        <p>Приложение предназначено для пользователей старше 18 лет. Мы намеренно не собираем персональные данные лиц младше 18 лет. В случае, если мы обнаружим, что пользователь младше 18 лет предоставил нам личную информацию, мы немедленно удалим ее.</p>
 
-        <h2>8. Изменения в настоящей Политике конфиденциальности</h2>
-        <p>Настоящая Политика конфиденциальности может время от времени обновляться. Мы будем уведомлять вас о любых изменениях, публикуя новую Политику конфиденциальности на этой странице. Продолжение использования Приложения считается одобрением всех изменений.</p>
+        <h2>8. Безопасность</h2>
+        <p>Мы обеспечиваем физические, электронные и процедурные меры для защиты вашей информации. Однако имейте в виду, что ни одна система безопасности не может предотвратить все потенциальные нарушения.</p>
+
+        <h2>9. Изменения в настоящей Политике конфиденциальности</h2>
+        <p>Мы можем время от времени обновлять нашу Политику конфиденциальности. Продолжение использования Приложения считается одобрением всех изменений.</p>
         <p><span class="bold">Дата вступления в силу: 30.12.2026</span></p>
 
-        <h2>9. Контакты</h2>
-        <p>Если у вас есть вопросы относительно конфиденциальности, свяжитесь с нами по электронной почте: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Контакты</h2>
+        <p>Если у вас есть вопросы, свяжитесь с нами по адресу:</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        Email: <span class="email">unsolo.box@gmail.com</span></p>
     </section>
 
     <section id="uk">
         <h1>Політика конфіденційності (Українська)</h1>
-        <p>Ця політика конфіденційності застосовується до додатка SnowBuddy (далі — «Додаток») для мобільних пристроїв, розробленого AlpineArtStudio (далі — «Сервіс-провайдер»), як до безкоштовного сервісу. Цей сервіс надається на умовах «ЯК Є» (AS IS).</p>
+        <p>Ця політика конфіденційності застосовується до додатка UnSolo (далі — «Додаток») для мобільних пристроїв, розробленого AlpineArtStudio (далі — «Сервіс-провайдер») як безкоштовний сервіс. AlpineArtStudio є оператором ваших персональних даних. Цей сервіс надається на умовах «ЯК Є» (AS IS).</p>
 
         <h2>1. Яку інформацію збирає Додаток та як вона використовується?</h2>
         <h3>Інформація, що надається користувачем</h3>
-        <p>Додаток отримує інформацію, яку ви надаєте під час реєстрації. Реєстрація є обов'язковою для доступу до основних функцій Додатка (пошук попутників та обмін повідомленнями).</p>
-        <p>Під час реєстрації та використання Додатка ви надаєте:</p>
+        <p>Додаток збирає інформацію, яку ви надаєте під час онбордингу та використання. Ви можете користуватися UnSolo як гість після онбордингу або за бажанням прив'язати обліковий запис Apple чи Google, щоб зберігати профіль на різних пристроях.</p>
+        <p>Залежно від використання ви можете надати:</p>
         <ul>
-            <li><span class="bold">Персональні дані:</span> Повне ім'я, адреса електронної пошти та фото профілю.</li>
+            <li><span class="bold">Дані облікового запису:</span> Відображуване ім'я та фото профілю. Якщо ви прив'язуєте Apple Sign-In або Google Sign-In, ми також отримуємо вашу електронну пошту та ідентифікатор облікового запису від цього провайдера.</li>
             <li><span class="bold">Контент користувача:</span> Обрані мови, види спорту (спорядження), рівні навичок, місця подорожей (локації), дати подорожей, особиста біографія та цілі подорожі.</li>
-            <li><span class="bold">Транзакційна інформація:</span> Інформація, яку ви надаєте при зверненні до нас за допомогою.</li>
+            <li><span class="bold">Повідомлення та взаємодії:</span> Повідомлення в чаті та активність матчингу з іншими користувачами.</li>
+            <li><span class="bold">Додаткові платежі:</span> Якщо ви надсилаєте опціональні чайові, платіж повністю обробляє Apple або Google; ми не отримуємо та не зберігаємо дані платіжної картки.</li>
         </ul>
 
         <h3>Інформація, що збирається автоматично</h3>
-        <p>Додаток може збирати певну інформацію автоматично, включаючи, серед іншого, тип мобільного пристрою, який ви використовуєте, унікальний ідентифікатор вашого мобільного пристрою (Device ID), IP-адресу вашого мобільного пристрою, вашу мобільну операційну систему, тип мобільного інтернет-браузера та інформацію про те, як ви використовуєте Додаток.</p>
+        <p>Додаток і наші постачальники послуг можуть автоматично обробляти технічну інформацію, необхідну для роботи сервісу: тип пристрою, ОС, версія додатка, push-токени та стан мережевого з'єднання. Якщо ви погоджуєтеся на партнерські пропозиції у вкладці «Пропозиції», Google AdMob може обробляти рекламні ідентифікатори та пов'язані дані пристрою для показу та вимірювання реклами. Backend-провайдери (наприклад, Supabase) можуть обробляти IP-адреси та метадані запитів для безпеки та надання сервісу. У поточній версії ми не використовуємо сторонні analytics SDK (наприклад, Firebase Analytics або Mixpanel).</p>
 
-        <h2>2. Чи збирає Додаток точну інформацію про місцезнаходження пристрою в реальному часі?</h2>
-        <p>Цей Додаток збирає дані про місцезнаходження вашого пристрою (через Google Places або GPS), що допомагає Сервіс-провайдеру:</p>
-        <ul>
-            <li>Забезпечувати підбір попутників на основі їхнього місцезнаходження.</li>
-            <li>Пропонувати відповідні спортивні об'єкти та напрямки.</li>
-            <li>Аналізувати тенденції користувачів для покращення Додатка.</li>
-        </ul>
+        <h2>2. Інформація про місцезнаходження</h2>
+        <p>UnSolo <span class="bold">не</span> відстежує ваш GPS у реальному часі у фоновому режимі. Коли ви шукаєте або обираєте місце подорожі, ми обробляємо обрану вами інформацію про місце (назва, адреса та координати) через Google Places API. Інші користувачі бачать пункт призначення, вказаний у вашому профілі, для цілей матчингу. Ви можете за бажанням відкрити обране місце у зовнішньому додатку карт за посиланням.</p>
 
-        <h2>3. Чи мають треті особи доступ до інформації, отриманої Додатком?</h2>
-        <p>Так. Ми передаємо вашу інформацію стороннім постачальникам послуг, які допомагають нам у роботі Додатка. Нижче наведено посилання на їхні політики конфіденційності:</p>
+        <h2>3. Чи мають треті особи доступ до інформації?</h2>
+        <p>Так. Ми передаємо інформацію довіреним стороннім постачальникам, які допомагають забезпечувати роботу Додатка. Використання ваших даних ними регулюється їхніми політиками конфіденційності:</p>
         <ul>
-            <li>Supabase (База даних та автентифікація): <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
-            <li>Google Play Services та Google Maps: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-            <li>Expo: <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
-            <li>Apple (для Apple Sign-In): <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Supabase:</span> Безпечна автентифікація (включно з гостьовими обліковими записами), зберігання БД, повідомлення чату, фото профілю та push-токени. <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></li>
+            <li><span class="bold">Google Places API:</span> Пошук напрямків та деталі місць під час редагування профілю. <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Expo Push Notifications:</span> Доставка push-сповіщень на пристрій. <a href="https://expo.dev/privacy">https://expo.dev/privacy</a></li>
+            <li><span class="bold">Apple & Google:</span> Опціональний вхід (Apple Sign-In, Google Sign-In) та опціональні чайові in-app (Apple In-App Purchase / Google Play Billing). <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
+            <li><span class="bold">Google AdMob:</span> Опціональні партнерські пропозиції — лише після згоди у вкладці «Пропозиції». <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+            <li><span class="bold">Apple Push Notification service (APNs) & Firebase Cloud Messaging (FCM):</span> Push-сповіщення на iOS та Android. <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> · <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
         </ul>
 
         <h2>4. Які мої права на відмову та видалення даних?</h2>
-        <p><span class="bold">Видалення Додатка:</span> Ви можете легко припинити збір усієї інформації Додатком, видаливши його. Ви можете використовувати стандартні процеси видалення, доступні на вашому мобільному пристрої або через магазин додатків.</p>
-        <p><span class="bold">Видалення акаунта (Обов'язково):</span> Ви можете видалити свій акаунт та всі пов'язані з ним персональні дані (профіль, фотографії, активності) безпосередньо в Налаштуваннях Додатка. Після видалення ці дані не можуть бути відновлені.</p>
-        <p><span class="bold">Запит електронною поштою:</span> Ви також можете надіслати запит на видалення ваших даних, зв'язавшись із нами за адресою: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <p><span class="bold">Видалення Додатка:</span> Ви можете припинити збір усієї інформації, видаливши Додаток.</p>
+        <p><span class="bold">Видалення акаунта (Обов'язково):</span> Ви можете видалити свій акаунт та всі пов'язані з ним персональні дані безпосередньо в Налаштуваннях Додатка. Після видалення ці дані не можуть бути відновлені.</p>
+        <p><span class="bold">Запит електронною поштою:</span> Ви також можете надіслати запит на видалення ваших даних, зв'язавшись із нами за адресою: <span class="email">unsolo.box@gmail.com</span>.</p>
 
         <h2>5. Ваші права згідно з GDPR (для користувачів з Європи)</h2>
-        <p>Якщо ви перебуваєте в Європейській економічній зоні (ЄЕЗ), у вас є наступні права:</p>
-        <ul>
-            <li>Право на доступ, оновлення або видалення інформації, яку ми зберігаємо про вас.</li>
-            <li>Право на виправлення (виправлення невірної інформації).</li>
-            <li>Право на заперечення проти обробки ваших персональних даних.</li>
-            <li>Право на перенесення даних.</li>
-        </ul>
+        <p>Якщо ви перебуваєте в Європейській економічній зоні (ЄЕЗ), ви маєте право на доступ, оновлення, виправлення, заперечення проти обробки, видалення та перенесення ваших персональних даних. Ви також можете подати скаргу до місцевого наглядового органу з захисту даних.</p>
 
-        <h2>6. Конфіденційність даних дітей</h2>
-        <p>Додаток не призначений для осіб віком до 13 років. Сервіс-провайдер навмисно не збирає персональні дані дітей віком до 13 років. У випадку, якщо ми виявимо, що дитина віком до 13 років надала нам особисту інформацію, ми негайно видалимо її з наших серверів.</p>
+        <h2>6. Безпека користувачів та скарги</h2>
+        <p>UnSolo прагне забезпечити безпечне середовище. Користувачі можуть скаржитися на неприйнятний контент або поведінку з чату, Discover і профілів. Деталі про заборонений контент і заходи — у <a href="community-guidelines.html">Правилах спільноти</a>.</p>
+        <h3>Дані скарг, які ми зберігаємо</h3>
+        <p>Коли ви надсилаєте скаргу, ми зберігаємо ваш ID, ID користувача, на якого скаржитеся, категорію, необов'язкові деталі, контекст (чат, Discover або профіль), знімок контенту (поля профілю або недавні повідомлення), мітки часу та статус розгляду. Ці дані використовуються для розслідування порушень і застосування правил. Скарги не передаються користувачу, на якого скаржилися. Ми зберігаємо записи стільки, скільки потрібно для безпеки, дотримання закону та вирішення спорів.</p>
 
-        <h2>7. Безпека</h2>
-        <p>Ми забезпечуємо фізичні, електронні та процедурні заходи безпеки для захисту вашої інформації. Однак майте на увазі, що жодна система безпеки не може запобігти всім потенційним порушенням безпеки.</p>
+        <h2>7. Конфіденційність дітей</h2>
+        <p>Додаток призначений для користувачів віком від 18 років. Ми навмисно не збираємо персональні дані осіб віком до 18 років. У випадку, якщо ми виявимо, що користувач віком до 18 років надав нам особисту інформацію, ми негайно видалимо її.</p>
 
-        <h2>8. Зміни в цій Політиці конфіденційності</h2>
-        <p>Ця Політика конфіденційності може час від часу оновлюватися. Ми повідомлятимемо вас про будь-які зміни, публікуючи нову Політику конфіденційності на цій сторінці. Подальше використання Додатка вважається схваленням усіх змін.</p>
+        <h2>8. Безпека</h2>
+        <p>Ми забезпечуємо фізичні, електронні та процедурні заходи для захисту вашої інформації. Однак майте на увазі, що жодна система безпеки не може запобігти всім потенційним порушенням.</p>
+
+        <h2>9. Зміни в цій Політиці конфіденційності</h2>
+        <p>Ми можемо час від часу оновлювати нашу Політику конфіденційності. Подальше використання Додатка вважається схваленням усіх змін.</p>
         <p><span class="bold">Дата набрання чинності: 30.12.2026</span></p>
 
-        <h2>9. Контакти</h2>
-        <p>Якщо у вас є питання щодо конфіденційності, зв'яжіться з нами електронною поштою: <span class="email">alpine.art.studio.de@gmail.com</span>.</p>
+        <h2>10. Контакти</h2>
+        <p>Якщо у вас є питання, зв'яжіться з нами за адресою:</p>
+        <p>AlpineArtStudio<br>
+        Veilchenweg 16<br>
+        88046 Friedrichshafen<br>
+        GERMANY<br>
+        Email: <span class="email">unsolo.box@gmail.com</span></p>
     </section>
 
     <footer>
-        &copy; 2026 AlpineArtStudio. SnowBuddy Project.
+        &copy; 2026 AlpineArtStudio. UnSolo.
     </footer>
 
 </body>
