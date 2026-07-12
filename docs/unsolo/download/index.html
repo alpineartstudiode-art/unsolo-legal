@@ -6,6 +6,7 @@
     <title>UnSolo — Travel &amp; Sport Buddies</title>
     <meta name="description" content="Find travel and sport buddies. Any season, anywhere.">
     <meta name="theme-color" content="#1A1D26">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -25,56 +26,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
-        }
-
-        /* Language bar */
-        .lang-bar {
-            position: absolute;
-            top: 20px;
-            right: 16px;
-            left: 16px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 4px 0;
-            z-index: 10;
-        }
-        .lang-item {
-            background: none;
-            border: none;
-            padding: 0 6px;
-            font: inherit;
-            font-size: 13px;
-            font-weight: 400;
-            color: #F3ECE3;
-            cursor: pointer;
-            opacity: 0.55;
-            transition: opacity 0.2s;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .lang-item:hover { opacity: 0.85; }
-        .lang-item.is-active {
-            opacity: 1;
-            font-weight: 600;
-            cursor: default;
-        }
-        .lang-item .swash {
-            width: 100%;
-            max-width: 42px;
-            height: auto;
-            margin-top: 2px;
-            display: none;
-        }
-        .lang-item.is-active .swash { display: block; }
-        .lang-sep {
-            opacity: 0.35;
-            user-select: none;
-            padding: 0 2px;
-            font-size: 13px;
-            line-height: 1.4;
         }
 
         /* Main column */
@@ -84,11 +35,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 72px 20px 32px;
+            padding: 40px 20px 24px;
             text-align: center;
             max-width: 960px;
             margin: 0 auto;
             width: 100%;
+            overflow-x: hidden;
         }
 
         .logo {
@@ -98,7 +50,7 @@
         }
         .tagline {
             margin: 0 0 28px;
-            font-size: clamp(14px, 3.5vw, 16px);
+            font-size: 24px;
             font-weight: 300;
             letter-spacing: 0.02em;
             opacity: 0.92;
@@ -120,10 +72,12 @@
             object-fit: cover;
         }
 
-        /* Illustrations — mobile carousel */
+        /* Illustrations — mobile carousel (full bleed) */
         .ill-mobile-wrap {
             display: none;
-            width: 100%;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
             margin-bottom: 28px;
         }
         .ill-mobile {
@@ -133,20 +87,22 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             gap: 0;
+            height: 63vw;
         }
         .ill-mobile::-webkit-scrollbar { display: none; }
         .ill-mobile img {
-            flex: 0 0 72vw;
-            max-width: 320px;
-            height: auto;
-            scroll-snap-align: center;
+            flex: 0 0 100vw;
+            width: 100vw;
+            height: 100%;
+            scroll-snap-align: start;
             display: block;
-            border-radius: 10px;
+            border-radius: 0;
+            object-fit: cover;
         }
 
         .headline {
             margin: 0 0 16px;
-            font-size: clamp(22px, 5.5vw, 32px);
+            font-size: 36px;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.02em;
@@ -154,7 +110,7 @@
         .subhead {
             margin: 0 auto 28px;
             max-width: 520px;
-            font-size: clamp(14px, 3.6vw, 16px);
+            font-size: 20px;
             font-weight: 300;
             line-height: 1.65;
             opacity: 0.92;
@@ -162,6 +118,7 @@
 
         .stores {
             display: flex;
+            flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -179,7 +136,7 @@
             display: block;
         }
         .coming-soon {
-            margin: 0 0 32px;
+            margin: 0 0 24px;
             font-size: 12px;
             font-weight: 400;
             color: #9C9A97;
@@ -187,9 +144,19 @@
             text-transform: uppercase;
         }
 
-        .footer-legal {
+        /* Footer: legal + languages */
+        .site-footer {
             margin-top: auto;
-            padding: 24px 16px 28px;
+            padding: 20px 16px 28px;
+        }
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 36px;
+        }
+        .footer-legal {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -210,25 +177,85 @@
             user-select: none;
         }
 
+        .lang-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 2px 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lang-item {
+            background: none;
+            border: none;
+            padding: 0 5px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 400;
+            color: #F3ECE3;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lang-item:hover { opacity: 0.85; }
+        .lang-item.is-active {
+            opacity: 1;
+            font-weight: 600;
+            cursor: default;
+        }
+        .lang-item .swash {
+            width: 100%;
+            max-width: 36px;
+            height: auto;
+            margin-top: 2px;
+            display: none;
+        }
+        .lang-item.is-active .swash { display: block; }
+        .lang-sep {
+            opacity: 0.35;
+            user-select: none;
+            padding: 0 2px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
         @media (max-width: 767px) {
             .ill-desktop { display: none; }
             .ill-mobile-wrap { display: block; }
-            .stores { flex-direction: column; }
+            .stores {
+                flex-direction: column;
+                gap: 12px;
+            }
             .store-badge img { height: 48px; }
+            .footer-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+            .lang-bar {
+                position: static;
+                transform: none;
+                justify-content: center;
+            }
+            .site-footer { padding: 16px 16px 24px; }
         }
         @media (min-width: 768px) {
-            .lang-bar { top: 24px; right: 32px; left: auto; }
+            .site-footer { padding: 20px 32px 28px; }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <nav class="lang-bar" id="langBar" aria-label="Language"></nav>
-
         <main class="main">
-            <img class="logo" src="assets/logo.png" srcset="assets/logo.png 1x, assets/logo@2x.png 2x" width="140" height="60" alt="UnSolo — travel &amp; sport buddies">
+            <img class="logo" src="assets/logo.png" srcset="assets/logo.png 1x, assets/logo@2x.png 2x" width="140" height="60" alt="UnSolo">
 
-            <p class="tagline">travel &amp; sport buddies</p>
+            <p class="tagline">Travel &amp; Sport Buddies</p>
 
             <div class="ill-desktop" aria-hidden="false">
                 <img src="assets/ill-01.png" srcset="assets/ill-01.png 1x, assets/ill-01@2x.png 2x" alt="" width="180" height="240">
@@ -248,13 +275,18 @@
             <p class="coming-soon" id="comingSoon"></p>
         </main>
 
-        <footer class="footer-legal" id="footerLegal"></footer>
+        <footer class="site-footer">
+            <div class="footer-row">
+                <nav class="footer-legal" id="footerLegal" aria-label="Legal"></nav>
+                <nav class="lang-bar" id="langBar" aria-label="Language"></nav>
+            </div>
+        </footer>
     </div>
 
     <script>
     (function () {
         var LANGS = ['de', 'en', 'es', 'fr', 'it', 'ru', 'uk'];
-        var LANG_LABELS = { de: 'DE', en: 'EN', es: 'ES', fr: 'FR', it: 'IT', ru: 'RU', uk: 'UA' };
+        var LANG_LABELS = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', ru: 'RU', uk: 'UA' };
 
         var COPY = {
             en: {
@@ -334,7 +366,7 @@
                 btn.className = 'lang-item' + (code === currentLang ? ' is-active' : '');
                 btn.setAttribute('data-lang', code);
                 btn.setAttribute('aria-current', code === currentLang ? 'true' : 'false');
-                btn.innerHTML = LANG_LABELS[code] + '<img class="swash" src="assets/swash.svg" alt="" width="42" height="3">';
+                btn.innerHTML = LANG_LABELS[code] + '<img class="swash" src="assets/swash.svg" alt="" width="36" height="3">';
                 btn.addEventListener('click', function () {
                     if (code === currentLang) return;
                     currentLang = code;
@@ -354,11 +386,11 @@
 
             var stores = document.getElementById('stores');
             stores.innerHTML =
-                '<span class="store-badge" role="img" aria-label="App Store">' +
-                '<img src="assets/badges/app-store-' + currentLang + '.png" srcset="assets/badges/app-store-' + currentLang + '.png 1x, assets/badges/app-store-' + currentLang + '@2x.png 2x" alt="Download on the App Store">' +
-                '</span>' +
                 '<span class="store-badge" role="img" aria-label="Google Play">' +
-                '<img src="assets/badges/google-play-' + currentLang + '.png" srcset="assets/badges/google-play-' + currentLang + '.png 1x, assets/badges/google-play-' + currentLang + '@2x.png 2x" alt="Get it on Google Play">' +
+                '<img src="assets/badges/google-play-' + currentLang + '.svg" alt="Get it on Google Play">' +
+                '</span>' +
+                '<span class="store-badge" role="img" aria-label="App Store">' +
+                '<img src="assets/badges/app-store-' + currentLang + '.svg" alt="Download on the App Store">' +
                 '</span>';
 
             var foot = document.getElementById('footerLegal');
@@ -375,7 +407,6 @@
             renderCopy();
         }
 
-        /* Mobile infinite horizontal carousel */
         function initCarousel() {
             var track = document.getElementById('illCarousel');
             if (!track) return;
