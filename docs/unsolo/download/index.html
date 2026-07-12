@@ -86,14 +86,14 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            gap: 0;
+            gap: 10px;
             height: 79vw;
             align-items: center;
         }
         .ill-mobile::-webkit-scrollbar { display: none; }
         .ill-mobile img {
-            flex: 0 0 78vw;
-            width: 78vw;
+            flex: 0 0 auto;
+            width: auto;
             height: 79vw;
             scroll-snap-align: center;
             display: block;
@@ -430,7 +430,8 @@
                 var first = track.querySelector('img');
                 if (!first) return;
                 slideWidth = first.getBoundingClientRect().width;
-                setWidth = slideWidth * set.length;
+                var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+                setWidth = set.length * slideWidth + Math.max(0, set.length - 1) * gap;
             }
 
             function jumpToMiddle() {
