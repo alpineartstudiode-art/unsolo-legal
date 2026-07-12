@@ -72,7 +72,7 @@
             object-fit: cover;
         }
 
-        /* Illustrations — mobile carousel (full bleed) */
+        /* Illustrations — mobile carousel (peek + full image) */
         .ill-mobile-wrap {
             display: none;
             width: 100vw;
@@ -87,17 +87,18 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             gap: 0;
-            height: 63vw;
+            height: 79vw;
+            align-items: center;
         }
         .ill-mobile::-webkit-scrollbar { display: none; }
         .ill-mobile img {
-            flex: 0 0 100vw;
-            width: 100vw;
-            height: 100%;
-            scroll-snap-align: start;
+            flex: 0 0 78vw;
+            width: 78vw;
+            height: 79vw;
+            scroll-snap-align: center;
             display: block;
             border-radius: 0;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .headline {
