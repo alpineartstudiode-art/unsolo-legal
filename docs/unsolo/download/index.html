@@ -71,6 +71,12 @@
             display: block;
             object-fit: cover;
         }
+        @media (min-width: 1400px) {
+            .main { max-width: 1080px; }
+            .ill-desktop {
+                width: min(960px, 100%);
+            }
+        }
 
         /* Illustrations — mobile carousel (peek + full image) */
         .ill-mobile-wrap {
@@ -424,13 +430,29 @@
 
             var slideWidth = 0;
             var setWidth = 0;
+            var gap = 0;
             var jumping = false;
+            var isAnimating = false;
+            var userPaused = false;
+            var autoTimer = null;
+            var resumeTimer = null;
+            var AUTO_MS = 1500;
+            var ANIM_MS = 300;
+            var mobileQuery = window.matchMedia('(max-width: 767px)');
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function stepSize() {
+                return slideWidth + gap;
+            }
 
             function measure() {
                 var first = track.querySelector('img');
                 if (!first) return;
                 slideWidth = first.getBoundingClientRect().width;
-                var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+                gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
                 setWidth = set.length * slideWidth + Math.max(0, set.length - 1) * gap;
             }
 
@@ -440,8 +462,63 @@
                 jumping = false;
             }
 
+            function animateScrollBy(delta, done) {
+                var start = track.scrollLeft;
+                isAnimating = true;
+                track.style.scrollSnapType = 'none';
+                var t0 = null;
+                function frame(now) {
+                    if (!t0) t0 = now;
+                    var p = Math.min((now - t0) / ANIM_MS, 1);
+                    track.scrollLeft = start + delta * easeOutCubic(p);
+                    if (p < 1) {
+                        requestAnimationFrame(frame);
+                    } else {
+                        track.style.scrollSnapType = 'x mandatory';
+                        isAnimating = false;
+                        if (done) done();
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+
+            function nextSlide() {
+                if (!setWidth || jumping || isAnimating || userPaused || !mobileQuery.matches) return;
+                animateScrollBy(stepSize());
+            }
+
+            function stopAuto() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            function startAuto() {
+                stopAuto();
+                if (!mobileQuery.matches) return;
+                autoTimer = setInterval(nextSlide, AUTO_MS);
+            }
+
+            function pauseAuto() {
+                userPaused = true;
+                stopAuto();
+                if (resumeTimer) {
+                    clearTimeout(resumeTimer);
+                    resumeTimer = null;
+                }
+            }
+
+            function scheduleResume() {
+                if (resumeTimer) clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(function () {
+                    userPaused = false;
+                    startAuto();
+                }, AUTO_MS * 2);
+            }
+
             track.addEventListener('scroll', function () {
-                if (jumping || !setWidth) return;
+                if (jumping || !setWidth || isAnimating) return;
                 if (track.scrollLeft <= slideWidth * 0.5) {
                     jumping = true;
                     track.scrollLeft += setWidth;
@@ -453,11 +530,19 @@
                 }
             }, { passive: true });
 
+            track.addEventListener('touchstart', pauseAuto, { passive: true });
+            track.addEventListener('mousedown', pauseAuto);
+            track.addEventListener('touchend', scheduleResume, { passive: true });
+            track.addEventListener('mouseup', scheduleResume);
+
             measure();
             jumpToMiddle();
+            startAuto();
+
             window.addEventListener('resize', function () {
                 measure();
                 jumpToMiddle();
+                startAuto();
             });
         }
 
