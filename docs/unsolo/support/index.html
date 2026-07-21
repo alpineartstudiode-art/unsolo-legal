@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnSolo Support</title>
+    <meta name="description" content="Contact UnSolo support for help with the Travel &amp; Sport Buddies app.">
+    <meta name="theme-color" content="#1A1D26">
+    <link rel="icon" href="../download/assets/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            margin: 0;
+            background: #1A1D26;
+            color: #F3ECE3;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            height: 100%;
+            min-height: 100dvh;
+            max-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px 24px;
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+            width: 100%;
+            overflow: hidden;
+        }
+        .headline {
+            margin: 0 0 24px;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .contact {
+            margin: 0;
+            max-width: 520px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.65;
+            opacity: 0.92;
+        }
+        .contact a {
+            color: #F3ECE3;
+            font-weight: 400;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .contact a:hover {
+            opacity: 0.85;
+        }
+        .site-footer {
+            flex-shrink: 0;
+            margin-top: auto;
+            padding: 20px 16px 28px;
+        }
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 36px;
+        }
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .back-link {
+            font-size: 13px;
+            font-weight: 400;
+            color: #9C9A97;
+            text-decoration: none;
+            padding: 4px 8px;
+        }
+        .back-link:hover {
+            color: #F3ECE3;
+            text-decoration: underline;
+        }
+        .lang-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 2px 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lang-item {
+            background: none;
+            border: none;
+            padding: 0 5px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 400;
+            color: #F3ECE3;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lang-item:hover { opacity: 0.85; }
+        .lang-item.is-active {
+            opacity: 1;
+            font-weight: 600;
+            cursor: default;
+        }
+        .lang-item .swash {
+            width: 100%;
+            max-width: 36px;
+            height: auto;
+            margin-top: 2px;
+            display: none;
+        }
+        .lang-item.is-active .swash { display: block; }
+        .lang-sep {
+            opacity: 0.35;
+            user-select: none;
+            padding: 0 2px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        @media (max-width: 767px) {
+            .footer-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+            .lang-bar {
+                position: static;
+                transform: none;
+                justify-content: center;
+            }
+            .site-footer { padding: 16px 16px 24px; }
+        }
+        @media (min-width: 768px) {
+            .site-footer { padding: 20px 32px 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main class="main">
+            <h1 class="headline" id="headline">UnSolo Support</h1>
+            <p class="contact" id="contact"></p>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-row">
+                <nav class="footer-nav" aria-label="Download">
+                    <a class="back-link" id="downloadLink" href="../download/">Download UnSolo</a>
+                </nav>
+                <nav class="lang-bar" id="langBar" aria-label="Language"></nav>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    (function () {
+        var SUPPORT_EMAIL = 'unsolo.box@gmail.com';
+        var LANGS = ['de', 'en', 'es', 'fr', 'it', 'ru', 'uk'];
+        var LANG_LABELS = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', ru: 'RU', uk: 'UA' };
+        var STORAGE_KEY = 'unsolo-download-lang';
+        var currentLang = 'en';
+
+        var COPY = {
+            en: {
+                pageTitle: 'UnSolo Support',
+                headline: 'UnSolo Support',
+                contactBefore: 'Need help or have a question? Contact us at',
+                download: 'Download UnSolo'
+            },
+            de: {
+                pageTitle: 'UnSolo Support',
+                headline: 'UnSolo Support',
+                contactBefore: 'Brauchst du Hilfe oder hast du eine Frage? Schreib uns an',
+                download: 'UnSolo herunterladen'
+            },
+            fr: {
+                pageTitle: 'Assistance UnSolo',
+                headline: 'Assistance UnSolo',
+                contactBefore: 'Besoin d\u2019aide ou une question\u00a0? Contactez-nous \u00e0',
+                download: 'T\u00e9l\u00e9charger UnSolo'
+            },
+            es: {
+                pageTitle: 'Soporte UnSolo',
+                headline: 'Soporte UnSolo',
+                contactBefore: '\u00bfNecesitas ayuda o tienes una pregunta? Escr\u00edbenos a',
+                download: 'Descargar UnSolo'
+            },
+            it: {
+                pageTitle: 'Supporto UnSolo',
+                headline: 'Supporto UnSolo',
+                contactBefore: 'Hai bisogno di aiuto o hai una domanda? Contattaci a',
+                download: 'Scarica UnSolo'
+            },
+            ru: {
+                pageTitle: 'UnSolo. Поддержка',
+                headline: 'UnSolo. Поддержка',
+                contactBefore: 'Нужна помощь или есть вопрос? Напиши нам на',
+                download: 'Скачать UnSolo'
+            },
+            uk: {
+                pageTitle: 'UnSolo. Підтримка',
+                headline: 'UnSolo. Підтримка',
+                contactBefore: 'Потрібна допомога або є питання? Напишіть нам на',
+                download: 'Завантажити UnSolo'
+            }
+        };
+
+        function detectLang() {
+            try {
+                var saved = localStorage.getItem(STORAGE_KEY);
+                if (saved && LANGS.indexOf(saved) !== -1) return saved;
+            } catch (e) { /* ignore */ }
+            var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+            if (nav === 'ua') nav = 'uk';
+            return LANGS.indexOf(nav) !== -1 ? nav : 'en';
+        }
+
+        function renderLangBar() {
+            var bar = document.getElementById('langBar');
+            bar.innerHTML = '';
+            LANGS.forEach(function (code, i) {
+                if (i > 0) {
+                    var sep = document.createElement('span');
+                    sep.className = 'lang-sep';
+                    sep.textContent = '\u00b7';
+                    bar.appendChild(sep);
+                }
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'lang-item' + (code === currentLang ? ' is-active' : '');
+                btn.setAttribute('data-lang', code);
+                btn.setAttribute('aria-current', code === currentLang ? 'true' : 'false');
+                btn.innerHTML = LANG_LABELS[code] + '<img class="swash" src="../download/assets/swash.svg" alt="" width="36" height="3">';
+                btn.addEventListener('click', function () {
+                    if (code === currentLang) return;
+                    currentLang = code;
+                    try { localStorage.setItem(STORAGE_KEY, code); } catch (e) { /* ignore */ }
+                    applyLang();
+                });
+                bar.appendChild(btn);
+            });
+        }
+
+        function renderCopy() {
+            var c = COPY[currentLang];
+            document.documentElement.lang = currentLang === 'uk' ? 'uk' : currentLang;
+            document.title = c.pageTitle;
+            document.getElementById('headline').textContent = c.headline;
+            document.getElementById('contact').innerHTML =
+                c.contactBefore + ' <a href="mailto:' + SUPPORT_EMAIL + '">' + SUPPORT_EMAIL + '</a>.';
+            document.getElementById('downloadLink').textContent = c.download;
+        }
+
+        function applyLang() {
+            renderLangBar();
+            renderCopy();
+        }
+
+        currentLang = detectLang();
+        applyLang();
+    })();
+    </script>
+</body>
+</html>

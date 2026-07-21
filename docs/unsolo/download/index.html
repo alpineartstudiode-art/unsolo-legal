@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnSolo — Travel &amp; Sport Buddies</title>
+    <meta name="description" content="Find travel and sport buddies. Any season, anywhere.">
+    <meta name="theme-color" content="#1A1D26">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #1A1D26;
+            color: #F3ECE3;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main column */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px 24px;
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .logo {
+            width: min(140px, 36vw);
+            height: auto;
+            margin-bottom: 8px;
+        }
+        .tagline {
+            margin: 0 0 28px;
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            opacity: 0.92;
+        }
+
+        /* Illustrations — desktop */
+        .ill-desktop {
+            display: flex;
+            width: min(720px, 100%);
+            margin-bottom: 28px;
+            border-radius: 12px;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .ill-desktop img {
+            width: 25%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        @media (min-width: 1400px) {
+            .main { max-width: 1080px; }
+            .ill-desktop {
+                width: min(960px, 100%);
+            }
+        }
+
+        /* Illustrations — mobile carousel (peek + full image) */
+        .ill-mobile-wrap {
+            display: none;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            margin-bottom: 28px;
+        }
+        .ill-mobile {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 10px;
+            height: 79vw;
+            align-items: center;
+        }
+        .ill-mobile::-webkit-scrollbar { display: none; }
+        .ill-mobile img {
+            flex: 0 0 auto;
+            width: auto;
+            height: 79vw;
+            scroll-snap-align: center;
+            display: block;
+            border-radius: 0;
+            object-fit: contain;
+        }
+
+        .headline {
+            margin: 0 0 16px;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .subhead {
+            margin: 0 auto 28px;
+            max-width: 520px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.65;
+            opacity: 0.92;
+        }
+
+        .stores {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px 16px;
+            margin-bottom: 8px;
+        }
+        .store-badge {
+            display: block;
+            line-height: 0;
+            opacity: 0.95;
+        }
+        .store-badge img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        .coming-soon {
+            margin: 8px 0 0;
+            font-size: 12px;
+            font-weight: 400;
+            color: #9C9A97;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .support-link {
+            display: inline-block;
+            margin: 32px auto 24px;
+            max-width: 520px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.65;
+            letter-spacing: 0.08em;
+            opacity: 0.92;
+            color: #F3ECE3;
+            text-decoration: none;
+        }
+        .support-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* Footer: legal + languages */
+        .site-footer {
+            margin-top: auto;
+            padding: 20px 16px 28px;
+        }
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 36px;
+        }
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 4px 0;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        .footer-legal a {
+            color: #9C9A97;
+            text-decoration: none;
+            padding: 4px 8px;
+        }
+        .footer-legal a:hover { color: #F3ECE3; text-decoration: underline; }
+        .footer-legal .dot {
+            color: #9C9A97;
+            opacity: 0.5;
+            user-select: none;
+        }
+
+        .lang-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-end;
+            gap: 2px 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lang-item {
+            background: none;
+            border: none;
+            padding: 0 5px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 400;
+            color: #F3ECE3;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lang-item:hover { opacity: 0.85; }
+        .lang-item.is-active {
+            opacity: 1;
+            font-weight: 600;
+            cursor: default;
+        }
+        .lang-item .swash {
+            width: 100%;
+            max-width: 36px;
+            height: auto;
+            margin-top: 2px;
+            display: none;
+        }
+        .lang-item.is-active .swash { display: block; }
+        .lang-sep {
+            opacity: 0.35;
+            user-select: none;
+            padding: 0 2px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 767px) {
+            .ill-desktop { display: none; }
+            .ill-mobile-wrap { display: block; }
+            .stores {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .store-badge img { height: 48px; }
+            .footer-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+            .lang-bar {
+                position: static;
+                transform: none;
+                justify-content: center;
+            }
+            .site-footer { padding: 16px 16px 24px; }
+        }
+        @media (min-width: 768px) {
+            .site-footer { padding: 20px 32px 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main class="main">
+            <img class="logo" src="assets/logo.png" srcset="assets/logo.png 1x, assets/logo@2x.png 2x" width="140" height="60" alt="UnSolo">
+
+            <p class="tagline">Travel &amp; Sport Buddies</p>
+
+            <div class="ill-desktop" aria-hidden="false">
+                <img src="assets/ill-01.png" srcset="assets/ill-01.png 1x, assets/ill-01@2x.png 2x" alt="" width="180" height="240">
+                <img src="assets/ill-02.png" srcset="assets/ill-02.png 1x, assets/ill-02@2x.png 2x" alt="" width="180" height="240">
+                <img src="assets/ill-03.png" srcset="assets/ill-03.png 1x, assets/ill-03@2x.png 2x" alt="" width="180" height="240">
+                <img src="assets/ill-04.png" srcset="assets/ill-04.png 1x, assets/ill-04@2x.png 2x" alt="" width="180" height="240">
+            </div>
+
+            <div class="ill-mobile-wrap">
+                <div class="ill-mobile" id="illCarousel" aria-label="Activity illustrations"></div>
+            </div>
+
+            <h1 class="headline" id="headline"></h1>
+            <p class="subhead" id="subhead"></p>
+
+            <div class="stores" id="stores" aria-label="App stores"></div>
+            <p class="coming-soon" id="comingSoon"></p>
+            <a class="support-link" id="supportLink" href="../support/">Support</a>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-row">
+                <nav class="footer-legal" id="footerLegal" aria-label="Legal"></nav>
+                <nav class="lang-bar" id="langBar" aria-label="Language"></nav>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    (function () {
+        var LANGS = ['de', 'en', 'es', 'fr', 'it', 'ru', 'uk'];
+        var LANG_LABELS = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', ru: 'RU', uk: 'UA' };
+
+        var COPY = {
+            en: {
+                title: 'Any Season. Anywhere',
+                subtitle: 'Why stay home? Find people who share your passion and turn your plans into reality. Your next adventure is waiting.',
+                comingSoon: 'Coming soon',
+                support: 'Support',
+                privacy: 'Privacy', terms: 'Terms', guidelines: 'Community Guidelines'
+            },
+            de: {
+                title: 'Jede Saison. Überall',
+                subtitle: 'Warum zu Hause bleiben? Finde Leute, die deine Leidenschaft teilen, und verwirkliche deine Pläne. Dein nächstes Abenteuer wartet.',
+                comingSoon: 'Demnächst',
+                support: 'Support',
+                privacy: 'Datenschutz', terms: 'Nutzungsbedingungen', guidelines: 'Community-Richtlinien'
+            },
+            fr: {
+                title: 'Toutes saisons. Partout',
+                subtitle: 'Pourquoi rester chez soi ? Trouvez des personnes qui partagent votre passion et concrétisez vos projets. Votre prochaine aventure vous attend.',
+                comingSoon: 'Bientôt disponible',
+                support: 'Assistance',
+                privacy: 'Confidentialité', terms: 'Conditions', guidelines: 'Règles de la communauté'
+            },
+            es: {
+                title: 'Cualquier temporada. Cualquier lugar',
+                subtitle: '¿Por qué quedarse en casa? Encuentra personas que compartan tu pasión y convierte tus planes en realidad. Tu próxima aventura te espera.',
+                comingSoon: 'Próximamente',
+                support: 'Soporte',
+                privacy: 'Privacidad', terms: 'Términos', guidelines: 'Normas de la comunidad'
+            },
+            it: {
+                title: 'Ogni stagione. Ovunque',
+                subtitle: 'Perché restare a casa? Trova persone che condividono la tua passione e trasforma i tuoi piani in realtà. La tua prossima avventura ti aspetta.',
+                comingSoon: 'In arrivo',
+                support: 'Supporto',
+                privacy: 'Privacy', terms: 'Termini', guidelines: 'Linee guida'
+            },
+            ru: {
+                title: 'Любой сезон. В любом месте',
+                subtitle: 'Зачем сидеть дома? Найди людей с похожими интересами и воплоти свои планы в жизнь. Твоё следующее приключение уже ждёт.',
+                comingSoon: 'Скоро',
+                support: 'Поддержка',
+                privacy: 'Конфиденциальность', terms: 'Условия', guidelines: 'Правила сообщества'
+            },
+            uk: {
+                title: 'Будь-який сезон. Будь-де',
+                subtitle: 'Навіщо сидіти вдома? Знайдіть людей, які поділяють вашу пристрасть, і втілюйте свої плани в життя. Ваша наступна пригода вже чекає.',
+                comingSoon: 'Незабаром',
+                support: 'Підтримка',
+                privacy: 'Конфіденційність', terms: 'Умови', guidelines: 'Правила спільноти'
+            }
+        };
+
+        var ILLS = ['ill-01', 'ill-02', 'ill-03', 'ill-04'];
+        var STORAGE_KEY = 'unsolo-download-lang';
+        var currentLang = 'en';
+
+        function detectLang() {
+            try {
+                var saved = localStorage.getItem(STORAGE_KEY);
+                if (saved && LANGS.indexOf(saved) !== -1) return saved;
+            } catch (e) { /* ignore */ }
+            var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+            if (nav === 'ua') nav = 'uk';
+            return LANGS.indexOf(nav) !== -1 ? nav : 'en';
+        }
+
+        function legalHref(doc) {
+            return '../legal/' + doc + '.html#' + currentLang;
+        }
+
+        function renderLangBar() {
+            var bar = document.getElementById('langBar');
+            bar.innerHTML = '';
+            LANGS.forEach(function (code, i) {
+                if (i > 0) {
+                    var sep = document.createElement('span');
+                    sep.className = 'lang-sep';
+                    sep.textContent = '·';
+                    bar.appendChild(sep);
+                }
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'lang-item' + (code === currentLang ? ' is-active' : '');
+                btn.setAttribute('data-lang', code);
+                btn.setAttribute('aria-current', code === currentLang ? 'true' : 'false');
+                btn.innerHTML = LANG_LABELS[code] + '<img class="swash" src="assets/swash.svg" alt="" width="36" height="3">';
+                btn.addEventListener('click', function () {
+                    if (code === currentLang) return;
+                    currentLang = code;
+                    try { localStorage.setItem(STORAGE_KEY, code); } catch (e) { /* ignore */ }
+                    applyLang();
+                });
+                bar.appendChild(btn);
+            });
+        }
+
+        function renderCopy() {
+            var c = COPY[currentLang];
+            document.documentElement.lang = currentLang === 'uk' ? 'uk' : currentLang;
+            document.getElementById('headline').textContent = c.title;
+            document.getElementById('subhead').textContent = c.subtitle;
+            document.getElementById('comingSoon').textContent = c.comingSoon;
+            document.getElementById('supportLink').textContent = c.support;
+
+            var stores = document.getElementById('stores');
+            stores.innerHTML =
+                '<span class="store-badge" role="img" aria-label="Google Play">' +
+                '<img src="assets/badges/google-play-' + currentLang + '.svg" alt="Get it on Google Play">' +
+                '</span>' +
+                '<span class="store-badge" role="img" aria-label="App Store">' +
+                '<img src="assets/badges/app-store-' + currentLang + '.svg" alt="Download on the App Store">' +
+                '</span>';
+
+            var foot = document.getElementById('footerLegal');
+            foot.innerHTML =
+                '<a href="' + legalHref('privacy') + '">' + c.privacy + '</a>' +
+                '<span class="dot" aria-hidden="true">·</span>' +
+                '<a href="' + legalHref('terms') + '">' + c.terms + '</a>' +
+                '<span class="dot" aria-hidden="true">·</span>' +
+                '<a href="' + legalHref('community-guidelines') + '">' + c.guidelines + '</a>';
+        }
+
+        function applyLang() {
+            renderLangBar();
+            renderCopy();
+        }
+
+        function initCarousel() {
+            var track = document.getElementById('illCarousel');
+            if (!track) return;
+            var set = ILLS.slice();
+            var triple = set.concat(set, set);
+            triple.forEach(function (name) {
+                var img = document.createElement('img');
+                img.src = 'assets/' + name + '.png';
+                img.srcset = 'assets/' + name + '.png 1x, assets/' + name + '@2x.png 2x';
+                img.alt = '';
+                img.loading = 'lazy';
+                track.appendChild(img);
+            });
+
+            var slideWidth = 0;
+            var setWidth = 0;
+            var gap = 0;
+            var jumping = false;
+            var isAnimating = false;
+            var userPaused = false;
+            var autoTimer = null;
+            var resumeTimer = null;
+            var AUTO_MS = 1500;
+            var ANIM_MS = 300;
+            var mobileQuery = window.matchMedia('(max-width: 767px)');
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function stepSize() {
+                return slideWidth + gap;
+            }
+
+            function measure() {
+                var first = track.querySelector('img');
+                if (!first) return;
+                slideWidth = first.getBoundingClientRect().width;
+                gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+                setWidth = set.length * slideWidth + Math.max(0, set.length - 1) * gap;
+            }
+
+            function jumpToMiddle() {
+                jumping = true;
+                track.scrollLeft = setWidth;
+                jumping = false;
+            }
+
+            function animateScrollBy(delta, done) {
+                var start = track.scrollLeft;
+                isAnimating = true;
+                track.style.scrollSnapType = 'none';
+                var t0 = null;
+                function frame(now) {
+                    if (!t0) t0 = now;
+                    var p = Math.min((now - t0) / ANIM_MS, 1);
+                    track.scrollLeft = start + delta * easeOutCubic(p);
+                    if (p < 1) {
+                        requestAnimationFrame(frame);
+                    } else {
+                        track.style.scrollSnapType = 'x mandatory';
+                        isAnimating = false;
+                        if (done) done();
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+
+            function nextSlide() {
+                if (!setWidth || jumping || isAnimating || userPaused || !mobileQuery.matches) return;
+                animateScrollBy(stepSize());
+            }
+
+            function stopAuto() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            function startAuto() {
+                stopAuto();
+                if (!mobileQuery.matches) return;
+                autoTimer = setInterval(nextSlide, AUTO_MS);
+            }
+
+            function pauseAuto() {
+                userPaused = true;
+                stopAuto();
+                if (resumeTimer) {
+                    clearTimeout(resumeTimer);
+                    resumeTimer = null;
+                }
+            }
+
+            function scheduleResume() {
+                if (resumeTimer) clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(function () {
+                    userPaused = false;
+                    startAuto();
+                }, AUTO_MS * 2);
+            }
+
+            track.addEventListener('scroll', function () {
+                if (jumping || !setWidth || isAnimating) return;
+                if (track.scrollLeft <= slideWidth * 0.5) {
+                    jumping = true;
+                    track.scrollLeft += setWidth;
+                    jumping = false;
+                } else if (track.scrollLeft >= setWidth * 2 - slideWidth * 0.5) {
+                    jumping = true;
+                    track.scrollLeft -= setWidth;
+                    jumping = false;
+                }
+            }, { passive: true });
+
+            track.addEventListener('touchstart', pauseAuto, { passive: true });
+            track.addEventListener('mousedown', pauseAuto);
+            track.addEventListener('touchend', scheduleResume, { passive: true });
+            track.addEventListener('mouseup', scheduleResume);
+
+            measure();
+            jumpToMiddle();
+            startAuto();
+
+            window.addEventListener('resize', function () {
+                measure();
+                jumpToMiddle();
+                startAuto();
+            });
+        }
+
+        currentLang = detectLang();
+        applyLang();
+        initCarousel();
+    })();
+    </script>
+</body>
+</html>
