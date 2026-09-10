@@ -171,3 +171,16 @@ test("fits the map shell to the dynamic viewport without clipping status or foot
   assert.match(css, /env\(safe-area-inset-(?:top|right|bottom|left)\)/);
   assert.match(css, /@media \(orientation: landscape\) and \(max-height: 600px\)/);
 });
+
+test("keeps the short-landscape consent stack inside the map card", async () => {
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  const landscape = css.match(/@media \(orientation: landscape\) and \(max-height: 600px\) \{([\s\S]*?)\n\}/)?.[1];
+  assert.ok(landscape);
+  assert.match(landscape, /\.consent-panel \{ padding: 6px 18px; \}/);
+  assert.match(landscape, /\.consent-art \{ display: none; \}/);
+  assert.match(landscape, /\.map-kicker \{[^}]*font-size: 12px;[^}]*line-height: 14px;/);
+  assert.match(landscape, /\.consent-copy h2 \{[^}]*font-size: 18px;[^}]*line-height: 22px;/);
+  assert.match(landscape, /\.consent-copy p:not\(\.map-kicker\) \{[^}]*font-size: 14px;[^}]*line-height: 18px;/);
+  assert.match(landscape, /\.consent-button \{[^}]*min-height: 44px;/);
+  assert.match(landscape, /\.privacy-link \{[^}]*font-size: 13px;[^}]*line-height: 18px;/);
+});

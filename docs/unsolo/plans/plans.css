@@ -475,13 +475,13 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
     font-size: 15px;
   }
 
-  .consent-panel { padding: 12px 18px; }
+  .consent-panel { padding: 6px 18px; }
   .consent-art { display: none; }
-  .map-kicker { margin-bottom: 2px; }
-  .consent-copy h2 { margin-bottom: 6px; }
-  .consent-copy p:not(.map-kicker) { margin-bottom: 10px; line-height: 22px; }
-  .consent-button { min-height: 44px; padding-block: 10px; }
-  .privacy-link { margin-top: 8px; font-size: 14px; line-height: 20px; }
+  .map-kicker { margin-bottom: 1px; font-size: 12px; line-height: 14px; }
+  .consent-copy h2 { margin-bottom: 3px; font-size: 18px; line-height: 22px; }
+  .consent-copy p:not(.map-kicker) { margin-bottom: 6px; font-size: 14px; line-height: 18px; }
+  .consent-button { min-height: 44px; padding-block: 8px; font-size: 16px; line-height: 20px; }
+  .privacy-link { margin-top: 4px; font-size: 13px; line-height: 18px; }
 
   .feed-panel { min-height: 30px; padding-top: 6px; }
   .feed-status { line-height: 18px; }
