@@ -181,6 +181,6 @@ test("keeps the short-landscape consent stack inside the map card", async () => 
   assert.match(landscape, /\.map-kicker \{[^}]*font-size: 12px;[^}]*line-height: 14px;/);
   assert.match(landscape, /\.consent-copy h2 \{[^}]*font-size: 18px;[^}]*line-height: 22px;/);
   assert.match(landscape, /\.consent-copy p:not\(\.map-kicker\) \{[^}]*font-size: 14px;[^}]*line-height: 18px;/);
-  assert.match(landscape, /\.consent-button \{[^}]*min-height: 44px;/);
+  assert.match(landscape, /\.consent-button \{[^}]*min-height: 52px;/);
   assert.match(landscape, /\.privacy-link \{[^}]*font-size: 13px;[^}]*line-height: 18px;/);
 });
