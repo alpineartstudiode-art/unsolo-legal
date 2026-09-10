@@ -113,6 +113,50 @@ test("route uses approved branding and keeps the add button non-forming", async 
   assert.match(html, /Going somewhere\?/);
   assert.match(html, /See who else has plans\./);
   assert.match(html, /aria-hidden="true">\+<\/span> Add your plan/);
+  assert.match(html, /class="add-plan-button is-coming-soon"[^>]+disabled/);
   assert.match(html, /\.\.\/download\/assets\/logo\.png/);
   assert.doesNotMatch(html, /<form\b/i);
+});
+
+test("uses only approved app tokens and self-hosted Poppins", async () => {
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  for (const token of [
+    "--background: #1A1D26",
+    "--surface: #2B2F3A",
+    "--surface-elevated: #3B4151",
+    "--text-primary: #F3ECE3",
+    "--text-secondary: #9C9A97",
+    "--text-muted: #67686D",
+    "--primary: #EC6C9F",
+    "--winter-muted: #B9A9FF",
+    "--error-muted: #FFAC9D",
+  ]) assert.match(css, new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.match(css, /linear-gradient\(90deg, var\(--winter-muted\) 0%, var\(--error-muted\) 100%\)/);
+  assert.doesNotMatch(css, /#8CA6B3|--text-soft|font-weight:\s*500|fonts\.(?:googleapis|gstatic)\.com/i);
+  for (const [weight, file] of [[300, "poppins-300.ttf"], [400, "poppins-400.ttf"], [600, "poppins-600.ttf"], [700, "poppins-700.ttf"]]) {
+    assert.match(css, new RegExp(`font-weight: ${weight};[\\s\\S]*?${file.replace(".", "\\.")}`));
+    assert.ok((await readFile(new URL(`assets/fonts/${file}`, root))).length > 100_000);
+  }
+});
+
+test("keeps primary and coming-soon CTA labels readable", async () => {
+  const channel = (value) => {
+    const normalized = value / 255;
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = (hex) => {
+    const values = hex.match(/[0-9a-f]{2}/gi).map((part) => channel(Number.parseInt(part, 16)));
+    return 0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2];
+  };
+  const contrast = (first, second) => {
+    const [lighter, darker] = [luminance(first), luminance(second)].sort((a, b) => b - a);
+    return (lighter + 0.05) / (darker + 0.05);
+  };
+  assert.ok(contrast("#000000", "#B9A9FF") >= 4.5);
+  assert.ok(contrast("#000000", "#FFAC9D") >= 4.5);
+  assert.ok(contrast("#F3ECE3", "#3B4151") >= 4.5);
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(css, /\.add-plan-button:disabled,[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-primary\);/);
 });
