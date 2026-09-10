@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>UnSolo Plan Map Privacy Notice</title>
+  <link rel="canonical" href="https://alpineart.de/unsolo/legal/plan-map-privacy.html">
+  <style>
+    :root { color-scheme: dark; --bg: #1A1D26; --surface: #2B2F3A; --text: #F3ECE3; --muted: #B7B7B7; --link: #EC6C9F; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(760px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 64px; }
+    nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    nav a { border: 1px solid #4C5262; border-radius: 999px; padding: 7px 12px; }
+    section { margin: 0 0 28px; padding: clamp(22px, 5vw, 38px); background: var(--surface); border-radius: 18px; }
+    h1 { margin-top: 0; font-size: clamp(28px, 6vw, 42px); line-height: 1.15; }
+    h2 { margin: 30px 0 10px; font-size: 21px; line-height: 1.3; }
+    h3 { margin: 22px 0 8px; font-size: 17px; }
+    p, li { color: var(--muted); }
+    strong { color: var(--text); }
+    a { color: var(--link); text-underline-offset: 3px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { padding: 10px; border: 1px solid #4C5262; text-align: left; vertical-align: top; }
+    th { color: var(--text); }
+    td { color: var(--muted); }
+    .meta { color: var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <nav aria-label="Languages and legal links">
+    <a href="#english">English</a>
+    <a href="#deutsch" lang="de">Deutsch</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="../plans/">Plan Map</a>
+  </nav>
+
+  <section id="english">
+    <h1>UnSolo Plan Map Privacy Notice</h1>
+    <p class="meta"><strong>Notice version:</strong> plan-map-privacy-v1.1<br>
+      <strong>Last updated:</strong> September 10, 2026</p>
+
+    <h2>1. Scope and controller</h2>
+    <p>This notice covers the public UnSolo Plan Map at
+      <a href="https://alpineart.de/unsolo/plans/">alpineart.de/unsolo/plans/</a>.
+      It is separate from the privacy notice for the UnSolo mobile app.</p>
+    <p><strong>Controller</strong><br>
+      Daria Fokina, trading as Alpine Art Studio<br>
+      Sole proprietorship (Einzelunternehmen)<br>
+      Veilchenweg 16<br>
+      88046 Friedrichshafen<br>
+      Germany<br>
+      Email: <a href="mailto:unsolo.box@gmail.com">unsolo.box@gmail.com</a></p>
+
+    <h2>2. What the Plan Map processes</h2>
+    <h3>Viewing the page and public Plans</h3>
+    <p>The page and its public Plan feed process the technical request data needed
+      to deliver the service. Public Plans contain only a technical Plan ID,
+      activity, canonical destination label and coordinates, date mode and dates,
+      and creation time. They do not contain a name, profile, photo, contact
+      information, email address, network identifier, or destination database ID.</p>
+
+    <h3>Destination search</h3>
+    <p>When you type a destination, the search prefix is sent to the separate
+      UnSolo Plan Map backend. Search uses an adapted local snapshot of GeoNames
+      data. It does not use Google Places, and the search text is not sent to
+      GeoNames or Google. Our application does not write destination queries or
+      request bodies to Plan Map business storage and does not log them itself.</p>
+
+    <h3>Submitting a Plan</h3>
+    <p>If you add a Plan, we process the selected activity, the canonical
+      destination ID resolved by the server, the selected date mode and dates,
+      a random idempotency key, and controlled source information. Security and
+      abuse controls use a keyed one-way identifier derived from trusted network
+      metadata. The raw IP address is not stored in Plan Map business tables.</p>
+
+    <h3>Optional launch email</h3>
+    <p>You can publish a Plan without providing an email address. If you choose
+      <strong>Email me when UnSolo launches</strong>, we use your email only to
+      send one UnSolo launch notification. The choice is off by default and
+      requires your explicit consent. The immutable consent text identifier is
+      <strong>launch-notification-consent-v1.0</strong>. You can withdraw consent
+      at any time by emailing us. Withdrawal does not affect processing that was
+      lawful before withdrawal.</p>
+
+    <h2>3. Google Maps stays off until you choose it</h2>
+    <p>Google Maps JavaScript does not load before you choose
+      <strong>Load Google Maps</strong>. Before that choice, the Plan Map page
+      makes no Google Maps, Google iframe, Google preconnect, Google preload, or
+      Google Fonts request.</p>
+    <p>After you choose to load the map, Google may process your IP address,
+      browser and device information, referring page, and map usage, and may
+      store or read information on your device. Google may process data outside
+      the European Economic Area. See the
+      <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and
+      <a href="https://cloud.google.com/maps-platform/terms">Google Maps Platform Terms</a>.</p>
+    <p>Your choice is remembered in first-party browser storage. Use
+      <strong>Turn off Google Maps</strong> to remove that saved choice and reload
+      the page. Google Maps will stay off on later visits unless you choose to
+      load it again. Removing the choice cannot undo data Google already
+      processed while the map was loaded.</p>
+
+    <h2>4. Providers, recipients, and operational logs</h2>
+    <ul>
+      <li><strong>GitHub Pages</strong> hosts the static website and may process
+        ordinary request and network metadata needed to deliver it. See the
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</li>
+      <li><strong>Supabase</strong> acts as our processor for the separate Plan Map
+        backend, APIs, database, security controls, and operational logs. The
+        project database is hosted in the EU Frankfurt region. Supabase and its
+        subprocessors may process operational and network metadata, including
+        infrastructure IP or connection fields. See the
+        <a href="https://supabase.com/privacy">Supabase Privacy Policy</a> and
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum">Supabase DPA</a>.</li>
+      <li><strong>Google Maps</strong> receives data only after the separate map
+        choice described above.</li>
+    </ul>
+    <p>In the completed hosted reviews, request and response bodies, destination
+      queries, and submitted Plan or contact values were not observed in the
+      inspected Supabase logs. This is a statement about the verified evidence,
+      not a promise that infrastructure never processes technical metadata.
+      Hosted operational logs contained ordinary network and connection metadata.
+      The current verified Free-project API and database log retention is one day.</p>
+
+    <h2>5. Why we process the data</h2>
+    <table>
+      <thead><tr><th>Purpose</th><th>Legal basis</th></tr></thead>
+      <tbody>
+        <tr><td>Destination search, Plan submission, and public Plan display requested by you</td>
+          <td>Article 6(1)(b) GDPR</td></tr>
+        <tr><td>Service security, abuse prevention, reliability, and troubleshooting</td>
+          <td>Our legitimate interests under Article 6(1)(f) GDPR</td></tr>
+        <tr><td>One optional launch notification</td>
+          <td>Your consent under Article 6(1)(a) GDPR</td></tr>
+        <tr><td>Loading Google Maps and remembering that choice</td>
+          <td>Your consent under Article 6(1)(a) GDPR and Section 25(1) TDDDG</td></tr>
+        <tr><td>Minimal evidence that consent was given</td>
+          <td>Compliance and accountability under Articles 5(2), 6(1)(c), and 7(1) GDPR</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Retention</h2>
+    <ul>
+      <li><strong>Public Plan lifecycle:</strong> an exact Plan remains active
+        through the selected end date; a month Plan through the selected month;
+        and a flexible Plan for 90 × 24 hours, rounded up to the next Berlin
+        midnight unless that time is already exactly midnight. The database
+        calculates the expiry. Expired or hidden Plans are no longer public
+        and are deleted 12 Berlin calendar months after they became inactive.</li>
+      <li><strong>Optional email:</strong> deleted at withdrawal or erasure, when
+        the related Plan is deleted, or 12 Berlin calendar months after collection,
+        whichever happens first.</li>
+      <li><strong>Consent evidence:</strong> after the email is deleted, minimal
+        evidence without the email address is kept for three Berlin calendar
+        years, then deleted. It contains only the internal Plan reference,
+        consent time, notice and consent version identifiers, purpose, and
+        deletion/retention times.</li>
+      <li><strong>Abuse controls:</strong> keyed network identifiers and event
+        times are retained for up to 48 hours. Search rate-limit windows are
+        removed after 24 hours.</li>
+      <li><strong>Supabase operational logs:</strong> the current verified
+        Free-project API and database log retention is one day.</li>
+      <li><strong>Map choice:</strong> first-party browser storage keeps the
+        choice until you turn Google Maps off or clear the site data.</li>
+    </ul>
+
+    <h2>7. International processing</h2>
+    <p>Providers and their subprocessors may process data outside the EEA.
+      Where required, this is covered by an applicable adequacy decision or
+      contractual safeguards such as the European Commission's Standard
+      Contractual Clauses. You may contact us for more information.</p>
+
+    <h2>8. Your rights</h2>
+    <p>Subject to the legal conditions, you may request access, correction,
+      deletion, restriction, or portability of your personal data, and you may
+      object to processing based on legitimate interests. You may withdraw
+      consent at any time. You may also complain to a data protection authority,
+      including the
+      <a href="https://www.baden-wuerttemberg.datenschutz.de/">State Commissioner
+      for Data Protection and Freedom of Information Baden-Württemberg</a>.</p>
+    <p>The Plan Map does not use personal data for automated decisions or profiling.
+      Email is optional. Without the technical request data needed to connect to
+      the service, the requested online feature cannot be delivered.</p>
+
+    <h2>9. Changes and version identifiers</h2>
+    <p>This notice has the immutable evidence identifier
+      <strong>plan-map-privacy-v1.1</strong>. The approved launch-consent text has
+      the immutable identifier <strong>launch-notification-consent-v1.0</strong>.
+      A material text change requires a new identifier; the meaning of an earlier
+      identifier will not be overwritten.</p>
+
+    <h2>10. Contact</h2>
+    <p>For privacy questions or requests, email
+      <a href="mailto:unsolo.box@gmail.com">unsolo.box@gmail.com</a> or write to
+      the controller at the address above.</p>
+
+    <p>Destination data © <a href="https://www.geonames.org/">GeoNames</a>
+      (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>), adapted</p>
+  </section>
+
+  <section id="deutsch" lang="de">
+    <h1>Datenschutzhinweise zur UnSolo Plan Map</h1>
+    <p class="meta"><strong>Hinweisversion:</strong> plan-map-privacy-v1.1<br>
+      <strong>Stand:</strong> 10. September 2026</p>
+
+    <h2>1. Geltungsbereich und Verantwortliche</h2>
+    <p>Diese Hinweise gelten für die öffentliche UnSolo Plan Map unter
+      <a href="https://alpineart.de/unsolo/plans/">alpineart.de/unsolo/plans/</a>.
+      Sie sind von den Datenschutzhinweisen der mobilen UnSolo-App getrennt.</p>
+    <p><strong>Verantwortliche</strong><br>
+      Daria Fokina, handelnd als Alpine Art Studio<br>
+      Einzelunternehmen<br>
+      Veilchenweg 16<br>
+      88046 Friedrichshafen<br>
+      Deutschland<br>
+      E-Mail: <a href="mailto:unsolo.box@gmail.com">unsolo.box@gmail.com</a></p>
+
+    <h2>2. Welche Daten die Plan Map verarbeitet</h2>
+    <h3>Seitenaufruf und öffentliche Pläne</h3>
+    <p>Für die Bereitstellung der Seite und des öffentlichen Plan-Feeds werden
+      die erforderlichen technischen Anfragedaten verarbeitet. Ein öffentlicher
+      Plan enthält nur eine technische Plan-ID, Aktivität, kanonische
+      Zielbezeichnung und Koordinaten, Datumsmodus und Daten sowie den
+      Erstellungszeitpunkt. Er enthält keinen Namen, kein Profil, Foto,
+      Kontaktdaten, E-Mail, Netzwerkkennung oder interne Ziel-Datenbank-ID.</p>
+
+    <h3>Zielsuche</h3>
+    <p>Bei der Eingabe eines Reiseziels wird das Suchpräfix an das getrennte
+      Backend der UnSolo Plan Map gesendet. Die Suche nutzt einen angepassten
+      lokalen GeoNames-Datenbestand. Sie nutzt nicht Google Places; der Suchtext
+      wird weder an GeoNames noch an Google gesendet. Unsere Anwendung schreibt
+      Zielanfragen oder Request-Bodies nicht in den geschäftlichen
+      Plan-Map-Datenbestand und protokolliert sie nicht selbst.</p>
+
+    <h3>Plan veröffentlichen</h3>
+    <p>Beim Hinzufügen eines Plans verarbeiten wir die gewählte Aktivität, die
+      serverseitig aufgelöste kanonische Ziel-ID, Datumsmodus und Daten, einen
+      zufälligen Idempotenzschlüssel und kontrollierte Quellenangaben.
+      Sicherheits- und Missbrauchsschutz verwendet eine einwegige, geschlüsselte
+      Kennung aus vertrauenswürdigen Netzwerkmetadaten. Die rohe IP-Adresse wird
+      nicht in geschäftlichen Plan-Map-Tabellen gespeichert.</p>
+
+    <h3>Optionale Launch-E-Mail</h3>
+    <p>Ein Plan kann ohne E-Mail veröffentlicht werden. Wenn Sie
+      <strong>Email me when UnSolo launches</strong> wählen, nutzen wir Ihre
+      E-Mail nur für eine einzige Benachrichtigung zum Start von UnSolo.
+      Die Option ist standardmäßig ausgeschaltet und erfordert eine ausdrückliche
+      Einwilligung. Die unveränderliche Textversion lautet
+      <strong>launch-notification-consent-v1.0</strong>. Ein Widerruf ist jederzeit
+      per E-Mail möglich und berührt die Rechtmäßigkeit der vorherigen Verarbeitung nicht.</p>
+
+    <h2>3. Google Maps bleibt bis zu Ihrer Auswahl ausgeschaltet</h2>
+    <p>Google Maps JavaScript wird erst geladen, wenn Sie
+      <strong>Load Google Maps</strong> wählen. Davor erzeugt die Plan-Map-Seite
+      keine Anfrage an Google Maps, keinen Google-iframe, Preconnect, Preload
+      oder Google Fonts.</p>
+    <p>Nach Ihrer Auswahl kann Google Ihre IP-Adresse, Browser- und Gerätedaten,
+      die verweisende Seite und Kartennutzung verarbeiten sowie Informationen auf
+      Ihrem Gerät speichern oder auslesen. Eine Verarbeitung außerhalb des EWR
+      ist möglich. Siehe
+      <a href="https://policies.google.com/privacy">Google-Datenschutzerklärung</a>
+      und <a href="https://cloud.google.com/maps-platform/terms">Google Maps Platform Terms</a>.</p>
+    <p>Die Auswahl wird im First-Party-Browserspeicher gemerkt. Mit
+      <strong>Turn off Google Maps</strong> wird sie entfernt und die Seite neu
+      geladen. Bei späteren Besuchen bleibt Google Maps aus, bis Sie es erneut
+      laden. Bereits erfolgte Verarbeitung durch Google wird dadurch nicht rückgängig.</p>
+
+    <h2>4. Anbieter, Empfänger und Betriebsprotokolle</h2>
+    <ul>
+      <li><strong>GitHub Pages</strong> hostet die statische Website und kann die
+        für die Auslieferung üblichen Anfrage- und Netzwerkmetadaten verarbeiten.
+        Siehe <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</li>
+      <li><strong>Supabase</strong> ist unser Auftragsverarbeiter für das
+        getrennte Plan-Map-Backend, APIs, Datenbank, Sicherheitskontrollen und
+        Betriebsprotokolle. Die Projektdatenbank wird in der EU-Region Frankfurt
+        gehostet. Supabase und Unterauftragsverarbeiter können Betriebs- und
+        Netzwerkmetadaten einschließlich Infrastruktur-IP- oder Verbindungsfeldern
+        verarbeiten. Siehe
+        <a href="https://supabase.com/privacy">Supabase Privacy Policy</a> und
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum">Supabase DPA</a>.</li>
+      <li><strong>Google Maps</strong> erhält Daten erst nach der oben beschriebenen
+        gesonderten Auswahl.</li>
+    </ul>
+    <p>In den abgeschlossenen Hosted Reviews wurden in den geprüften
+      Supabase-Protokollen keine Request- oder Response-Bodies, Zielanfragen oder
+      übermittelten Plan- bzw. Kontaktwerte beobachtet. Dies beschreibt die
+      geprüften Nachweise und ist keine Zusage, dass Infrastruktur niemals
+      technische Metadaten verarbeitet. Die Betriebsprotokolle enthielten
+      übliche Netzwerk- und Verbindungsmetadaten. Für das aktuell verifizierte
+      Free-Projekt beträgt die Aufbewahrung der API- und Datenbankprotokolle einen Tag.</p>
+
+    <h2>5. Zwecke und Rechtsgrundlagen</h2>
+    <table>
+      <thead><tr><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
+      <tbody>
+        <tr><td>Gewünschte Zielsuche, Plan-Veröffentlichung und öffentliche Anzeige</td>
+          <td>Art. 6 Abs. 1 lit. b DSGVO</td></tr>
+        <tr><td>Sicherheit, Missbrauchsschutz, Zuverlässigkeit und Fehleranalyse</td>
+          <td>Unsere berechtigten Interessen nach Art. 6 Abs. 1 lit. f DSGVO</td></tr>
+        <tr><td>Eine optionale Launch-Benachrichtigung</td>
+          <td>Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+        <tr><td>Laden von Google Maps und Merken dieser Auswahl</td>
+          <td>Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG</td></tr>
+        <tr><td>Minimaler Nachweis einer Einwilligung</td>
+          <td>Compliance und Rechenschaft nach Art. 5 Abs. 2, Art. 6 Abs. 1 lit. c und Art. 7 Abs. 1 DSGVO</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Aufbewahrung</h2>
+    <ul>
+      <li><strong>Öffentlicher Plan:</strong> Ein exakter Plan bleibt bis zum
+        gewählten Enddatum aktiv, ein Monatsplan bis zum Ende des gewählten
+        Monats und ein flexibler Plan 90 × 24 Stunden, aufgerundet auf die nächste
+        Berliner Mitternacht, außer der Zeitpunkt liegt bereits genau auf
+        Mitternacht. Die Datenbank berechnet den Ablauf. Abgelaufene oder verborgene
+        Pläne sind nicht mehr öffentlich und werden zwölf Berliner Kalendermonate
+        nach Beginn der Inaktivität gelöscht.</li>
+      <li><strong>Optionale E-Mail:</strong> Löschung bei Widerruf oder Löschantrag,
+        bei Löschung des Plans oder zwölf Berliner Kalendermonate nach Erhebung,
+        je nachdem, was zuerst eintritt.</li>
+      <li><strong>Einwilligungsnachweis:</strong> Nach Löschung der E-Mail wird
+        ein minimaler Nachweis ohne E-Mail-Adresse drei Berliner Kalenderjahre
+        aufbewahrt und dann gelöscht. Er enthält nur interne Plan-Referenz,
+        Einwilligungszeitpunkt, Hinweis- und Einwilligungsversion, Zweck sowie
+        Lösch- und Aufbewahrungszeitpunkte.</li>
+      <li><strong>Missbrauchsschutz:</strong> Geschlüsselte Netzwerkkennungen und
+        Ereigniszeiten werden bis zu 48 Stunden aufbewahrt. Such-Limitfenster
+        werden nach 24 Stunden entfernt.</li>
+      <li><strong>Supabase-Betriebsprotokolle:</strong> Für das aktuell
+        verifizierte Free-Projekt beträgt die Aufbewahrung der API- und
+        Datenbankprotokolle einen Tag.</li>
+      <li><strong>Kartenauswahl:</strong> First-Party-Browserspeicher hält die
+        Auswahl, bis Sie Google Maps ausschalten oder die Website-Daten löschen.</li>
+    </ul>
+
+    <h2>7. Verarbeitung außerhalb des EWR</h2>
+    <p>Anbieter und ihre Unterauftragsverarbeiter können Daten außerhalb des EWR
+      verarbeiten. Soweit erforderlich, gelten ein Angemessenheitsbeschluss oder
+      vertragliche Garantien wie die Standardvertragsklauseln der Europäischen
+      Kommission. Weitere Informationen erhalten Sie auf Anfrage.</p>
+
+    <h2>8. Ihre Rechte</h2>
+    <p>Unter den gesetzlichen Voraussetzungen können Sie Auskunft, Berichtigung,
+      Löschung, Einschränkung oder Übertragbarkeit verlangen und einer Verarbeitung
+      aufgrund berechtigter Interessen widersprechen. Einwilligungen können
+      jederzeit widerrufen werden. Sie können sich außerdem bei einer
+      Datenschutzaufsichtsbehörde beschweren, insbesondere beim
+      <a href="https://www.baden-wuerttemberg.datenschutz.de/">Landesbeauftragten
+      für den Datenschutz und die Informationsfreiheit Baden-Württemberg</a>.</p>
+    <p>Die Plan Map nutzt personenbezogene Daten nicht für automatisierte
+      Entscheidungen oder Profiling. Die E-Mail-Angabe ist freiwillig. Ohne die
+      für eine Verbindung erforderlichen technischen Anfragedaten kann die
+      gewünschte Online-Funktion nicht bereitgestellt werden.</p>
+
+    <h2>9. Änderungen und Versionskennungen</h2>
+    <p>Diese Hinweise haben die unveränderliche Nachweiskennung
+      <strong>plan-map-privacy-v1.1</strong>. Der genehmigte Launch-Einwilligungstext
+      hat die unveränderliche Kennung
+      <strong>launch-notification-consent-v1.0</strong>. Eine wesentliche
+      Textänderung erhält eine neue Kennung; die Bedeutung einer früheren Kennung
+      wird nicht überschrieben.</p>
+
+    <h2>10. Kontakt</h2>
+    <p>Für Datenschutzfragen oder Anträge schreiben Sie an
+      <a href="mailto:unsolo.box@gmail.com">unsolo.box@gmail.com</a> oder an die
+      oben angegebene Postanschrift.</p>
+
+    <p>Destination data © <a href="https://www.geonames.org/">GeoNames</a>
+      (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>), adapted</p>
+  </section>
+</main>
+</body>
+</html>
