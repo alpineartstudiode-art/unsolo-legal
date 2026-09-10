@@ -139,7 +139,7 @@ test("uses only approved app tokens and self-hosted Poppins", async () => {
   }
 });
 
-test("keeps primary and coming-soon CTA labels readable", async () => {
+test("keeps the primary gradient and uses the approved muted coming-soon state", async () => {
   const channel = (value) => {
     const normalized = value / 255;
     return normalized <= 0.04045
@@ -156,7 +156,18 @@ test("keeps primary and coming-soon CTA labels readable", async () => {
   };
   assert.ok(contrast("#000000", "#B9A9FF") >= 4.5);
   assert.ok(contrast("#000000", "#FFAC9D") >= 4.5);
-  assert.ok(contrast("#F3ECE3", "#3B4151") >= 4.5);
   const css = await readFile(new URL("plans.css", root), "utf8");
-  assert.match(css, /\.add-plan-button:disabled,[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-primary\);/);
+  assert.match(css, /\.add-plan-button:disabled,[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-muted\);[\s\S]*?box-shadow: none;/);
+});
+
+test("fits the map shell to the dynamic viewport without clipping status or footer", async () => {
+  const html = await readFile(new URL("index.html", root), "utf8");
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">/);
+  assert.match(css, /\.page-shell\s*\{[\s\S]*?grid-template-rows: auto minmax\(0, 1fr\) auto;[\s\S]*?height: 100dvh;/);
+  assert.match(css, /\.map-shell\s*\{[\s\S]*?grid-template-rows: minmax\(0, 1fr\) auto;/);
+  assert.match(css, /\.map-card\s*\{[\s\S]*?height: 100%;[\s\S]*?min-height: 0;/);
+  assert.doesNotMatch(css, /\.map-card\s*\{[\s\S]*?min-height:\s*(?:clamp|min)\(/);
+  assert.match(css, /env\(safe-area-inset-(?:top|right|bottom|left)\)/);
+  assert.match(css, /@media \(orientation: landscape\) and \(max-height: 600px\)/);
 });

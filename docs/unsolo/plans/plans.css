@@ -61,12 +61,17 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { background: var(--background); }
+html {
+  min-height: 100%;
+  background: var(--background);
+}
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 15% 0%, rgb(236 108 159 / 10%), transparent 36rem),
     var(--background);
@@ -103,18 +108,27 @@ a { color: inherit; }
 .skip-link:focus { transform: translateY(0); }
 
 .page-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   width: min(100%, 1480px);
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
-  padding: 18px 14px 20px;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(14px, env(safe-area-inset-right))
+    max(10px, env(safe-area-inset-bottom))
+    max(14px, env(safe-area-inset-left));
 }
 
 .site-header {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 8px 14px;
+  gap: 8px 18px;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .brand {
@@ -134,7 +148,7 @@ a { color: inherit; }
 .headline-block { min-width: 0; }
 
 .eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   color: var(--text-secondary);
   font-size: 14px;
   font-weight: 600;
@@ -148,10 +162,15 @@ h1 {
   font-size: clamp(24px, 5vw, 32px);
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1.14;
 }
 
-h1 span { color: var(--text-secondary); font-weight: 400; }
+h1 span {
+  display: inline-block;
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
 
 .add-plan-button,
 .consent-button,
@@ -176,14 +195,21 @@ h1 span { color: var(--text-secondary); font-weight: 400; }
 .consent-button:active,
 .state-card button:active { opacity: 0.85; }
 
-.add-plan-button:disabled,
-.add-plan-button.is-coming-soon,
 .consent-button:disabled,
 .state-card button:disabled {
   background: var(--surface-elevated);
   color: var(--text-primary);
   cursor: not-allowed;
   opacity: 1;
+}
+
+.add-plan-button:disabled,
+.add-plan-button.is-coming-soon {
+  background: var(--surface-elevated);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 1;
+  box-shadow: none;
 }
 
 .add-plan-button {
@@ -196,7 +222,8 @@ h1 span { color: var(--text-secondary); font-weight: 400; }
 
 .map-card {
   position: relative;
-  min-height: clamp(430px, 66vh, 760px);
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
   border: 1px solid rgb(243 236 227 / 9%);
   border-radius: 24px;
@@ -344,7 +371,13 @@ h1 span { color: var(--text-secondary); font-weight: 400; }
 .state-card strong { color: var(--text-primary); font-size: 20px; font-weight: 600; line-height: 26px; }
 .state-card span { margin-bottom: 8px; color: var(--text-secondary); font-size: 16px; line-height: 24px; }
 
-.feed-panel { min-height: 55px; padding: 13px 4px 0; }
+.map-shell {
+  display: grid;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.feed-panel { min-height: 43px; padding: 10px 4px 0; }
 .feed-status { display: flex; align-items: center; gap: 9px; color: var(--text-secondary); font-size: 14px; font-weight: 400; line-height: 20px; }
 .status-dot { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; background: var(--summer); box-shadow: 0 0 0 5px rgb(255 184 77 / 10%); }
 .feed-status[data-state="ready"] .status-dot { background: var(--success); box-shadow: 0 0 0 5px rgb(77 127 119 / 13%); }
@@ -355,7 +388,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 20px 0 2px;
+  padding: 9px 0 1px;
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 400;
@@ -393,12 +426,17 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
 [hidden] { display: none !important; }
 
 @media (min-width: 720px) {
-  .page-shell { padding: 24px clamp(22px, 4vw, 52px) 24px; }
-  .site-header { grid-template-columns: 84px 1fr auto; gap: 18px; margin-bottom: 20px; }
+  .page-shell {
+    padding:
+      max(20px, env(safe-area-inset-top))
+      max(clamp(22px, 4vw, 52px), env(safe-area-inset-right))
+      max(14px, env(safe-area-inset-bottom))
+      max(clamp(22px, 4vw, 52px), env(safe-area-inset-left));
+  }
+  .site-header { grid-template-columns: 84px 1fr auto; gap: 22px; margin-bottom: 16px; }
   .brand { width: 84px; height: 72px; }
   .brand img { width: 82px; }
   .add-plan-button { grid-column: auto; justify-self: end; min-width: 176px; }
-  .map-card { min-height: min(70vh, 780px); }
   .consent-button, .state-card button { width: auto; min-width: 210px; margin-inline: auto; }
   .map-toolbar { right: 16px; left: auto; min-width: 300px; }
 }
@@ -407,7 +445,48 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
   .site-header { grid-template-columns: 98px 1fr auto; }
   .brand { width: 98px; height: 82px; }
   .brand img { width: 95px; }
-  .map-card { min-height: calc(100vh - 190px); }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .page-shell {
+    padding:
+      max(8px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right))
+      max(7px, env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .site-header {
+    grid-template-columns: 60px minmax(0, 1fr) auto;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .brand { width: 60px; height: 52px; }
+  .brand img { width: 58px; }
+  .eyebrow { margin-bottom: 2px; font-size: 12px; line-height: 16px; }
+  h1 { font-size: 21px; line-height: 1.08; }
+  h1 span { margin-top: 0; }
+
+  .add-plan-button {
+    min-width: 152px;
+    min-height: 44px;
+    padding-block: 10px;
+    font-size: 15px;
+  }
+
+  .consent-panel { padding: 12px 18px; }
+  .consent-art { display: none; }
+  .map-kicker { margin-bottom: 2px; }
+  .consent-copy h2 { margin-bottom: 6px; }
+  .consent-copy p:not(.map-kicker) { margin-bottom: 10px; line-height: 22px; }
+  .consent-button { min-height: 44px; padding-block: 10px; }
+  .privacy-link { margin-top: 8px; font-size: 14px; line-height: 20px; }
+
+  .feed-panel { min-height: 30px; padding-top: 6px; }
+  .feed-status { line-height: 18px; }
+  .feed-note { margin-top: 2px; }
+  footer { padding-top: 3px; font-size: 12px; line-height: 16px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
