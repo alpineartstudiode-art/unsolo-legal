@@ -26,7 +26,7 @@
       </a>
 
       <div class="headline-block">
-        <h1>Going somewhere?<br><span>See who else has plans.</span></h1>
+        <h1><span class="headline-title">Going somewhere?</span><span class="headline-subtitle">See who else has plans.</span></h1>
       </div>
 
       <button class="add-plan-button" id="add-plan-open" type="button" aria-haspopup="dialog">
@@ -97,9 +97,12 @@
         <div class="add-plan-fields">
           <label class="form-field" for="plan-activity">
             <span>Activity</span>
-            <select id="plan-activity" name="activity_id" required disabled>
-              <option value="">Loading activities…</option>
-            </select>
+            <span class="control-icon-shell select-control-shell">
+              <select id="plan-activity" name="activity_id" required disabled>
+                <option value="">Loading activities…</option>
+              </select>
+              <svg class="control-trailing-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5.5 7.5 4.5 4.5 4.5-4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>
+            </span>
           </label>
 
           <div class="form-field destination-field">
@@ -144,6 +147,7 @@
             <span class="month-input-shell">
               <input id="plan-month" name="month" type="month">
               <span class="month-input-placeholder" aria-hidden="true">Select month</span>
+              <svg class="control-trailing-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5.5 3.5v2m9-2v2M4 7.5h12M5 5h10a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
             </span>
           </label>
 

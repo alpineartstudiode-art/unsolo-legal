@@ -61,6 +61,17 @@ test("native Month picker shows the approved empty-state label without changing 
   assert.match(ui, /monthShell\?\.classList\.toggle\("has-value", Boolean\(month\.value\)\)/);
 });
 
+test("Add Plan controls share the CTA geometry without inactive outlines", async () => {
+  const html = await readFile(new URL("index.html", root), "utf8");
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(css, /\.form-field input,[\s\S]*?min-height: 52px;[\s\S]*?padding: 13px 18px;[\s\S]*?border: 1px solid transparent;[\s\S]*?border-radius: 999px;/);
+  assert.match(css, /\.date-mode-options span\s*\{[\s\S]*?min-height: 52px;[\s\S]*?border: 1px solid transparent;[\s\S]*?border-radius: 999px;/);
+  assert.match(css, /\.date-mode-options input:checked \+ span \{ border-color: var\(--primary\);/);
+  assert.match(html, /select-control-shell[\s\S]*?control-trailing-icon/);
+  assert.match(html, /month-input-shell[\s\S]*?control-trailing-icon/);
+  assert.match(css, /\.control-trailing-icon\s*\{[\s\S]*?right: 16px;[\s\S]*?transform: translateY\(-50%\);/);
+});
+
 test("all backend failures stay in simple user-facing language", () => {
   for (const kind of ["validation", "rate_limited", "kill_switch", "global_limit", "conflict", "temporary_failure"]) {
     const copy = submitErrorCopy(new SubmitPlanError(kind));

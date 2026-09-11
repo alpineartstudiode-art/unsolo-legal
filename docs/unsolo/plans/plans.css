@@ -148,6 +148,8 @@ a { color: inherit; }
 .headline-block { min-width: 0; align-self: center; }
 
 h1 {
+  display: grid;
+  gap: 0;
   margin: 0;
   font-size: clamp(24px, 5vw, 32px);
   font-weight: 600;
@@ -155,9 +157,11 @@ h1 {
   line-height: 1.14;
 }
 
-h1 span {
-  display: inline-block;
-  margin-top: 2px;
+.headline-title { display: block; }
+
+.headline-subtitle {
+  display: block;
+  margin-top: 0;
   color: var(--text-secondary);
   font-size: 16px;
   font-weight: 400;
@@ -509,10 +513,10 @@ body.add-plan-open { overflow: hidden; }
 .form-field input,
 .form-field select {
   width: 100%;
-  min-height: 48px;
-  padding: 11px 13px;
-  border: 1px solid rgb(243 236 227 / 15%);
-  border-radius: 13px;
+  min-height: 52px;
+  padding: 13px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   outline: 0;
   background: var(--surface-elevated);
   color: var(--text-primary);
@@ -522,14 +526,27 @@ body.add-plan-open { overflow: hidden; }
 }
 
 .form-field input::placeholder { color: var(--text-muted); opacity: 1; }
+.control-icon-shell,
 .month-input-shell { position: relative; display: block; min-width: 0; }
-.month-input-shell input { padding-right: 44px; }
+.select-control-shell select { appearance: none; padding-right: 50px; }
+.month-input-shell input { padding-right: 50px; }
+.month-input-shell input::-webkit-calendar-picker-indicator { width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; }
 .month-input-shell:not(.has-value) input { color: transparent; }
 .month-input-shell:not(.has-value) input::-webkit-datetime-edit { opacity: 0; }
+.control-trailing-icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
 .month-input-placeholder {
   position: absolute;
   top: 50%;
-  left: 14px;
+  left: 18px;
   color: var(--text-muted);
   font: inherit;
   font-size: 16px;
@@ -586,11 +603,11 @@ body.add-plan-open { overflow: hidden; }
 .date-mode-options input { position: absolute; opacity: 0; pointer-events: none; }
 .date-mode-options span {
   display: grid;
-  min-height: 46px;
-  padding: 8px 6px;
+  min-height: 52px;
+  padding: 10px 8px;
   place-items: center;
-  border: 1px solid rgb(243 236 227 / 14%);
-  border-radius: 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   background: var(--surface-elevated);
   color: var(--text-secondary);
   cursor: pointer;
@@ -671,7 +688,7 @@ body.add-plan-open { overflow: hidden; }
   .brand { width: 60px; height: 52px; }
   .brand img { width: 58px; }
   h1 { font-size: 21px; line-height: 1.08; }
-  h1 span { margin-top: 0; font-size: 14px; line-height: 18px; }
+  .headline-subtitle { margin-top: 0; font-size: 14px; line-height: 18px; }
 
   .add-plan-button {
     min-width: 152px;

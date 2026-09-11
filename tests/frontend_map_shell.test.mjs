@@ -114,6 +114,7 @@ test("route uses approved branding and opens the Add Plan dialog", async () => {
   assert.match(html, /See who else has plans\./);
   const headline = html.match(/<div class="headline-block">([\s\S]*?)<\/div>/)?.[1] ?? "";
   assert.doesNotMatch(headline, /UnSolo Plan Map/i);
+  assert.match(headline, /class="headline-title">Going somewhere\?<\/span><span class="headline-subtitle">See who else has plans\.<\/span>/);
   assert.match(html, /aria-hidden="true">\+<\/span> Add your plan/);
   assert.match(html, /class="add-plan-button" id="add-plan-open"[^>]+aria-haspopup="dialog"/);
   assert.match(html, /\.\.\/download\/assets\/logo\.png/);
@@ -176,6 +177,13 @@ test("fits the map shell to the dynamic viewport without clipping status or foot
   assert.doesNotMatch(css, /\.map-card\s*\{[\s\S]*?min-height:\s*(?:clamp|min)\(/);
   assert.match(css, /env\(safe-area-inset-(?:top|right|bottom|left)\)/);
   assert.match(css, /@media \(orientation: landscape\) and \(max-height: 600px\)/);
+});
+
+test("keeps the reviewed logo alignment with a compact two-line headline", async () => {
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(css, /\.headline-block \{ min-width: 0; align-self: center; \}/);
+  assert.match(css, /h1\s*\{[\s\S]*?display: grid;[\s\S]*?gap: 0;/);
+  assert.match(css, /\.headline-subtitle\s*\{[\s\S]*?margin-top: 0;[\s\S]*?font-size: 16px;[\s\S]*?line-height: 24px;/);
 });
 
 test("keeps the short-landscape consent stack inside the map card", async () => {
