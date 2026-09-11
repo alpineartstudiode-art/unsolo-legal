@@ -24,6 +24,7 @@ const runtime = {
   markers: [],
   infoWindow: null,
   mapsPromise: null,
+  focusPlanId: null,
 };
 
 function exactKeys(value, expected) {
@@ -268,6 +269,7 @@ function renderMarkers() {
   if (!runtime.map || !globalThis.google?.maps) return;
   clearMarkers();
   const zoom = runtime.map.getZoom() || 4;
+  let focused = null;
   for (const group of markerGroups(runtime.plans, zoom)) {
     const { plans, latitude, longitude } = group;
     const marker = new google.maps.Marker({
@@ -289,6 +291,15 @@ function renderMarkers() {
       runtime.infoWindow.open({ map: runtime.map, anchor: marker, shouldFocus: true });
     });
     runtime.markers.push(marker);
+    if (runtime.focusPlanId) {
+      const plan = plans.find((item) => item.id === runtime.focusPlanId);
+      if (plan) focused = { marker, plan };
+    }
+  }
+  if (focused) {
+    runtime.infoWindow.setContent(popupContent([focused.plan]));
+    runtime.infoWindow.open({ map: runtime.map, anchor: focused.marker, shouldFocus: false });
+    runtime.focusPlanId = null;
   }
 }
 
@@ -334,18 +345,38 @@ async function activateMap() {
   }
 }
 
+export function applyPublicFeed(value) {
+  const feed = parsePublicFeed(value);
+  runtime.plans = feed.plans;
+  runtime.truncated = feed.truncated;
+  if (feed.plans.length === 0) {
+    feedState("ready", "No plans are on the map yet.", feed.truncated ? "More plans may be available." : "Be the first to add one soon.");
+  } else {
+    feedState("ready", `${feed.plans.length} public ${feed.plans.length === 1 ? "plan" : "plans"} ready.`, feed.truncated ? "The map is showing the first 1,000 plans." : "");
+  }
+  updateMapCount();
+  renderMarkers();
+  return feed;
+}
+
+export function isMapActive() {
+  return Boolean(runtime.map && !document.querySelector("#map-canvas")?.hidden);
+}
+
+export function focusPlanOnMap(focus) {
+  if (!isMapActive() || !focus || !Number.isFinite(focus.latitude) || !Number.isFinite(focus.longitude)) {
+    return false;
+  }
+  runtime.focusPlanId = typeof focus.planId === "string" ? focus.planId : null;
+  runtime.map.setCenter({ lat: focus.latitude, lng: focus.longitude });
+  runtime.map.setZoom(Math.max(11, runtime.map.getZoom() || 4));
+  renderMarkers();
+  return true;
+}
+
 async function loadFeed() {
   try {
-    const feed = await fetchPublicPlans();
-    runtime.plans = feed.plans;
-    runtime.truncated = feed.truncated;
-    if (feed.plans.length === 0) {
-      feedState("ready", "No plans are on the map yet.", feed.truncated ? "More plans may be available." : "Be the first to add one soon.");
-    } else {
-      feedState("ready", `${feed.plans.length} public ${feed.plans.length === 1 ? "plan" : "plans"} ready.`, feed.truncated ? "The map is showing the first 1,000 plans." : "");
-    }
-    updateMapCount();
-    renderMarkers();
+    return applyPublicFeed(await fetchPublicPlans());
   } catch (error) {
     runtime.plans = [];
     if (error?.message === "unsupported_version") {
@@ -353,7 +384,12 @@ async function loadFeed() {
     } else {
       feedState("error", "Plans could not load.", "Check your connection and try again.");
     }
+    throw error;
   }
+}
+
+export async function refreshPublicPlans() {
+  return loadFeed();
 }
 
 export function initPage() {
@@ -375,10 +411,7 @@ export function initPage() {
     setConsent(false);
     location.reload();
   });
-  document.querySelector(".add-plan-button").addEventListener("click", () => {
-    feedState("ready", "Plan sharing is coming next.");
-  });
-  loadFeed();
+  loadFeed().catch(() => {});
   if (consentGranted()) activateMap();
 }
 

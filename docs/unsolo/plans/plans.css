@@ -412,6 +412,194 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
 .plan-popup-list { display: grid; max-height: 230px; gap: 10px; overflow-y: auto; }
 .plan-popup-item + .plan-popup-item { padding-top: 10px; border-top: 1px solid #d8d2c7; }
 
+body.add-plan-open { overflow: hidden; }
+
+.add-plan-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.add-plan-dialog[open] { display: grid; place-items: center; }
+.add-plan-dialog::backdrop { background: rgb(0 0 0 / 72%); }
+
+.add-plan-panel {
+  display: flex;
+  width: min(100%, 540px);
+  max-height: min(760px, calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgb(243 236 227 / 12%);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.add-plan-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid rgb(243 236 227 / 8%);
+}
+
+.add-plan-kicker {
+  margin: 0 0 2px;
+  color: var(--summer);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.add-plan-header h2,
+.add-plan-success h2 { margin: 0; font-size: 24px; font-weight: 600; line-height: 30px; }
+
+.add-plan-close {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgb(243 236 227 / 12%);
+  border-radius: 50%;
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.add-plan-form { display: flex; min-height: 0; flex: 1 1 auto; flex-direction: column; }
+
+.add-plan-fields {
+  display: grid;
+  min-height: 0;
+  gap: 16px;
+  padding: 18px 22px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.form-field { display: grid; gap: 7px; min-width: 0; }
+.form-field > span,
+.form-field > label,
+.date-mode-field legend { color: var(--text-primary); font-size: 15px; font-weight: 600; line-height: 20px; }
+.form-field small { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 18px; }
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid rgb(243 236 227 / 15%);
+  border-radius: 13px;
+  outline: 0;
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.form-field input::placeholder { color: var(--text-muted); opacity: 1; }
+.form-field input:focus,
+.form-field select:focus { border-color: var(--summer); box-shadow: 0 0 0 3px rgb(255 184 77 / 14%); }
+.form-field select:disabled { color: var(--text-muted); cursor: wait; }
+.field-help,
+.field-message,
+.flexible-note { margin: 0; color: var(--text-secondary); font-size: 13px; line-height: 18px; }
+.field-message { color: var(--summer); }
+
+.destination-field { position: relative; }
+.destination-results {
+  display: grid;
+  max-height: 176px;
+  gap: 2px;
+  margin: 0;
+  padding: 5px;
+  overflow-y: auto;
+  border: 1px solid rgb(243 236 227 / 12%);
+  border-radius: 13px;
+  background: var(--background);
+  list-style: none;
+}
+
+.destination-results button {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+
+.destination-results button:hover,
+.destination-results button:focus-visible,
+.destination-results button[aria-selected="true"] { background: var(--surface-elevated); }
+
+.date-mode-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+.date-mode-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 7px; }
+.date-mode-options label { position: relative; min-width: 0; }
+.date-mode-options input { position: absolute; opacity: 0; pointer-events: none; }
+.date-mode-options span {
+  display: grid;
+  min-height: 46px;
+  padding: 8px 6px;
+  place-items: center;
+  border: 1px solid rgb(243 236 227 / 14%);
+  border-radius: 12px;
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 17px;
+  text-align: center;
+}
+
+.date-mode-options input:checked + span { border-color: var(--primary); color: var(--text-primary); box-shadow: inset 0 0 0 1px var(--primary); }
+.date-mode-options input:focus-visible + span { outline: 3px solid var(--summer); outline-offset: 2px; }
+.date-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.email-section { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid rgb(243 236 227 / 9%); }
+.consent-check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; color: var(--text-secondary); font-size: 12px; line-height: 18px; }
+.consent-check input { width: 22px; height: 22px; margin: 0; accent-color: var(--primary); }
+.consent-check a { color: var(--primary-muted); text-underline-offset: 3px; }
+.form-error { margin: 0; color: var(--error-muted); font-size: 14px; font-weight: 600; line-height: 20px; }
+
+.add-plan-actions { flex: 0 0 auto; padding: 14px 22px 18px; border-top: 1px solid rgb(243 236 227 / 8%); background: var(--surface); }
+.add-plan-submit { width: 100%; min-height: 52px; padding: 13px 18px; border: 0; border-radius: 999px; background: var(--brand-gradient); color: var(--constant-black); cursor: pointer; font: inherit; font-size: 17px; font-weight: 600; line-height: 22px; }
+.add-plan-submit:disabled { background: var(--surface-elevated); color: var(--text-muted); cursor: wait; }
+
+.add-plan-success { display: grid; gap: 10px; padding: 34px 24px 26px; place-items: center; text-align: center; }
+.add-plan-success p { margin: 0 0 12px; color: var(--text-secondary); font-size: 18px; line-height: 26px; }
+.success-mark { display: grid; width: 52px; height: 52px; place-items: center; border-radius: 50%; background: var(--success); color: var(--text-primary); font-size: 26px; font-weight: 600; }
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -470,7 +658,7 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
 
   .add-plan-button {
     min-width: 152px;
-    min-height: 44px;
+    min-height: 52px;
     padding-block: 10px;
     font-size: 15px;
   }
@@ -483,10 +671,29 @@ footer a:hover { color: var(--text-primary); text-decoration: underline; text-un
   .consent-button { min-height: 52px; padding-block: 8px; font-size: 16px; line-height: 20px; }
   .privacy-link { margin-top: 2px; font-size: 13px; line-height: 18px; }
 
+  .add-plan-dialog {
+    padding:
+      max(6px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(6px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+  }
+  .add-plan-panel { width: min(100%, 720px); max-height: calc(100dvh - 12px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+  .add-plan-header { padding: 10px 16px 8px; }
+  .add-plan-kicker { display: none; }
+  .add-plan-header h2 { font-size: 20px; line-height: 24px; }
+  .add-plan-fields { gap: 10px; padding: 10px 16px; }
+  .add-plan-actions { padding: 8px 16px 10px; }
+
   .feed-panel { min-height: 30px; padding-top: 6px; }
   .feed-status { line-height: 18px; }
   .feed-note { margin-top: 2px; }
   footer { padding-top: 3px; font-size: 12px; line-height: 16px; }
+}
+
+@media (max-width: 719px) {
+  .add-plan-dialog[open] { align-items: end; }
+  .add-plan-panel { border-radius: 24px 24px 16px 16px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

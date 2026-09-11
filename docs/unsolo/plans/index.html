@@ -30,10 +30,9 @@
         <h1>Going somewhere?<br><span>See who else has plans.</span></h1>
       </div>
 
-      <button class="add-plan-button is-coming-soon" type="button" aria-describedby="add-plan-note" disabled>
+      <button class="add-plan-button" id="add-plan-open" type="button" aria-haspopup="dialog">
         <span aria-hidden="true">+</span> Add your plan
       </button>
-      <span class="visually-hidden" id="add-plan-note">Plan sharing will be available soon.</span>
     </header>
 
     <main id="map-shell" class="map-shell" aria-labelledby="map-title">
@@ -85,7 +84,101 @@
     </footer>
   </div>
 
+  <dialog class="add-plan-dialog" id="add-plan-dialog" aria-labelledby="add-plan-title">
+    <div class="add-plan-panel">
+      <header class="add-plan-header">
+        <div>
+          <p class="add-plan-kicker">UnSolo Plan Map</p>
+          <h2 id="add-plan-title">Add your plan</h2>
+        </div>
+        <button class="add-plan-close" id="add-plan-close" type="button" aria-label="Close Add Plan">×</button>
+      </header>
+
+      <form class="add-plan-form" id="add-plan-form" novalidate>
+        <div class="add-plan-fields">
+          <label class="form-field" for="plan-activity">
+            <span>Activity</span>
+            <select id="plan-activity" name="activity_id" required disabled>
+              <option value="">Loading activities…</option>
+            </select>
+          </label>
+
+          <div class="form-field destination-field">
+            <label for="plan-destination">Destination</label>
+            <input
+              id="plan-destination"
+              name="destination"
+              type="search"
+              inputmode="search"
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="120"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-controls="destination-results"
+              aria-expanded="false"
+              aria-describedby="destination-help"
+              placeholder="Start typing a place"
+              required
+            >
+            <p class="field-help" id="destination-help">Choose a place from the list.</p>
+            <ul class="destination-results" id="destination-results" role="listbox" hidden></ul>
+            <p class="field-message" id="destination-message" role="status" aria-live="polite" hidden></p>
+          </div>
+
+          <fieldset class="form-field date-mode-field">
+            <legend>When</legend>
+            <div class="date-mode-options">
+              <label><input type="radio" name="date_mode" value="exact"> <span>Exact dates</span></label>
+              <label><input type="radio" name="date_mode" value="month"> <span>Month</span></label>
+              <label><input type="radio" name="date_mode" value="flexible" checked> <span>Flexible</span></label>
+            </div>
+          </fieldset>
+
+          <div class="date-fields" id="exact-date-fields" hidden>
+            <label class="form-field" for="plan-date-from"><span>From</span><input id="plan-date-from" name="date_from" type="date"></label>
+            <label class="form-field" for="plan-date-to"><span>To</span><input id="plan-date-to" name="date_to" type="date"></label>
+          </div>
+
+          <label class="form-field" id="month-date-field" for="plan-month" hidden>
+            <span>Month</span>
+            <input id="plan-month" name="month" type="month">
+          </label>
+
+          <p class="flexible-note" id="flexible-date-note">You are open to different dates.</p>
+
+          <div class="email-section">
+            <label class="form-field" for="plan-email">
+              <span>Want to know when UnSolo launches?</span>
+              <small>Leave your email. It won’t appear on the map.</small>
+              <input id="plan-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com">
+            </label>
+
+            <label class="consent-check" id="launch-consent-field" hidden>
+              <input id="plan-launch-consent" name="launch_consent" type="checkbox">
+              <span>Email me when UnSolo launches. I agree that UnSolo may use my email address to send me one launch notification. I can withdraw my consent at any time. My email will not appear on the map. Read the <a href="../legal/plan-map-privacy.html" target="_blank" rel="noopener">Plan Map Privacy Notice</a>.</span>
+            </label>
+          </div>
+
+          <p class="form-error" id="add-plan-error" role="alert" hidden></p>
+        </div>
+
+        <div class="add-plan-actions">
+          <button class="add-plan-submit" id="add-plan-submit" type="submit">Add my plan</button>
+        </div>
+      </form>
+
+      <section class="add-plan-success" id="add-plan-success" aria-live="polite" hidden>
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <h2 tabindex="-1">Your plan is already on the map 👀</h2>
+        <p>Go find it.</p>
+        <button class="add-plan-submit" id="add-plan-success-action" type="button">Back to the map</button>
+      </section>
+    </div>
+  </dialog>
+
   <script src="maps-key.js"></script>
   <script type="module" src="plans.mjs"></script>
+  <script type="module" src="add-plan/add-plan-ui.mjs"></script>
 </body>
 </html>

@@ -108,14 +108,16 @@ test("Google resources are absent from HTML and created only by the consent load
   assert.equal(configuredMapsKey({ __UNSOLO_PLAN_MAP_CONFIG__: { googleMapsApiKey: " local-key " } }), "local-key");
 });
 
-test("route uses approved branding and keeps the add button non-forming", async () => {
+test("route uses approved branding and opens the Add Plan dialog", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
   assert.match(html, /Going somewhere\?/);
   assert.match(html, /See who else has plans\./);
   assert.match(html, /aria-hidden="true">\+<\/span> Add your plan/);
-  assert.match(html, /class="add-plan-button is-coming-soon"[^>]+disabled/);
+  assert.match(html, /class="add-plan-button" id="add-plan-open"[^>]+aria-haspopup="dialog"/);
   assert.match(html, /\.\.\/download\/assets\/logo\.png/);
-  assert.doesNotMatch(html, /<form\b/i);
+  assert.match(html, /<dialog class="add-plan-dialog" id="add-plan-dialog"/);
+  assert.match(html, /<form class="add-plan-form" id="add-plan-form" novalidate>/);
+  assert.doesNotMatch(html.match(/<button class="add-plan-button"[^>]*>/)?.[0] ?? "", /disabled|is-coming-soon/);
 });
 
 test("uses only approved app tokens and self-hosted Poppins", async () => {
@@ -139,7 +141,7 @@ test("uses only approved app tokens and self-hosted Poppins", async () => {
   }
 });
 
-test("keeps the primary gradient and uses the approved muted coming-soon state", async () => {
+test("keeps accessible primary gradients and disabled fallbacks", async () => {
   const channel = (value) => {
     const normalized = value / 255;
     return normalized <= 0.04045
@@ -157,6 +159,7 @@ test("keeps the primary gradient and uses the approved muted coming-soon state",
   assert.ok(contrast("#000000", "#B9A9FF") >= 4.5);
   assert.ok(contrast("#000000", "#FFAC9D") >= 4.5);
   const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(css, /\.add-plan-button,[\s\S]*?background: var\(--brand-gradient\);[\s\S]*?color: var\(--text-accessibility-dark\);/);
   assert.match(css, /\.add-plan-button:disabled,[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-muted\);[\s\S]*?box-shadow: none;/);
 });
 
