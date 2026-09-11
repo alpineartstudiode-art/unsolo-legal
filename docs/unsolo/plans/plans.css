@@ -223,6 +223,14 @@ h1 {
   box-shadow: none;
 }
 
+body:has(#map-canvas:not([hidden])) .add-plan-button {
+  border-color: transparent;
+  background: var(--brand-gradient);
+  color: var(--text-accessibility-dark);
+  box-shadow: none;
+  transform: none;
+}
+
 .add-plan-button span { font-size: 1.25rem; line-height: 0; }
 
 .map-card {

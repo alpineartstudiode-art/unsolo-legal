@@ -155,7 +155,7 @@ test("uses only approved app tokens and self-hosted Poppins", async () => {
   }
 });
 
-test("keeps the primary gradient accessible and uses the approved outline secondary CTA", async () => {
+test("switches the Add Plan CTA hierarchy only after the map is loaded", async () => {
   const channel = (value) => {
     const normalized = value / 255;
     return normalized <= 0.04045
@@ -175,7 +175,12 @@ test("keeps the primary gradient accessible and uses the approved outline second
   const css = await readFile(new URL("plans.css", root), "utf8");
   assert.match(css, /\.consent-button,[\s\S]*?background: var\(--brand-gradient\);[\s\S]*?color: var\(--text-accessibility-dark\);/);
   assert.match(css, /\.add-plan-button\s*\{[\s\S]*?border: 1px solid var\(--primary\);[\s\S]*?background: transparent;[\s\S]*?color: var\(--primary\);[\s\S]*?box-shadow: none;/);
+  assert.match(css, /body:has\(#map-canvas:not\(\[hidden\]\)\) \.add-plan-button\s*\{[\s\S]*?border-color: transparent;[\s\S]*?background: var\(--brand-gradient\);[\s\S]*?color: var\(--text-accessibility-dark\);[\s\S]*?box-shadow: none;[\s\S]*?transform: none;/);
   assert.match(css, /\.add-plan-button:disabled,[\s\S]*?border-color: transparent;[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-muted\);[\s\S]*?box-shadow: none;/);
+  const mapLoadedStyle = css.match(/body:has\(#map-canvas:not\(\[hidden\]\)\) \.add-plan-button\s*\{([\s\S]*?)\}/)?.[1] ?? "";
+  assert.match(mapLoadedStyle, /box-shadow: none;/);
+  assert.equal(mapLoadedStyle.match(/box-shadow:/g)?.length, 1);
+  assert.doesNotMatch(mapLoadedStyle, /glow|translateY/);
 });
 
 test("fits the map shell to the dynamic viewport without clipping status or footer", async () => {

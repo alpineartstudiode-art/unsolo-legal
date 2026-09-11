@@ -47,6 +47,7 @@ class Handler(SimpleHTTPRequestHandler):
             query = parse_qs(split.query)
             maps_enabled = query.get("maps", ["0"])[0] == "1"
             form_open = query.get("form", ["0"])[0] == "1"
+            revoke_after = query.get("revoke", ["0"])[0] == "1"
             body = f"""<!doctype html><meta charset=\"utf-8\"><title>RC viewport test</title>
 <style>body{{margin:0;background:#111;color:#fff;font:14px monospace}} iframe{{border:0;display:block}} pre{{white-space:pre-wrap}}</style>
 <iframe id=\"subject\" title=\"Plan Map viewport subject\"></iframe><pre id=\"result\">running</pre>
@@ -64,6 +65,8 @@ function sample(label) {{
   const card = d.querySelector('.map-card'); const feed = d.querySelector('.feed-panel');
   const footer = d.querySelector('footer'); const script = d.querySelector('#unsolo-google-maps');
   const dialog = d.querySelector('#add-plan-dialog'); const fields = d.querySelector('.add-plan-fields');
+  const addPlan = d.querySelector('#add-plan-open'); const loadMaps = d.querySelector('#load-map');
+  const addStyle = w.getComputedStyle(addPlan); const loadStyle = w.getComputedStyle(loadMaps);
   const googleResources = [...w.performance.getEntriesByType('resource')]
     .filter((entry) => /googleapis|gstatic/i.test(entry.name)).length;
   return {{ label, width: root.clientWidth, height: root.clientHeight,
@@ -78,7 +81,12 @@ function sample(label) {{
     consentVisible: !d.querySelector('#consent-panel').hidden,
     formOpen: dialog.open,
     formInternalScroll: fields ? fields.scrollHeight >= fields.clientHeight : false,
-    dialogBottom: dialog.open ? Math.round(dialog.getBoundingClientRect().bottom) : null }};
+    dialogBottom: dialog.open ? Math.round(dialog.getBoundingClientRect().bottom) : null,
+    addPlanBackground: addStyle.backgroundImage,
+    addPlanColor: addStyle.color,
+    addPlanBorder: addStyle.borderColor,
+    loadMapsVisible: !d.querySelector('#consent-panel').hidden,
+    loadMapsBackground: loadStyle.backgroundImage }};
 }}
 async function run() {{
   size(390, 844); frame.src = '/unsolo/plans/';
@@ -90,6 +98,12 @@ async function run() {{
   size(390, 844); await wait(500); results.push(sample('portrait-2'));
   size(844, 320); await wait(500); results.push(sample('landscape-2'));
   size(390, 844); await wait(500); results.push(sample('portrait-3'));
+  size(1200, 800); await wait(500); results.push(sample('desktop'));
+  if ({str(revoke_after).lower()}) {{
+    const loaded = new Promise((resolve) => frame.addEventListener('load', resolve, {{once:true}}));
+    frame.contentDocument.querySelector('#turn-off-map').click();
+    await loaded; await wait(700); results.push(sample('after-revoke'));
+  }}
   output.textContent = JSON.stringify(results, null, 2);
   output.dataset.done = 'true';
 }}
