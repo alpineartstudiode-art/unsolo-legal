@@ -112,6 +112,8 @@ test("route uses approved branding and opens the Add Plan dialog", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
   assert.match(html, /Going somewhere\?/);
   assert.match(html, /See who else has plans\./);
+  const headline = html.match(/<div class="headline-block">([\s\S]*?)<\/div>/)?.[1] ?? "";
+  assert.doesNotMatch(headline, /UnSolo Plan Map/i);
   assert.match(html, /aria-hidden="true">\+<\/span> Add your plan/);
   assert.match(html, /class="add-plan-button" id="add-plan-open"[^>]+aria-haspopup="dialog"/);
   assert.match(html, /\.\.\/download\/assets\/logo\.png/);
@@ -141,7 +143,7 @@ test("uses only approved app tokens and self-hosted Poppins", async () => {
   }
 });
 
-test("keeps accessible primary gradients and disabled fallbacks", async () => {
+test("keeps the primary gradient accessible and uses the approved outline secondary CTA", async () => {
   const channel = (value) => {
     const normalized = value / 255;
     return normalized <= 0.04045
@@ -159,8 +161,9 @@ test("keeps accessible primary gradients and disabled fallbacks", async () => {
   assert.ok(contrast("#000000", "#B9A9FF") >= 4.5);
   assert.ok(contrast("#000000", "#FFAC9D") >= 4.5);
   const css = await readFile(new URL("plans.css", root), "utf8");
-  assert.match(css, /\.add-plan-button,[\s\S]*?background: var\(--brand-gradient\);[\s\S]*?color: var\(--text-accessibility-dark\);/);
-  assert.match(css, /\.add-plan-button:disabled,[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-muted\);[\s\S]*?box-shadow: none;/);
+  assert.match(css, /\.consent-button,[\s\S]*?background: var\(--brand-gradient\);[\s\S]*?color: var\(--text-accessibility-dark\);/);
+  assert.match(css, /\.add-plan-button\s*\{[\s\S]*?border: 1px solid var\(--primary\);[\s\S]*?background: transparent;[\s\S]*?color: var\(--primary\);[\s\S]*?box-shadow: none;/);
+  assert.match(css, /\.add-plan-button:disabled,[\s\S]*?border-color: transparent;[\s\S]*?background: var\(--surface-elevated\);[\s\S]*?color: var\(--text-muted\);[\s\S]*?box-shadow: none;/);
 });
 
 test("fits the map shell to the dynamic viewport without clipping status or footer", async () => {

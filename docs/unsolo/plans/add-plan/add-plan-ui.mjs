@@ -65,6 +65,7 @@ function initializeAddPlan() {
   const dateFrom = document.querySelector("#plan-date-from");
   const dateTo = document.querySelector("#plan-date-to");
   const month = document.querySelector("#plan-month");
+  const monthShell = month?.closest(".month-input-shell");
   const email = document.querySelector("#plan-email");
   const consentField = document.querySelector("#launch-consent-field");
   const launchConsent = document.querySelector("#plan-launch-consent");
@@ -108,6 +109,7 @@ function initializeAddPlan() {
       dateTo.value = "";
     }
     if (mode !== "month") month.value = "";
+    monthShell?.classList.toggle("has-value", Boolean(month.value));
     invalidateIntent();
   }
 
@@ -223,6 +225,7 @@ function initializeAddPlan() {
   }
   for (const control of [activity, dateFrom, dateTo, month, launchConsent]) {
     control.addEventListener("change", () => {
+      if (control === month) monthShell?.classList.toggle("has-value", Boolean(month.value));
       invalidateIntent();
       clearError();
     });

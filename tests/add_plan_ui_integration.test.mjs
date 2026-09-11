@@ -49,6 +49,18 @@ test("date UI emits exactly the three backend date shapes", () => {
   assert.equal(monthValueToStart("June 2027"), null);
 });
 
+test("native Month picker shows the approved empty-state label without changing its type", async () => {
+  const html = await readFile(new URL("index.html", root), "utf8");
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  const ui = await readFile(new URL("add-plan/add-plan-ui.mjs", root), "utf8");
+  assert.match(html, /<input id="plan-month" name="month" type="month">/);
+  assert.doesNotMatch(html, /<input id="plan-month"[^>]*required/);
+  assert.match(html, /class="month-input-placeholder" aria-hidden="true">Select month<\/span>/);
+  assert.match(css, /\.month-input-placeholder\s*\{[\s\S]*?color: var\(--text-muted\);/);
+  assert.match(css, /\.month-input-shell\.has-value \.month-input-placeholder \{ display: none; \}/);
+  assert.match(ui, /monthShell\?\.classList\.toggle\("has-value", Boolean\(month\.value\)\)/);
+});
+
 test("all backend failures stay in simple user-facing language", () => {
   for (const kind of ["validation", "rate_limited", "kill_switch", "global_limit", "conflict", "temporary_failure"]) {
     const copy = submitErrorCopy(new SubmitPlanError(kind));

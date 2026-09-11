@@ -26,7 +26,6 @@
       </a>
 
       <div class="headline-block">
-        <p class="eyebrow">UnSolo Plan Map</p>
         <h1>Going somewhere?<br><span>See who else has plans.</span></h1>
       </div>
 
@@ -142,7 +141,10 @@
 
           <label class="form-field" id="month-date-field" for="plan-month" hidden>
             <span>Month</span>
-            <input id="plan-month" name="month" type="month">
+            <span class="month-input-shell">
+              <input id="plan-month" name="month" type="month">
+              <span class="month-input-placeholder" aria-hidden="true">Select month</span>
+            </span>
           </label>
 
           <p class="flexible-note" id="flexible-date-note">You are open to different dates.</p>
