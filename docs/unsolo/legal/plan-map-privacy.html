@@ -1,4 +1,8 @@
 <!doctype html>
+<!-- RELEASE-CANDIDATE GATE: the verified backend uses the owner-approved 30-day
+     inactive-Plan retention described here. Publication remains blocked only
+     while Supabase's internal/recovery-copy deletion behavior is awaiting a
+     provider response. Do not infer or publish an answer. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -60,6 +64,9 @@
       activity, canonical destination label and coordinates, date mode and dates,
       and creation time. They do not contain a name, profile, photo, contact
       information, email address, network identifier, or destination database ID.</p>
+    <p>The feed is public. Other people can download or copy a Plan. Removing it
+      from our service cannot guarantee removal of copies held by others.
+      A Plan without a name is not necessarily anonymous.</p>
 
     <h3>Destination search</h3>
     <p>When you type a destination, the search prefix is sent to the separate
@@ -74,6 +81,9 @@
       a random idempotency key, and controlled source information. Security and
       abuse controls use a keyed one-way identifier derived from trusted network
       metadata. The raw IP address is not stored in Plan Map business tables.</p>
+    <p>A private keyed fingerprint of the submission helps prevent duplicate
+      Plans. It and the idempotency key remain with the Plan until its deletion;
+      they are separate from the short-lived abuse events described below.</p>
 
     <h3>Optional launch email</h3>
     <p>You can publish a Plan without providing an email address. If you choose
@@ -92,7 +102,7 @@
     <p>After you choose to load the map, Google may process your IP address,
       browser and device information, referring page, and map usage, and may
       store or read information on your device. Google may process data outside
-      the European Economic Area. See the
+      the European Economic Area, including the United States. See the
       <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and
       <a href="https://cloud.google.com/maps-platform/terms">Google Maps Platform Terms</a>.</p>
     <p>Your choice is remembered in first-party browser storage. Use
@@ -103,8 +113,9 @@
 
     <h2>4. Providers, recipients, and operational logs</h2>
     <ul>
-      <li><strong>GitHub Pages</strong> hosts the static website and may process
-        ordinary request and network metadata needed to deliver it. See the
+      <li><strong>GitHub Pages</strong> hosts the static website. GitHub documents
+        that visitors' IP addresses are logged and stored for security, even
+        without a GitHub sign-in. This is independent of the Google Maps choice. See the
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</li>
       <li><strong>Supabase</strong> acts as our processor for the separate Plan Map
         backend, APIs, database, security controls, and operational logs. The
@@ -122,43 +133,76 @@
       not a promise that infrastructure never processes technical metadata.
       Hosted operational logs contained ordinary network and connection metadata.
       The current verified Free-project API and database log retention is one day.</p>
+    <p>Supabase's <a href="https://supabase.com/docs/guides/functions/logging">Edge
+      Function documentation</a> describes Invocation logs as including request
+      and response data, including bodies. Our observations do not establish
+      that body capture is disabled or that bodies can never appear. The one-day
+      period applies to the named hosted log products, not to every provider
+      security record or backup.</p>
 
     <h2>5. Why we process the data</h2>
     <table>
       <thead><tr><th>Purpose</th><th>Legal basis</th></tr></thead>
       <tbody>
-        <tr><td>Destination search, Plan submission, and public Plan display requested by you</td>
+        <tr><td>Providing the public page, feed, and destination search</td>
+          <td>Our legitimate interest in delivering the requested web service,
+            Article 6(1)(f) GDPR</td></tr>
+        <tr><td>Submitting and publishing your Plan as part of the service you request</td>
           <td>Article 6(1)(b) GDPR</td></tr>
         <tr><td>Service security, abuse prevention, reliability, and troubleshooting</td>
+          <td>Our legitimate interests under Article 6(1)(f) GDPR</td></tr>
+        <tr><td>Limited retention of inactive Plans to handle complaints,
+          abuse/security investigations, data-integrity incidents, and questions
+          about a previously published Plan</td>
           <td>Our legitimate interests under Article 6(1)(f) GDPR</td></tr>
         <tr><td>One optional launch notification</td>
           <td>Your consent under Article 6(1)(a) GDPR</td></tr>
         <tr><td>Loading Google Maps and remembering that choice</td>
           <td>Your consent under Article 6(1)(a) GDPR and Section 25(1) TDDDG</td></tr>
         <tr><td>Minimal evidence that consent was given</td>
-          <td>Compliance and accountability under Articles 5(2), 6(1)(c), and 7(1) GDPR</td></tr>
+          <td>Articles 5(2), 6(1)(c), and 7(1) GDPR while needed to demonstrate
+            consent; subsequent necessary retention for legal claims is based
+            on Article 6(1)(f) GDPR, not a statutory three-year GDPR requirement</td></tr>
       </tbody>
     </table>
 
     <h2>6. Retention</h2>
+    <p>The periods below are deletion thresholds in the live database. Scheduled
+      removal runs once daily, normally within a further 24 hours after a
+      threshold is reached. This technical delay does not extend public Plan
+      visibility or permission to use an expired email contact.</p>
     <ul>
       <li><strong>Public Plan lifecycle:</strong> an exact Plan remains active
         through the selected end date; a month Plan through the selected month;
         and a flexible Plan for 90 × 24 hours, rounded up to the next Berlin
         midnight unless that time is already exactly midnight. The database
         calculates the expiry. Expired or hidden Plans are no longer public
-        and are deleted 12 Berlin calendar months after they became inactive.</li>
-      <li><strong>Optional email:</strong> deleted at withdrawal or erasure, when
-        the related Plan is deleted, or 12 Berlin calendar months after collection,
-        whichever happens first.</li>
+        and are retained for 30 days after they became inactive, then deleted
+        on the next daily cleanup run. During those 30 days, we use them only
+        to handle user complaints, abuse/security investigations, data-integrity
+        incidents, and questions about a previously published Plan. We do not
+        retain all inactive Plans longer merely for hypothetical legal disputes.
+        A specific record needed for an actual dispute or legal obligation may
+        be handled separately, only as necessary under the applicable legal basis.</li>
+      <li><strong>Optional email:</strong> use stops on withdrawal, when the
+        purpose ends, or at the latest 12 Berlin calendar months after collection.
+        We process withdrawal and erasure requests without undue delay. The
+        address is removed when the request is processed, when the related Plan
+        is deleted, or by daily cleanup at the 12-month threshold, whichever
+        happens first. It must not be used while awaiting cleanup after expiry.</li>
       <li><strong>Consent evidence:</strong> after the email is deleted, minimal
         evidence without the email address is kept for three Berlin calendar
-        years, then deleted. It contains only the internal Plan reference,
+        years, then becomes due for deletion. This is our retention policy, not
+        a fixed period prescribed by the GDPR. It contains only the internal Plan reference,
         consent time, notice and consent version identifiers, purpose, and
-        deletion/retention times.</li>
+        deletion/retention times. Its only purpose is to demonstrate the
+        launch-notification consent if disputed; we do not retain the plaintext
+        email address solely to keep this evidence.</li>
       <li><strong>Abuse controls:</strong> keyed network identifiers and event
-        times are retained for up to 48 hours. Search rate-limit windows are
-        removed after 24 hours.</li>
+        times become due for deletion after 48 hours; daily cleanup normally
+        removes them within 72 hours of the event. Search rate-limit windows
+        become due after 24 hours without accepted search activity and are
+        normally removed within 48 hours of the last accepted activity.</li>
       <li><strong>Supabase operational logs:</strong> the current verified
         Free-project API and database log retention is one day.</li>
       <li><strong>Map choice:</strong> first-party browser storage keeps the
@@ -166,10 +210,21 @@
     </ul>
 
     <h2>7. International processing</h2>
-    <p>Providers and their subprocessors may process data outside the EEA.
-      Where required, this is covered by an applicable adequacy decision or
-      contractual safeguards such as the European Commission's Standard
-      Contractual Clauses. You may contact us for more information.</p>
+    <p>An EU database location does not make all provider processing EU-only.
+      Supabase Pte. Ltd. (Singapore) and its subprocessors may process data
+      internationally, including in the United States. Its
+      <a href="https://supabase.com/legal/customer-resources/data-processing-addendum">DPA</a>
+      incorporates EU Standard Contractual Clauses for relevant transfers.</p>
+    <p>GitHub describes processing in the United States and other countries and
+      the use of Standard Contractual Clauses and the EU–US Data Privacy
+      Framework in its
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Privacy Statement</a>.
+      Google describes international processing, including by Google LLC in the
+      United States, and the use of that framework and Standard Contractual
+      Clauses on its <a href="https://policies.google.com/privacy/frameworks">transfer safeguards page</a>.
+      Framework protection applies to covered transfers to participating
+      certified entities. These links explain the providers' safeguards; you
+      may also contact us to obtain information or a copy of applicable safeguards.</p>
 
     <h2>8. Your rights</h2>
     <p>Subject to the legal conditions, you may request access, correction,
@@ -179,7 +234,9 @@
       including the
       <a href="https://www.baden-wuerttemberg.datenschutz.de/">State Commissioner
       for Data Protection and Freedom of Information Baden-Württemberg</a>.</p>
-    <p>The Plan Map does not use personal data for automated decisions or profiling.
+    <p>There are no solely automated decisions with legal or similarly significant
+      effects under Article 22 GDPR. Automated abuse limits can temporarily
+      reject a request; contact us if you believe this happened in error.
       Email is optional. Without the technical request data needed to connect to
       the service, the requested online feature cannot be delivered.</p>
 
@@ -187,7 +244,7 @@
     <p>This notice has the immutable evidence identifier
       <strong>plan-map-privacy-v1.1</strong>. The approved launch-consent text has
       the immutable identifier <strong>launch-notification-consent-v1.0</strong>.
-      A material text change requires a new identifier; the meaning of an earlier
+      Any subsequent text change requires a new identifier; the meaning of an earlier
       identifier will not be overwritten.</p>
 
     <h2>10. Contact</h2>
@@ -224,6 +281,9 @@
       Zielbezeichnung und Koordinaten, Datumsmodus und Daten sowie den
       Erstellungszeitpunkt. Er enthält keinen Namen, kein Profil, Foto,
       Kontaktdaten, E-Mail, Netzwerkkennung oder interne Ziel-Datenbank-ID.</p>
+    <p>Der Feed ist öffentlich. Andere können einen Plan herunterladen oder
+      kopieren. Seine Entfernung aus unserem Dienst garantiert nicht die
+      Löschung fremder Kopien. Ein Plan ohne Namen ist nicht zwingend anonym.</p>
 
     <h3>Zielsuche</h3>
     <p>Bei der Eingabe eines Reiseziels wird das Suchpräfix an das getrennte
@@ -240,6 +300,9 @@
       Sicherheits- und Missbrauchsschutz verwendet eine einwegige, geschlüsselte
       Kennung aus vertrauenswürdigen Netzwerkmetadaten. Die rohe IP-Adresse wird
       nicht in geschäftlichen Plan-Map-Tabellen gespeichert.</p>
+    <p>Ein privater geschlüsselter Fingerabdruck der Übermittlung hilft,
+      doppelte Pläne zu verhindern. Er und der Idempotenzschlüssel bleiben bis
+      zur Löschung beim Plan; sie sind von den kurzlebigen Missbrauchsereignissen getrennt.</p>
 
     <h3>Optionale Launch-E-Mail</h3>
     <p>Ein Plan kann ohne E-Mail veröffentlicht werden. Wenn Sie
@@ -258,7 +321,7 @@
     <p>Nach Ihrer Auswahl kann Google Ihre IP-Adresse, Browser- und Gerätedaten,
       die verweisende Seite und Kartennutzung verarbeiten sowie Informationen auf
       Ihrem Gerät speichern oder auslesen. Eine Verarbeitung außerhalb des EWR
-      ist möglich. Siehe
+      einschließlich der USA ist möglich. Siehe
       <a href="https://policies.google.com/privacy">Google-Datenschutzerklärung</a>
       und <a href="https://cloud.google.com/maps-platform/terms">Google Maps Platform Terms</a>.</p>
     <p>Die Auswahl wird im First-Party-Browserspeicher gemerkt. Mit
@@ -268,8 +331,9 @@
 
     <h2>4. Anbieter, Empfänger und Betriebsprotokolle</h2>
     <ul>
-      <li><strong>GitHub Pages</strong> hostet die statische Website und kann die
-        für die Auslieferung üblichen Anfrage- und Netzwerkmetadaten verarbeiten.
+      <li><strong>GitHub Pages</strong> hostet die statische Website. Laut GitHub
+        werden Besucher-IP-Adressen zu Sicherheitszwecken protokolliert und
+        gespeichert, auch ohne GitHub-Anmeldung und unabhängig von der Kartenauswahl.
         Siehe <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</li>
       <li><strong>Supabase</strong> ist unser Auftragsverarbeiter für das
         getrennte Plan-Map-Backend, APIs, Datenbank, Sicherheitskontrollen und
@@ -289,44 +353,84 @@
       technische Metadaten verarbeitet. Die Betriebsprotokolle enthielten
       übliche Netzwerk- und Verbindungsmetadaten. Für das aktuell verifizierte
       Free-Projekt beträgt die Aufbewahrung der API- und Datenbankprotokolle einen Tag.</p>
+    <p>Die <a href="https://supabase.com/docs/guides/functions/logging">Edge-Function-Dokumentation
+      von Supabase</a> beschreibt Invocation-Protokolle als Anfrage- und
+      Antwortdaten einschließlich Bodies. Unsere Beobachtungen belegen weder
+      eine deaktivierte Body-Erfassung noch, dass Bodies niemals erscheinen
+      können. Der eine Tag gilt für die genannten Protokollprodukte, nicht für
+      sämtliche Sicherheitsaufzeichnungen der Anbieter oder Backups.</p>
 
     <h2>5. Zwecke und Rechtsgrundlagen</h2>
     <table>
       <thead><tr><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
       <tbody>
-        <tr><td>Gewünschte Zielsuche, Plan-Veröffentlichung und öffentliche Anzeige</td>
+        <tr><td>Bereitstellung der öffentlichen Seite, des Feeds und der Zielsuche</td>
+          <td>Unser berechtigtes Interesse an der Bereitstellung des angefragten
+            Webdienstes, Art. 6 Abs. 1 lit. f DSGVO</td></tr>
+        <tr><td>Übermittlung und Veröffentlichung Ihres Plans als angefragte Leistung</td>
           <td>Art. 6 Abs. 1 lit. b DSGVO</td></tr>
         <tr><td>Sicherheit, Missbrauchsschutz, Zuverlässigkeit und Fehleranalyse</td>
+          <td>Unsere berechtigten Interessen nach Art. 6 Abs. 1 lit. f DSGVO</td></tr>
+        <tr><td>Begrenzte Aufbewahrung inaktiver Pläne zur Bearbeitung von
+          Beschwerden, Missbrauchs- und Sicherheitsuntersuchungen,
+          Datenintegritätsvorfällen und Fragen zu einem zuvor veröffentlichten Plan</td>
           <td>Unsere berechtigten Interessen nach Art. 6 Abs. 1 lit. f DSGVO</td></tr>
         <tr><td>Eine optionale Launch-Benachrichtigung</td>
           <td>Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO</td></tr>
         <tr><td>Laden von Google Maps und Merken dieser Auswahl</td>
           <td>Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG</td></tr>
         <tr><td>Minimaler Nachweis einer Einwilligung</td>
-          <td>Compliance und Rechenschaft nach Art. 5 Abs. 2, Art. 6 Abs. 1 lit. c und Art. 7 Abs. 1 DSGVO</td></tr>
+          <td>Art. 5 Abs. 2, Art. 6 Abs. 1 lit. c und Art. 7 Abs. 1 DSGVO,
+            solange der Einwilligungsnachweis erforderlich ist; anschließend
+            notwendige Aufbewahrung für Rechtsansprüche nach Art. 6 Abs. 1
+            lit. f DSGVO, keine gesetzliche Dreijahresfrist der DSGVO</td></tr>
       </tbody>
     </table>
 
     <h2>6. Aufbewahrung</h2>
+    <p>Die folgenden Fristen sind Löschschwellen im aktiven Datenbestand. Die
+      geplante Löschung läuft einmal täglich, normalerweise innerhalb weiterer
+      24 Stunden nach Erreichen der Schwelle. Diese technische Verzögerung
+      verlängert weder die öffentliche Sichtbarkeit noch die Erlaubnis zur
+      Nutzung eines abgelaufenen E-Mail-Kontakts.</p>
     <ul>
       <li><strong>Öffentlicher Plan:</strong> Ein exakter Plan bleibt bis zum
         gewählten Enddatum aktiv, ein Monatsplan bis zum Ende des gewählten
         Monats und ein flexibler Plan 90 × 24 Stunden, aufgerundet auf die nächste
         Berliner Mitternacht, außer der Zeitpunkt liegt bereits genau auf
         Mitternacht. Die Datenbank berechnet den Ablauf. Abgelaufene oder verborgene
-        Pläne sind nicht mehr öffentlich und werden zwölf Berliner Kalendermonate
-        nach Beginn der Inaktivität gelöscht.</li>
-      <li><strong>Optionale E-Mail:</strong> Löschung bei Widerruf oder Löschantrag,
-        bei Löschung des Plans oder zwölf Berliner Kalendermonate nach Erhebung,
-        je nachdem, was zuerst eintritt.</li>
+        Pläne sind nicht mehr öffentlich. Sie werden für 30 Tage ab Beginn der
+        Inaktivität aufbewahrt und beim nächsten täglichen Bereinigungslauf
+        gelöscht. Während dieser 30 Tage dienen sie ausschließlich der
+        Bearbeitung von Nutzerbeschwerden, Missbrauchs- und
+        Sicherheitsuntersuchungen, Datenintegritätsvorfällen und Fragen zu
+        einem zuvor veröffentlichten Plan. Wir bewahren nicht pauschal alle
+        inaktiven Pläne wegen nur hypothetischer Rechtsstreitigkeiten länger auf.
+        Ein bestimmter Datensatz, der für einen tatsächlichen Streitfall oder
+        eine rechtliche Verpflichtung benötigt wird, kann gesondert und nur
+        soweit erforderlich auf einschlägiger Rechtsgrundlage behandelt werden.</li>
+      <li><strong>Optionale E-Mail:</strong> Die Nutzung endet bei Widerruf,
+        Zweckerreichung oder spätestens zwölf Berliner Kalendermonate nach Erhebung.
+        Widerrufe und Löschanträge bearbeiten wir unverzüglich. Die Adresse
+        wird bei Bearbeitung des Antrags, bei Löschung des zugehörigen Plans
+        oder durch tägliche Bereinigung nach der Zwölfmonatsschwelle entfernt,
+        je nachdem, was zuerst eintritt. Nach Ablauf darf sie auch vor der
+        Bereinigung nicht mehr verwendet werden.</li>
       <li><strong>Einwilligungsnachweis:</strong> Nach Löschung der E-Mail wird
         ein minimaler Nachweis ohne E-Mail-Adresse drei Berliner Kalenderjahre
-        aufbewahrt und dann gelöscht. Er enthält nur interne Plan-Referenz,
+        aufbewahrt und dann zur Löschung fällig. Dies ist unsere Aufbewahrungsregel,
+        keine feste Frist der DSGVO. Er enthält nur interne Plan-Referenz,
         Einwilligungszeitpunkt, Hinweis- und Einwilligungsversion, Zweck sowie
-        Lösch- und Aufbewahrungszeitpunkte.</li>
+        Lösch- und Aufbewahrungszeitpunkte. Er dient ausschließlich dem Nachweis
+        der Einwilligung in die Launch-Benachrichtigung, falls diese bestritten
+        wird. Die E-Mail-Adresse im Klartext wird nicht allein für diesen
+        Nachweis aufbewahrt.</li>
       <li><strong>Missbrauchsschutz:</strong> Geschlüsselte Netzwerkkennungen und
-        Ereigniszeiten werden bis zu 48 Stunden aufbewahrt. Such-Limitfenster
-        werden nach 24 Stunden entfernt.</li>
+        Ereigniszeiten werden nach 48 Stunden zur Löschung fällig; die tägliche
+        Bereinigung entfernt sie normalerweise innerhalb von 72 Stunden nach
+        dem Ereignis. Such-Limitfenster werden nach 24 Stunden ohne akzeptierte
+        Suchaktivität zur Löschung fällig und normalerweise innerhalb von
+        48 Stunden nach der letzten akzeptierten Aktivität entfernt.</li>
       <li><strong>Supabase-Betriebsprotokolle:</strong> Für das aktuell
         verifizierte Free-Projekt beträgt die Aufbewahrung der API- und
         Datenbankprotokolle einen Tag.</li>
@@ -335,10 +439,21 @@
     </ul>
 
     <h2>7. Verarbeitung außerhalb des EWR</h2>
-    <p>Anbieter und ihre Unterauftragsverarbeiter können Daten außerhalb des EWR
-      verarbeiten. Soweit erforderlich, gelten ein Angemessenheitsbeschluss oder
-      vertragliche Garantien wie die Standardvertragsklauseln der Europäischen
-      Kommission. Weitere Informationen erhalten Sie auf Anfrage.</p>
+    <p>Ein EU-Datenbankstandort bedeutet nicht, dass sämtliche Verarbeitung
+      innerhalb der EU bleibt. Supabase Pte. Ltd. (Singapur) und seine
+      Unterauftragsverarbeiter können international, auch in den USA, verarbeiten.
+      Das <a href="https://supabase.com/legal/customer-resources/data-processing-addendum">DPA</a>
+      enthält EU-Standardvertragsklauseln für einschlägige Übermittlungen.</p>
+    <p>GitHub beschreibt in seiner
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung</a>
+      Verarbeitung in den USA und anderen Ländern sowie Standardvertragsklauseln
+      und den EU–US Data Privacy Framework. Google beschreibt internationale
+      Verarbeitung, auch durch Google LLC in den USA, sowie diesen Rahmen und
+      Standardvertragsklauseln auf seiner
+      <a href="https://policies.google.com/privacy/frameworks">Seite zu Übermittlungsgarantien</a>.
+      Der Rahmen gilt für erfasste Übermittlungen an teilnehmende zertifizierte
+      Unternehmen. Die Links erläutern die Anbietergarantien; Informationen oder
+      eine Kopie der einschlägigen Garantien können Sie auch bei uns anfordern.</p>
 
     <h2>8. Ihre Rechte</h2>
     <p>Unter den gesetzlichen Voraussetzungen können Sie Auskunft, Berichtigung,
@@ -348,8 +463,11 @@
       Datenschutzaufsichtsbehörde beschweren, insbesondere beim
       <a href="https://www.baden-wuerttemberg.datenschutz.de/">Landesbeauftragten
       für den Datenschutz und die Informationsfreiheit Baden-Württemberg</a>.</p>
-    <p>Die Plan Map nutzt personenbezogene Daten nicht für automatisierte
-      Entscheidungen oder Profiling. Die E-Mail-Angabe ist freiwillig. Ohne die
+    <p>Es gibt keine ausschließlich automatisierten Entscheidungen mit rechtlicher
+      oder ähnlich erheblicher Wirkung nach Art. 22 DSGVO. Automatische
+      Missbrauchsgrenzen können Anfragen vorübergehend ablehnen. Kontaktieren
+      Sie uns bei einer aus Ihrer Sicht irrtümlichen Ablehnung.
+      Die E-Mail-Angabe ist freiwillig. Ohne die
       für eine Verbindung erforderlichen technischen Anfragedaten kann die
       gewünschte Online-Funktion nicht bereitgestellt werden.</p>
 
@@ -357,7 +475,7 @@
     <p>Diese Hinweise haben die unveränderliche Nachweiskennung
       <strong>plan-map-privacy-v1.1</strong>. Der genehmigte Launch-Einwilligungstext
       hat die unveränderliche Kennung
-      <strong>launch-notification-consent-v1.0</strong>. Eine wesentliche
+      <strong>launch-notification-consent-v1.0</strong>. Jede spätere
       Textänderung erhält eine neue Kennung; die Bedeutung einer früheren Kennung
       wird nicht überschrieben.</p>
 

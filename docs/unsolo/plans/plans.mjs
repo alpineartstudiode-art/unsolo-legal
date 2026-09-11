@@ -1,6 +1,7 @@
 const PUBLIC_PLANS_ENDPOINT =
   "https://zgzmixewdrzhwduvhkau.supabase.co/functions/v1/public-plans";
 const CONSENT_KEY = "unsolo-plan-map-google-consent-v1";
+const CONSENT_REVOKED_KEY = "unsolo-plan-map-google-revoked-v1";
 const GOOGLE_SCRIPT_ID = "unsolo-google-maps";
 const EXPECTED_ROOT_KEYS = ["plans", "truncated", "version"];
 const EXPECTED_PLAN_KEYS = [
@@ -171,6 +172,20 @@ function setConsent(granted, storage = localStorage) {
     if (granted) storage.setItem(CONSENT_KEY, "yes");
     else storage.removeItem(CONSENT_KEY);
   } catch { /* The page still works for this visit. */ }
+}
+
+function rememberRevocation(storage = sessionStorage) {
+  try { storage.setItem(CONSENT_REVOKED_KEY, "yes"); } catch { /* The revoke still applies. */ }
+}
+
+function consumeRevocation(storage = sessionStorage) {
+  try {
+    const revoked = storage.getItem(CONSENT_REVOKED_KEY) === "yes";
+    if (revoked) storage.removeItem(CONSENT_REVOKED_KEY);
+    return revoked;
+  } catch {
+    return false;
+  }
 }
 
 export function googleMapsUrl(key) {
@@ -393,6 +408,10 @@ export async function refreshPublicPlans() {
 }
 
 export function initPage() {
+  if (consumeRevocation()) {
+    document.querySelector("#maps-consent-detail").textContent =
+      "Google Maps is off. Your saved choice was removed. The page will not contact Google Maps again unless you choose to load it.";
+  }
   globalThis.addEventListener?.("unsolo:maps-auth-failure", () => {
     setConsent(false);
     clearMarkers();
@@ -409,6 +428,7 @@ export function initPage() {
   document.querySelector("#retry-map").addEventListener("click", activateMap);
   document.querySelector("#turn-off-map").addEventListener("click", () => {
     setConsent(false);
+    rememberRevocation();
     location.reload();
   });
   loadFeed().catch(() => {});

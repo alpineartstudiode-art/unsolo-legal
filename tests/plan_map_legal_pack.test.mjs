@@ -29,8 +29,8 @@ test("notice reflects the verified services, logging boundary and retention", ()
     "48 Stunden",
     "24 hours",
     "24 Stunden",
-    "12 Berlin calendar months",
-    "zwölf Berliner Kalendermonate",
+    "retained for 30 days after they became inactive",
+    "für 30 Tage ab Beginn der\\s+Inaktivität",
     "90 × 24 hours",
     "90 × 24 Stunden",
     "three Berlin calendar\\s+years",
@@ -69,6 +69,8 @@ test("central Impressum is bilingual and contains only verified business facts",
   assert.match(impressum, /Veilchenweg 16/);
   assert.match(impressum, /88046 Friedrichshafen/);
   assert.match(impressum, /unsolo\.box@gmail\.com/);
+  assert.match(impressum, /https:\/\/t\.me\/unsolo_go/);
+  assert.match(impressum, /@unsolo_go/);
   assert.doesNotMatch(impressum, /Handelsregister|register number|USt|VAT|tax ID|odr|online dispute/i);
 });
 
@@ -89,6 +91,16 @@ test("new Plan Map legal texts contain no obsolete architecture claims", () => {
   const combined = privacy + publishCopy;
   assert.doesNotMatch(combined, /Google Forms?|Google Sheets?|manual prelaunch matching|public email|production UnSolo backend/i);
   assert.doesNotMatch(combined, /never logs|no logs|cannot log/i);
+});
+
+test("release pack records the sole unresolved Supabase recovery-copy fact", async () => {
+  const amendment = await readFile(new URL("legal/PLAN_MAP_RETENTION_AMENDMENT_2026-09-10.md", repo), "utf8");
+  const notes = await readFile(new URL("legal/PLAN_MAP_LEGAL_REVIEW_NOTES.md", repo), "utf8");
+  for (const document of [publishCopy, amendment, notes]) {
+    assert.match(document, /WAITING FOR PROVIDER RESPONSE/);
+  }
+  assert.match(amendment, /30 days after `inactive_since`/);
+  assert.doesNotMatch(amendment, /backend implementation NOT|backend still retains|deployed 12-month/i);
 });
 
 test("legal pages load no third-party resources by themselves", () => {

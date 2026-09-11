@@ -1,7 +1,13 @@
 # Plan Map publish copy
 
-Local source for final legal and visual review. This file does not change the
-current Plan Map screen.
+Canonical source for final legal and release review.
+
+Release gate — 11 September 2026: the owner-approved 30-day inactive-Plan
+retention is deployed and verified. Supabase's internal/recovery-copy behavior
+after individual-row deletion is **WAITING FOR PROVIDER RESPONSE**. This is the
+only remaining legal publication gate. Do not infer an answer or weaken the
+Privacy Notice to bypass it. See
+[the retention amendment](PLAN_MAP_RETENTION_AMENDMENT_2026-09-10.md).
 
 ## GeoNames attribution
 
@@ -23,8 +29,9 @@ Body:
 
 Google Maps is off. If you load it, Google will process technical data such as
 your IP address, browser and device information, the referring page, and map
-use. Google may process data outside the EEA. Your choice is saved on this
-device. Read the Plan Map Privacy Notice.
+use. Google may process data outside the EEA, including in the US. Your choice
+is saved on this device. You can turn Google Maps off at any time.
+Read the Plan Map Privacy Notice.
 
 Button:
 
@@ -54,7 +61,8 @@ Text:
 Google Maps ist ausgeschaltet. Wenn Sie die Karte laden, verarbeitet Google
 technische Daten wie Ihre IP-Adresse, Browser- und Geräteinformationen, die
 verweisende Seite und die Kartennutzung. Google kann Daten außerhalb des EWR
-verarbeiten. Ihre Auswahl wird auf diesem Gerät gespeichert. Lesen Sie die
+verarbeiten, auch in den USA. Ihre Auswahl wird auf diesem Gerät gespeichert.
+Sie können Google Maps jederzeit ausschalten. Lesen Sie die
 Datenschutzhinweise zur Plan Map.
 
 Schaltfläche:
@@ -79,7 +87,11 @@ Seite kontaktiert Google Maps erst wieder, wenn Sie die Karte erneut laden.
 - Plan Map Privacy Notice: plan-map-privacy-v1.1
 - Launch notification consent: launch-notification-consent-v1.0
 
-Any material change to either approved text requires a new version identifier.
+Any subsequent change to either released text requires a new version identifier.
+The approved identifiers must never be assigned to different text already
+presented to a user. Final-review edits in this unpublished pack are drafts:
+before release, check the version/text mapping against any notice previously
+served with these identifiers. Do not rewrite historical consent evidence.
 
 Approved launch-notification-consent-v1.0 text:
 

@@ -121,6 +121,17 @@ test("route uses approved branding and opens the Add Plan dialog", async () => {
   assert.match(html, /<dialog class="add-plan-dialog" id="add-plan-dialog"/);
   assert.match(html, /<form class="add-plan-form" id="add-plan-form" novalidate>/);
   assert.doesNotMatch(html.match(/<button class="add-plan-button"[^>]*>/)?.[0] ?? "", /disabled|is-coming-soon/);
+  assert.match(html, /id="maps-consent-detail">Google Maps is off\./);
+  assert.match(html, /data outside the EEA, including in the US/);
+  assert.match(html, /href="\.\.\/legal\/plan-map-privacy\.html">Plan Map Privacy Notice/);
+  assert.match(html, /href="\.\.\/legal\/impressum\.html">Impressum/);
+});
+
+test("revoke preserves the verified reload path and shows approved result copy", async () => {
+  const script = await readFile(new URL("plans.mjs", root), "utf8");
+  assert.match(script, /unsolo-plan-map-google-revoked-v1/);
+  assert.match(script, /Google Maps is off\. Your saved choice was removed\. The page will not contact Google Maps again unless you choose to load it\./);
+  assert.match(script, /#turn-off-map[\s\S]*?setConsent\(false\);[\s\S]*?rememberRevocation\(\);[\s\S]*?location\.reload\(\);/);
 });
 
 test("uses only approved app tokens and self-hosted Poppins", async () => {
@@ -192,9 +203,10 @@ test("keeps the short-landscape consent stack inside the map card", async () => 
   assert.ok(landscape);
   assert.match(landscape, /\.consent-panel \{ padding: 6px 18px; \}/);
   assert.match(landscape, /\.consent-art \{ display: none; \}/);
+  assert.match(landscape, /\.consent-copy \{[\s\S]*?grid-template-columns: minmax\(0, 1fr\) minmax\(210px, 240px\);/);
   assert.match(landscape, /\.map-kicker \{[^}]*font-size: 12px;[^}]*line-height: 14px;/);
   assert.match(landscape, /\.consent-copy h2 \{[^}]*font-size: 18px;[^}]*line-height: 22px;/);
-  assert.match(landscape, /\.consent-copy p:not\(\.map-kicker\) \{[^}]*font-size: 14px;[^}]*line-height: 18px;/);
+  assert.match(landscape, /\.consent-copy p:not\(\.map-kicker\) \{[^}]*font-size: 13px;[^}]*line-height: 16px;/);
   assert.match(landscape, /\.consent-button \{[^}]*min-height: 52px;/);
   assert.match(landscape, /\.privacy-link \{[^}]*font-size: 13px;[^}]*line-height: 18px;/);
 });
