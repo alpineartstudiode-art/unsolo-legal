@@ -93,14 +93,52 @@ test("new Plan Map legal texts contain no obsolete architecture claims", () => {
   assert.doesNotMatch(combined, /never logs|no logs|cannot log/i);
 });
 
-test("release pack records the sole unresolved Supabase recovery-copy fact", async () => {
+test("release pack records owner approval with the unresolved provider risk", async () => {
   const amendment = await readFile(new URL("legal/PLAN_MAP_RETENTION_AMENDMENT_2026-09-10.md", repo), "utf8");
   const notes = await readFile(new URL("legal/PLAN_MAP_LEGAL_REVIEW_NOTES.md", repo), "utf8");
   for (const document of [publishCopy, amendment, notes]) {
     assert.match(document, /WAITING FOR PROVIDER RESPONSE/);
+    assert.match(document, /SU-470508/);
+    assert.match(document, /DOCUMENTED RESIDUAL COMPLIANCE\s+RISK/);
+    assert.match(document, /not a publication\s+blocker/);
   }
+  assert.match(notes, /Daria Fokina, as controller\/owner/);
+  assert.match(notes, /do not by\s+themselves establish compliance/);
+  assert.match(notes, /using a new notice version after publication/);
+  assert.doesNotMatch(privacy + publishCopy + amendment,
+    /publication remains blocked|only remaining legal publication gate|legal pack remains unpublished while/i);
   assert.match(amendment, /30 days after `inactive_since`/);
   assert.doesNotMatch(amendment, /backend implementation NOT|backend still retains|deployed 12-month/i);
+});
+
+test("both notice languages disclose backup uncertainty without claiming a known deletion criterion", () => {
+  const en = privacy.split("<h3>Exports, backups and provider recovery systems</h3>")[1]
+    .split("<h2>7.")[0].replace(/<[^>]+>/g, "").replace(/\s+/g, " ");
+  const de = privacy.split("<h3>Exporte, Backups und Wiederherstellungssysteme des Anbieters</h3>")[1]
+    .split("<h2>7.")[0].replace(/<[^>]+>/g, "").replace(/\s+/g, " ");
+  for (const text of [en, de]) {
+    assert.match(text, /Supabase Pte\. Ltd\./);
+    assert.match(text, /PITR/);
+    assert.match(text, /SU-470508/);
+  }
+  assert.match(en, /We maintain no manual exports or separate backups of Plan or email\/contact data/);
+  assert.match(en, /Customer-facing project backups are not enabled or included/);
+  assert.match(en, /\(PITR\) is not enabled/);
+  assert.match(en, /Residual data may remain temporarily/);
+  assert.match(en, /We have not verified which such copies, if any/);
+  assert.match(en, /does not publish a specific per-row internal-recovery retention duration in the documentation available to us/);
+  assert.match(en, /cannot state a verified maximum duration or the precise deletion criterion/);
+  assert.match(en, /one-day retention of our Free-project API\/database logs does not establish the retention period for recovery copies/);
+  assert.match(en, /we will promptly update this notice/);
+  assert.match(de, /keine manuellen Exporte oder gesonderten Backups/);
+  assert.match(de, /weder aktiviert noch enthalten/);
+  assert.match(de, /\(PITR\) ist nicht aktiviert/);
+  assert.match(de, /Restdaten können vorübergehend/);
+  assert.match(de, /Wir haben nicht verifiziert/);
+  assert.match(de, /weder eine verifizierte Höchstdauer noch das genaue Löschkriterium/);
+  assert.match(de, /aktualisieren wir diese Hinweise unverzüglich/);
+  assert.match(privacy, /https:\/\/supabase\.com\/docs\/guides\/platform\/backups/);
+  assert.match(privacy, /https:\/\/supabase\.com\/legal\/customer-resources\/data-processing-addendum/);
 });
 
 test("legal pages load no third-party resources by themselves", () => {

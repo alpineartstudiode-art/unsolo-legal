@@ -2,8 +2,12 @@
 
 Status on 11 September 2026: **approved, deployed, and live-verified** for the
 separate Plan Map backend. This remains a narrow amendment, not a new
-architecture. The only legal publication gate is Supabase internal/recovery-copy
-behavior after row deletion: **WAITING FOR PROVIDER RESPONSE**.
+architecture. Supabase internal/recovery-copy behavior after row deletion is
+**WAITING FOR PROVIDER RESPONSE**, ticket **SU-470508**. On 11 September 2026,
+the controller approved publication with this **DOCUMENTED RESIDUAL COMPLIANCE
+RISK**, not a publication blocker. The unknown provider criterion is not
+certified as compliant or treated as a known retention rule. See the current
+decision in [the legal review notes](PLAN_MAP_LEGAL_REVIEW_NOTES.md).
 
 The deployed rule is 30 days after `inactive_since`, followed by deletion on
 the next daily cleanup run.
@@ -67,7 +71,9 @@ demonstrate that launch-notification consent was obtained if later disputed.
 Plaintext email must not be retained solely for this evidence.
 
 The backend implementation of this narrow amendment is deployed and verified.
-The legal pack remains unpublished while the provider-copy fact is pending.
+The controller's 11 September 2026 decision authorizes publication with the
+provider-copy fact documented as a residual compliance risk while SU-470508
+is pending. This does not change any retention period or backend behavior.
 ```
 
 ## Preserved implementation boundaries
@@ -98,8 +104,11 @@ release candidate.
 
 The current Free project has no customer-enabled scheduled backups or PITR.
 Provider-internal copies and their deletion after an individual row deletion
-remain unverified. The question is **WAITING FOR PROVIDER RESPONSE**; no answer
-is inferred in this release candidate.
+remain unverified. Ticket **SU-470508** is **WAITING FOR PROVIDER RESPONSE**;
+no answer is inferred. The owner-approved notice distinguishes exact live-data
+deletion rules from this unknown provider criterion and commits to a prompt
+update if Supabase supplies more specific applicable information. This question
+remains open as a documented residual compliance risk, not a publication blocker.
 
 > We use a Supabase Free project in the EU (Frankfurt). Automatic project backups and PITR are not enabled.
 >

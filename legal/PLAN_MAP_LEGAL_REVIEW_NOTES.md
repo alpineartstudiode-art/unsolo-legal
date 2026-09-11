@@ -2,24 +2,83 @@
 
 **Current status — 11 September 2026:** the 30-day inactive-Plan policy is
 deployed and live-verified; the unchanged three-year minimal evidence period is
-approved. The sole remaining legal publication gate is Supabase
-internal/recovery-copy behavior after deletion of individual rows:
-**WAITING FOR PROVIDER RESPONSE**.
+approved. Daria Fokina, as controller/owner, has approved publication before
+Supabase ticket **SU-470508** is resolved. The unknown provider-managed
+internal/recovery-copy criterion is a **DOCUMENTED RESIDUAL COMPLIANCE RISK**,
+not a publication blocker under this decision. The ticket remains
+**WAITING FOR PROVIDER RESPONSE**. No provider retention rule or numerical
+maximum is inferred, and full Article 13 compliance for the unknown criterion
+is not certified by the owner's acceptance of the risk.
 
 [Exact master-spec/addendum wording and owner-prepared Supabase inquiry](PLAN_MAP_RETENTION_AMENDMENT_2026-09-10.md).
 
 The earlier review/follow-up sections below are dated history. Their statements
-that the purpose or 30-day policy awaits owner approval are superseded by this
-entry. Unrelated topics are not reopened.
+that the purpose or 30-day policy awaits owner approval, or that the unresolved
+provider-copy fact prohibits publication, are superseded by this entry and the
+publication decision below. Unrelated topics are not reopened.
 
 | Item | Publication review |
 | --- | --- |
-| Privacy Notice | **RC READY; PUBLICATION GATED** — deployed 30-day behavior is aligned; provider-copy deletion remains unverified |
+| Privacy Notice | **OWNER-APPROVED FOR PUBLICATION WITH DOCUMENTED RESIDUAL RISK** — exact live-data periods retained; unknown provider-copy criterion expressly disclosed in EN/DE |
 | Impressum contact requirement | **PASS on confirmed operating facts (legal assessment)** — email plus actively monitored direct Telegram contact; see follow-up limits below |
 | GeoNames attribution | **PASS** — source, CC BY 4.0 link and adaptation indication present |
 | Maps consent/revoke and publish copy | **PASS** — click, US disclosure, notice link, local choice and withdrawal are integrated in the RC |
 
-## Evidence boundary
+## Controller publication decision — 11 September 2026
+
+Decision-maker: Daria Fokina, controller/owner. Scope: publish the Plan Map
+legal pack with the exact conservative English recovery-copy wording accepted
+in the final review and its faithful German translation. This supersedes the
+earlier publication gate only; architecture, retention design, backend and
+immutable released legal identifiers are unchanged.
+
+Basis recorded by the controller:
+
+- Controller-managed deletion periods are defined and technically verified.
+- No manual Plan/contact exports or separate backups are maintained.
+- Customer-facing Supabase project backups and PITR are not enabled.
+- Supabase is transparently identified as processor. No unlawful or indefinite
+  provider retention has been established; that is not proof of its absence.
+- The notice distinguishes live-database deletion from potential residual
+  provider-managed copies. It expressly states that the applicable per-row
+  internal-recovery duration and deletion criterion have not been verified.
+- No numerical maximum, automatic-overwrite claim or immediate-erasure promise
+  is made. The one-day hosted-log period is not attributed to recovery copies.
+- Ticket SU-470508 seeks the missing provider detail. The controller commits to
+  review the response and promptly update the notice if it supplies more
+  specific applicable information, using a new notice version after publication.
+
+Legal assessment retained: Article 13(2)(a) permits a meaningful retention
+criterion when a period cannot be specified; it does not invariably require a
+number. Disclosure of an unknown criterion and a pending inquiry do not by
+themselves establish compliance. Storage limitation and controller/processor
+accountability remain applicable. The owner knowingly accepts this unresolved
+compliance uncertainty for publication; the ticket is not a waiver of those
+obligations and the approval is not an unconditional GDPR certification.
+
+Risk owner and follow-up: Daria Fokina. Status: accepted for publication,
+provider inquiry open. If the response reveals incompatible retention, assess
+and address the actual issue as well as correcting the notice. Do not silently
+turn new information into a retention extension. No new or separate proven
+blocker was identified in this scoped update.
+
+Sources retained from the final review:
+[GDPR Articles 5, 13 and 28](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng),
+[transparency guidance applied in supervisory enforcement](https://www.edpb.europa.eu/sites/default/files/article-60-final-decisions/publishable_fr_2019-12_right_to_be_informed_decisionpublic.pdf),
+[Supabase DPA](https://supabase.com/legal/customer-resources/data-processing-addendum),
+[Supabase backup documentation](https://supabase.com/docs/guides/platform/backups).
+
+## Earlier review evidence (historical)
+
+The current scoped update passed **10 legal-pack tests / 0 failures**. These
+checks cover the bilingual disclosure, pending ticket, accepted-risk status,
+unchanged legal identifiers, existing retention/privacy copy and third-party
+resource boundary. A direct comparison with the RC base confirmed that the
+existing EN/DE live-database retention text is unchanged. Only the Privacy
+Notice, three legal records and legal-pack test file changed; `git diff --check`
+passed. Tests establish document consistency, not legal compliance certification.
+
+The following evidence describes the earlier reviews and is preserved as history.
 
 Reviewed all four requested legal files in `/tmp/unsolo-frontend-pages` and the
 frozen master in the project's `output/`, especially sections 12.2 and 13.
@@ -385,10 +444,12 @@ copy retention and erasure after individual row deletion in an active Free
 project. Use the owner's exact inquiry in the linked amendment; it has not been
 sent by the assistant.
 
-The local Privacy Notice now contains the approved 30-day rule and purpose in
-both languages and clearly scoped consent-evidence wording. Its source comment,
-publish-copy release gate and this record prohibit publication before resolution
-of the provider-copy question. The email's independent
+The local Privacy Notice contains the approved 30-day rule and purpose in
+both languages and clearly scoped consent-evidence wording. The earlier source
+comment and publish-copy gate prohibited publication before resolution of the
+provider-copy question; that gate is superseded by the controller's
+11 September 2026 publication decision at the top of this record.
+The email's independent
 12-month maximum remains unchanged; earlier deletion of its Plan can end email
 retention sooner under the existing rules.
 

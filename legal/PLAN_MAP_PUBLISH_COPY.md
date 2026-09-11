@@ -2,11 +2,17 @@
 
 Canonical source for final legal and release review.
 
-Release gate — 11 September 2026: the owner-approved 30-day inactive-Plan
-retention is deployed and verified. Supabase's internal/recovery-copy behavior
-after individual-row deletion is **WAITING FOR PROVIDER RESPONSE**. This is the
-only remaining legal publication gate. Do not infer an answer or weaken the
-Privacy Notice to bypass it. See
+Owner publication approval — 11 September 2026: Daria Fokina, as controller,
+approves publication with **DOCUMENTED RESIDUAL COMPLIANCE RISK** concerning
+Supabase's internal/recovery-copy deletion criterion. Ticket **SU-470508** is
+**WAITING FOR PROVIDER RESPONSE**. This unresolved criterion is not a publication
+blocker under the owner's decision. The approved conservative recovery-copy
+wording is included in the EN/DE Privacy Notice. No provider answer, numerical
+maximum, automatic-overwrite rule or immediate-erasure guarantee is inferred.
+The notice will be updated promptly if the ticket provides more specific
+applicable information; released legal version identifiers remain immutable.
+This approval does not certify that the unknown criterion meets Article 13.
+See [the decision record](PLAN_MAP_LEGAL_REVIEW_NOTES.md) and
 [the retention amendment](PLAN_MAP_RETENTION_AMENDMENT_2026-09-10.md).
 
 ## GeoNames attribution
