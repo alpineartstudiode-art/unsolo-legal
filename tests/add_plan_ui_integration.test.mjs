@@ -72,6 +72,16 @@ test("Add Plan controls share the CTA geometry without inactive outlines", async
   assert.match(css, /\.control-trailing-icon\s*\{[\s\S]*?right: 16px;[\s\S]*?transform: translateY\(-50%\);/);
 });
 
+test("native date and month controls can shrink inside the Add Plan panel", async () => {
+  const css = await readFile(new URL("plans.css", root), "utf8");
+  assert.match(css, /\.form-field input,[\s\S]*?width: 100%;[\s\S]*?min-width: 0;[\s\S]*?max-width: 100%;[\s\S]*?box-sizing: border-box;/);
+  assert.match(css, /\.control-icon-shell,[\s\S]*?\.month-input-shell\s*\{[^}]*min-width: 0;/);
+  assert.match(css, /\.month-input-shell\s*\{[^}]*width: 100%;[^}]*max-width: 100%;/);
+  assert.match(css, /\.date-fields\s*\{[\s\S]*?width: 100%;[\s\S]*?min-width: 0;[\s\S]*?max-width: 100%;[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/);
+  assert.match(css, /\.control-trailing-icon\s*\{[\s\S]*?right: 16px;/);
+  assert.doesNotMatch(css, /input\[type=["']?(?:date|month)["']?\][^{]*\{[^}]*appearance:\s*none/);
+});
+
 test("all backend failures stay in simple user-facing language", () => {
   for (const kind of ["validation", "rate_limited", "kill_switch", "global_limit", "conflict", "temporary_failure"]) {
     const copy = submitErrorCopy(new SubmitPlanError(kind));

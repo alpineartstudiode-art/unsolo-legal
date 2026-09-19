@@ -521,7 +521,10 @@ body.add-plan-open { overflow: hidden; }
 .form-field input,
 .form-field select {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 52px;
+  box-sizing: border-box;
   padding: 13px 18px;
   border: 1px solid transparent;
   border-radius: 999px;
@@ -536,6 +539,7 @@ body.add-plan-open { overflow: hidden; }
 .form-field input::placeholder { color: var(--text-muted); opacity: 1; }
 .control-icon-shell,
 .month-input-shell { position: relative; display: block; min-width: 0; }
+.month-input-shell { width: 100%; max-width: 100%; }
 .select-control-shell select { appearance: none; padding-right: 50px; }
 .month-input-shell input { padding-right: 50px; }
 .month-input-shell input::-webkit-calendar-picker-indicator { width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; }
@@ -627,7 +631,14 @@ body.add-plan-open { overflow: hidden; }
 
 .date-mode-options input:checked + span { border-color: var(--primary); color: var(--text-primary); box-shadow: inset 0 0 0 1px var(--primary); }
 .date-mode-options input:focus-visible + span { outline: 3px solid var(--summer); outline-offset: 2px; }
-.date-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.date-fields {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
 
 .email-section { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid rgb(243 236 227 / 9%); }
 .consent-check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; color: var(--text-secondary); font-size: 12px; line-height: 18px; }

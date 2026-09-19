@@ -48,6 +48,7 @@ class Handler(SimpleHTTPRequestHandler):
             maps_enabled = query.get("maps", ["0"])[0] == "1"
             form_open = query.get("form", ["0"])[0] == "1"
             revoke_after = query.get("revoke", ["0"])[0] == "1"
+            date_mode = query.get("date_mode", ["flexible"])[0]
             body = f"""<!doctype html><meta charset=\"utf-8\"><title>RC viewport test</title>
 <style>body{{margin:0;background:#111;color:#fff;font:14px monospace}} iframe{{border:0;display:block}} pre{{white-space:pre-wrap}}</style>
 <iframe id=\"subject\" title=\"Plan Map viewport subject\"></iframe><pre id=\"result\">running</pre>
@@ -65,10 +66,19 @@ function sample(label) {{
   const card = d.querySelector('.map-card'); const feed = d.querySelector('.feed-panel');
   const footer = d.querySelector('footer'); const script = d.querySelector('#unsolo-google-maps');
   const dialog = d.querySelector('#add-plan-dialog'); const fields = d.querySelector('.add-plan-fields');
+  const panel = d.querySelector('.add-plan-panel'); const dateFields = d.querySelector('#exact-date-fields');
+  const dateFrom = d.querySelector('#plan-date-from'); const dateTo = d.querySelector('#plan-date-to');
+  const month = d.querySelector('#plan-month');
   const addPlan = d.querySelector('#add-plan-open'); const loadMaps = d.querySelector('#load-map');
   const addStyle = w.getComputedStyle(addPlan); const loadStyle = w.getComputedStyle(loadMaps);
   const googleResources = [...w.performance.getEntriesByType('resource')]
     .filter((entry) => /googleapis|gstatic/i.test(entry.name)).length;
+  const panelRect = panel.getBoundingClientRect();
+  const bounds = (control) => {{
+    const rect = control.getBoundingClientRect();
+    return {{ left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width),
+      insidePanel: rect.left >= panelRect.left && rect.right <= panelRect.right }};
+  }};
   return {{ label, width: root.clientWidth, height: root.clientHeight,
     horizontalOverflow: root.scrollWidth > root.clientWidth,
     verticalOverflow: root.scrollHeight > root.clientHeight,
@@ -86,13 +96,20 @@ function sample(label) {{
     addPlanColor: addStyle.color,
     addPlanBorder: addStyle.borderColor,
     loadMapsVisible: !d.querySelector('#consent-panel').hidden,
-    loadMapsBackground: loadStyle.backgroundImage }};
+    loadMapsBackground: loadStyle.backgroundImage,
+    dateMode: d.querySelector('input[name="date_mode"]:checked')?.value,
+    dateGridOverflow: dateFields.scrollWidth > dateFields.clientWidth,
+    dateFrom: bounds(dateFrom), dateTo: bounds(dateTo), month: bounds(month) }};
 }}
 async function run() {{
   size(390, 844); frame.src = '/unsolo/plans/';
   await new Promise((resolve) => frame.addEventListener('load', resolve, {{once:true}}));
   await wait({3000 if maps_enabled else 600});
-  if ({str(form_open).lower()}) {{ frame.contentDocument.querySelector('#add-plan-open').click(); await wait(250); }}
+  if ({str(form_open).lower()}) {{
+    frame.contentDocument.querySelector('#add-plan-open').click(); await wait(250);
+    const mode = frame.contentDocument.querySelector(`input[name="date_mode"][value="{date_mode}"]`);
+    if (mode) {{ mode.click(); await wait(100); }}
+  }}
   const results = [sample('portrait-1')];
   size(844, 320); await wait(500); results.push(sample('landscape-1'));
   size(390, 844); await wait(500); results.push(sample('portrait-2'));
