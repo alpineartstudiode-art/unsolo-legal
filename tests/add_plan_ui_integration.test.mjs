@@ -75,8 +75,12 @@ test("Add Plan controls share the CTA geometry without inactive outlines", async
 test("native date and month controls can shrink inside the Add Plan panel", async () => {
   const css = await readFile(new URL("plans.css", root), "utf8");
   assert.match(css, /\.form-field input,[\s\S]*?width: 100%;[\s\S]*?min-width: 0;[\s\S]*?max-width: 100%;[\s\S]*?box-sizing: border-box;/);
+  assert.match(css, /\.form-field input\[type="date"\],[\s\S]*?input\[type="month"\]\s*\{[\s\S]*?inline-size: 100%;[\s\S]*?min-inline-size: 0;[\s\S]*?max-inline-size: 100%;[\s\S]*?padding: 0;/);
+  assert.match(css, /input\[type="date"\]::\-webkit-date-and-time-value,[\s\S]*?input\[type="month"\]::\-webkit-date-and-time-value\s*\{[\s\S]*?min-inline-size: 0;[\s\S]*?max-inline-size: 100%;[\s\S]*?margin: 0;[\s\S]*?padding-inline: 18px;/);
+  assert.match(css, /input\[type="date"\]::\-webkit-datetime-edit,[\s\S]*?input\[type="month"\]::\-webkit-datetime-edit\s*\{[\s\S]*?min-inline-size: 0;[\s\S]*?padding: 0;/);
   assert.match(css, /\.control-icon-shell,[\s\S]*?\.month-input-shell\s*\{[^}]*min-width: 0;/);
   assert.match(css, /\.month-input-shell\s*\{[^}]*width: 100%;[^}]*max-width: 100%;/);
+  assert.match(css, /\.month-input-shell input::\-webkit-date-and-time-value\s*\{[^}]*padding-inline: 18px 50px;/);
   assert.match(css, /\.date-fields\s*\{[\s\S]*?width: 100%;[\s\S]*?min-width: 0;[\s\S]*?max-width: 100%;[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/);
   assert.match(css, /\.control-trailing-icon\s*\{[\s\S]*?right: 16px;/);
   assert.doesNotMatch(css, /input\[type=["']?(?:date|month)["']?\][^{]*\{[^}]*appearance:\s*none/);

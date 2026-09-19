@@ -537,11 +537,32 @@ body.add-plan-open { overflow: hidden; }
 }
 
 .form-field input::placeholder { color: var(--text-muted); opacity: 1; }
+.form-field input[type="date"],
+.form-field input[type="month"] {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  padding: 0;
+}
+.form-field input[type="date"]::-webkit-date-and-time-value,
+.form-field input[type="month"]::-webkit-date-and-time-value {
+  inline-size: auto;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin: 0;
+  padding-inline: 18px;
+}
+.form-field input[type="date"]::-webkit-datetime-edit,
+.form-field input[type="month"]::-webkit-datetime-edit {
+  min-inline-size: 0;
+  padding: 0;
+}
 .control-icon-shell,
 .month-input-shell { position: relative; display: block; min-width: 0; }
 .month-input-shell { width: 100%; max-width: 100%; }
 .select-control-shell select { appearance: none; padding-right: 50px; }
-.month-input-shell input { padding-right: 50px; }
+.month-input-shell input::-webkit-date-and-time-value { padding-inline: 18px 50px; }
 .month-input-shell input::-webkit-calendar-picker-indicator { width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; }
 .month-input-shell:not(.has-value) input { color: transparent; }
 .month-input-shell:not(.has-value) input::-webkit-datetime-edit { opacity: 0; }

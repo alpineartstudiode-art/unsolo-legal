@@ -73,12 +73,18 @@ function sample(label) {{
   const addStyle = w.getComputedStyle(addPlan); const loadStyle = w.getComputedStyle(loadMaps);
   const googleResources = [...w.performance.getEntriesByType('resource')]
     .filter((entry) => /googleapis|gstatic/i.test(entry.name)).length;
-  const panelRect = panel.getBoundingClientRect();
-  const bounds = (control) => {{
-    const rect = control.getBoundingClientRect();
+  const panelRect = panel.getBoundingClientRect(); const fieldsRect = fields.getBoundingClientRect();
+  const containedBy = (inner, outer) => inner.left >= outer.left - 0.5 && inner.right <= outer.right + 0.5;
+  const bounds = (control, wrapper) => {{
+    const rect = control.getBoundingClientRect(); const wrapperRect = wrapper.getBoundingClientRect();
+    const style = w.getComputedStyle(control);
     return {{ left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width),
-      insidePanel: rect.left >= panelRect.left && rect.right <= panelRect.right }};
+      insidePanel: containedBy(rect, panelRect), insideFields: containedBy(rect, fieldsRect),
+      insideWrapper: containedBy(rect, wrapperRect), wrapperInsideFields: containedBy(wrapperRect, fieldsRect),
+      leftRadius: style.borderTopLeftRadius, rightRadius: style.borderTopRightRadius }};
   }};
+  const dateGridRect = dateFields.getBoundingClientRect();
+  const monthShell = month.closest('.month-input-shell');
   return {{ label, width: root.clientWidth, height: root.clientHeight,
     horizontalOverflow: root.scrollWidth > root.clientWidth,
     verticalOverflow: root.scrollHeight > root.clientHeight,
@@ -99,7 +105,10 @@ function sample(label) {{
     loadMapsBackground: loadStyle.backgroundImage,
     dateMode: d.querySelector('input[name="date_mode"]:checked')?.value,
     dateGridOverflow: dateFields.scrollWidth > dateFields.clientWidth,
-    dateFrom: bounds(dateFrom), dateTo: bounds(dateTo), month: bounds(month) }};
+    dateGridInsideFields: containedBy(dateGridRect, fieldsRect),
+    dateFrom: bounds(dateFrom, dateFrom.closest('.form-field')),
+    dateTo: bounds(dateTo, dateTo.closest('.form-field')),
+    month: bounds(month, monthShell), monthShellInsideFields: containedBy(monthShell.getBoundingClientRect(), fieldsRect) }};
 }}
 async function run() {{
   size(390, 844); frame.src = '/unsolo/plans/';
