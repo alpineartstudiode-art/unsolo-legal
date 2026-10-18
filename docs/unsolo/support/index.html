@@ -161,6 +161,18 @@
         @media (min-width: 768px) {
             .site-footer { padding: 20px 32px 28px; }
         }
+
+        /* Long support/deletion content must remain reachable on small screens. */
+        html, body { height: auto; min-height: 100%; overflow: auto; }
+        .page { height: auto; min-height: 100dvh; max-height: none; overflow: visible; }
+        .main { flex: 1 0 auto; max-width: 800px; overflow: visible; }
+        .deletion { width: 100%; margin-top: 40px; padding-top: 28px; border-top: 1px solid #55545a; text-align: left; scroll-margin-top: 24px; }
+        .deletion h2 { font-size: 26px; line-height: 1.3; margin: 0 0 20px; }
+        .deletion p { font-size: 16px; line-height: 1.75; overflow-wrap: anywhere; }
+        .deletion a { color: #F3ECE3; text-underline-offset: 3px; }
+        .deletion .delete-request { display: inline-block; padding: 12px 18px; border: 1px solid #F3ECE3; border-radius: 8px; font-weight: 600; text-decoration: none; }
+        .deletion a:focus-visible, .lang-item:focus-visible { outline: 2px solid #F3ECE3; outline-offset: 4px; }
+        @media (max-width: 480px) { .main { padding: 28px 20px 20px; } .headline { font-size: 30px; } .deletion h2 { font-size: 23px; } }
     </style>
 </head>
 <body>
@@ -168,6 +180,18 @@
         <main class="main">
             <h1 class="headline" id="headline">UnSolo Support</h1>
             <p class="contact" id="contact"></p>
+            <section class="deletion" id="delete-account" aria-labelledby="deletion-title">
+                <h2 id="deletion-title">Delete your UnSolo account</h2>
+                <p id="deletion-p1">You can request deletion of your UnSolo account and associated personal data by email, without installing or opening the app.</p>
+                <p id="deletion-p2">Email unsolo.box@gmail.com with the subject “Delete my UnSolo account”. For Apple or Google sign-in, include the email linked to your UnSolo account (including your Apple private relay address, if used) and your profile name. If possible, send the request from that address. Never send passwords, sign-in codes, access tokens or identity documents in your initial request.</p>
+                <p id="deletion-p3">Guest accounts: include your profile name and explain that you used Continue as Guest. A profile name alone is not proof of ownership. We will reply to arrange verification; without enough evidence to safely identify and verify the account, we cannot delete it on the basis of a name alone. You do not need to reinstall the app to submit a request.</p>
+                <p id="deletion-p4">We will verify that the account belongs to you and complete deletion within 30 days after ownership is confirmed. Deletion is permanent and cannot be undone.</p>
+                <p id="deletion-p5">Deletion covers the account and associated profile details, profile photos, travel destinations and dates, preferences, matches, likes, chats and messages, and push notification tokens held by UnSolo. We also handle deletion requests for associated data held by our service providers where applicable; turning off analytics alone does not erase previously collected data.</p>
+                <p id="deletion-p6">Limited records may be retained where necessary for legal obligations, security, fraud prevention or dispute resolution, only for as long as those purposes require. Crashlytics retains uploaded crash data for 90 days before removal from live and backup systems begins. See our Privacy Policy for further details; we will explain any applicable retention when responding to your request.</p>
+                <p id="deletion-p7">You can also delete your account in the app’s Settings.</p>
+                <p><a class="delete-request" id="deleteRequest" href="mailto:unsolo.box@gmail.com?subject=Delete%20my%20UnSolo%20account">Request account deletion</a></p>
+                <p><a id="privacyLink" href="../legal/privacy.html#en">Privacy Policy</a></p>
+            </section>
         </main>
         <footer class="site-footer">
             <div class="footer-row">
@@ -232,6 +256,93 @@
             }
         };
 
+        var DELETION_COPY = {
+    "en": [
+        "Delete your UnSolo account",
+        "You can request deletion of your UnSolo account and associated personal data by email, without installing or opening the app.",
+        "Email unsolo.box@gmail.com with the subject “Delete my UnSolo account”. For Apple or Google sign-in, include the email linked to your UnSolo account (including your Apple private relay address, if used) and your profile name. If possible, send the request from that address. Never send passwords, sign-in codes, access tokens or identity documents in your initial request.",
+        "Guest accounts: include your profile name and explain that you used Continue as Guest. A profile name alone is not proof of ownership. We will reply to arrange verification; without enough evidence to safely identify and verify the account, we cannot delete it on the basis of a name alone. You do not need to reinstall the app to submit a request.",
+        "We will verify that the account belongs to you and complete deletion within 30 days after ownership is confirmed. Deletion is permanent and cannot be undone.",
+        "Deletion covers the account and associated profile details, profile photos, travel destinations and dates, preferences, matches, likes, chats and messages, and push notification tokens held by UnSolo. We also handle deletion requests for associated data held by our service providers where applicable; turning off analytics alone does not erase previously collected data.",
+        "Limited records may be retained where necessary for legal obligations, security, fraud prevention or dispute resolution, only for as long as those purposes require. Crashlytics retains uploaded crash data for 90 days before removal from live and backup systems begins. See our Privacy Policy for further details; we will explain any applicable retention when responding to your request.",
+        "You can also delete your account in the app’s Settings.",
+        "Request account deletion",
+        "Privacy Policy"
+    ],
+    "de": [
+        "Dein UnSolo-Konto löschen",
+        "Du kannst die Löschung deines UnSolo-Kontos und der zugehörigen personenbezogenen Daten per E-Mail anfordern, ohne die App zu installieren oder zu öffnen.",
+        "Schreibe an unsolo.box@gmail.com mit dem Betreff „Mein UnSolo-Konto löschen“. Gib bei Apple- oder Google-Anmeldung die mit deinem UnSolo-Konto verknüpfte E-Mail-Adresse (gegebenenfalls die private Apple-Relay-Adresse) und deinen Profilnamen an. Sende die Anfrage möglichst von dieser Adresse. Sende in deiner ersten Anfrage niemals Passwörter, Anmeldecodes, Zugriffstoken oder Ausweisdokumente.",
+        "Gastkonten: Gib deinen Profilnamen an und erwähne, dass du „Als Gast fortfahren“ verwendet hast. Ein Profilname allein belegt keine Kontoinhaberschaft. Wir antworten dir, um die Verifizierung zu klären. Ohne ausreichende Nachweise zur sicheren Zuordnung und Verifizierung können wir ein Konto nicht allein anhand eines Namens löschen. Für die Anfrage musst du die App nicht erneut installieren.",
+        "Wir prüfen, ob das Konto dir gehört, und schließen die Löschung innerhalb von 30 Tagen nach Bestätigung der Kontoinhaberschaft ab. Die Löschung ist endgültig und kann nicht rückgängig gemacht werden.",
+        "Gelöscht werden das Konto und die zugehörigen Profildaten, Profilfotos, Reiseziele und -daten, Präferenzen, Matches, Likes, Chats und Nachrichten sowie die bei UnSolo gespeicherten Push-Benachrichtigungstoken. Soweit zutreffend bearbeiten wir auch Löschanfragen für zugehörige Daten bei unseren Dienstleistern. Das Ausschalten der Analyse allein löscht keine bereits erhobenen Daten.",
+        "Begrenzte Aufzeichnungen können für gesetzliche Pflichten, Sicherheit, Betrugsprävention oder Streitbeilegung aufbewahrt werden, jedoch nur so lange, wie dafür erforderlich. Crashlytics bewahrt hochgeladene Absturzdaten 90 Tage auf, bevor die Entfernung aus Live- und Sicherungssystemen beginnt. Weitere Informationen findest du in unserer Datenschutzerklärung. Über eine zutreffende weitere Aufbewahrung informieren wir dich bei der Bearbeitung deiner Anfrage.",
+        "Du kannst dein Konto auch in den Einstellungen der App löschen.",
+        "Kontolöschung anfordern",
+        "Datenschutzerklärung"
+    ],
+    "es": [
+        "Eliminar tu cuenta de UnSolo",
+        "Puedes solicitar por correo electrónico la eliminación de tu cuenta de UnSolo y de los datos personales asociados, sin instalar ni abrir la aplicación.",
+        "Escribe a unsolo.box@gmail.com con el asunto «Eliminar mi cuenta de UnSolo». Si inicias sesión con Apple o Google, indica el correo vinculado a tu cuenta de UnSolo (incluida la dirección privada de retransmisión de Apple, si la utilizas) y tu nombre de perfil. Si es posible, envía la solicitud desde esa dirección. Nunca envíes contraseñas, códigos de acceso, tokens ni documentos de identidad en tu primera solicitud.",
+        "Cuentas de invitado: indica tu nombre de perfil y explica que utilizaste «Continuar como invitado». El nombre de perfil por sí solo no demuestra que la cuenta te pertenece. Te responderemos para acordar la verificación. Sin pruebas suficientes para identificar y verificar la cuenta de forma segura, no podemos eliminarla basándonos solo en un nombre. No necesitas reinstalar la aplicación para enviar la solicitud.",
+        "Verificaremos que la cuenta te pertenece y completaremos la eliminación en un plazo de 30 días tras confirmar la titularidad. La eliminación es permanente e irreversible.",
+        "La eliminación incluye la cuenta y los datos del perfil asociados, fotos de perfil, destinos y fechas de viaje, preferencias, coincidencias, me gusta, chats y mensajes, y tokens de notificaciones push almacenados por UnSolo. También gestionamos, cuando corresponda, las solicitudes relativas a datos asociados conservados por nuestros proveedores. Desactivar la analítica no elimina por sí solo los datos ya recopilados.",
+        "Podemos conservar registros limitados cuando sea necesario por obligaciones legales, seguridad, prevención del fraude o resolución de disputas, solo durante el tiempo necesario para esos fines. Crashlytics conserva los datos de fallos subidos durante 90 días antes de iniciar su eliminación de los sistemas activos y de respaldo. Consulta la Política de privacidad para más información; al responder explicaremos cualquier conservación aplicable.",
+        "También puedes eliminar tu cuenta desde los ajustes de la aplicación.",
+        "Solicitar la eliminación de la cuenta",
+        "Política de privacidad"
+    ],
+    "fr": [
+        "Supprimer votre compte UnSolo",
+        "Vous pouvez demander par e-mail la suppression de votre compte UnSolo et des données personnelles associées, sans installer ni ouvrir l’application.",
+        "Écrivez à unsolo.box@gmail.com avec l’objet « Supprimer mon compte UnSolo ». Si vous utilisez la connexion Apple ou Google, indiquez l’adresse e-mail liée à votre compte UnSolo (y compris l’adresse relais privée Apple, le cas échéant) et votre nom de profil. Si possible, envoyez la demande depuis cette adresse. N’envoyez jamais de mots de passe, codes de connexion, jetons d’accès ou pièces d’identité dans votre demande initiale.",
+        "Comptes invités : indiquez votre nom de profil et précisez que vous avez utilisé « Continuer en tant qu’invité ». Le nom de profil seul ne prouve pas que le compte vous appartient. Nous vous répondrons pour organiser la vérification. Sans éléments suffisants pour identifier et vérifier le compte en toute sécurité, nous ne pouvons pas le supprimer sur la seule base d’un nom. Il n’est pas nécessaire de réinstaller l’application pour envoyer une demande.",
+        "Nous vérifierons que le compte vous appartient et procéderons à sa suppression dans les 30 jours suivant la confirmation. La suppression est définitive et irréversible.",
+        "La suppression concerne le compte et les données de profil associées, photos de profil, destinations et dates de voyage, préférences, matchs, mentions J’aime, discussions et messages, ainsi que les jetons de notification push détenus par UnSolo. Nous traitons également, le cas échéant, les demandes concernant les données associées détenues par nos prestataires. Désactiver l’analyse ne supprime pas à lui seul les données déjà collectées.",
+        "Certains enregistrements limités peuvent être conservés si nécessaire pour des obligations légales, la sécurité, la prévention de la fraude ou le règlement de litiges, uniquement pendant la durée nécessaire à ces fins. Crashlytics conserve les données de plantage téléversées pendant 90 jours avant de commencer leur suppression des systèmes actifs et de sauvegarde. Consultez notre politique de confidentialité pour plus de détails ; nous préciserons toute conservation applicable dans notre réponse.",
+        "Vous pouvez également supprimer votre compte dans les réglages de l’application.",
+        "Demander la suppression du compte",
+        "Politique de confidentialité"
+    ],
+    "it": [
+        "Elimina il tuo account UnSolo",
+        "Puoi richiedere via e-mail la cancellazione del tuo account UnSolo e dei dati personali associati, senza installare o aprire l’app.",
+        "Scrivi a unsolo.box@gmail.com con oggetto «Eliminare il mio account UnSolo». Se accedi con Apple o Google, indica l’indirizzo e-mail collegato al tuo account UnSolo (incluso l’indirizzo relay privato Apple, se utilizzato) e il nome del profilo. Se possibile, invia la richiesta da tale indirizzo. Non inviare mai password, codici di accesso, token o documenti d’identità nella richiesta iniziale.",
+        "Account ospite: indica il nome del profilo e specifica che hai usato «Continua come ospite». Il solo nome del profilo non dimostra la titolarità dell’account. Ti risponderemo per concordare la verifica. Senza elementi sufficienti per identificare e verificare l’account in sicurezza, non possiamo eliminarlo sulla sola base di un nome. Non occorre reinstallare l’app per inviare una richiesta.",
+        "Verificheremo che l’account ti appartenga e completeremo la cancellazione entro 30 giorni dalla conferma della titolarità. La cancellazione è definitiva e irreversibile.",
+        "La cancellazione comprende l’account e i dati del profilo associati, foto del profilo, destinazioni e date di viaggio, preferenze, match, Mi piace, chat e messaggi e token delle notifiche push conservati da UnSolo. Gestiamo inoltre, ove applicabile, le richieste relative ai dati associati conservati dai nostri fornitori. Disattivare l’analisi non elimina automaticamente i dati già raccolti.",
+        "Possiamo conservare registrazioni limitate quando necessario per obblighi di legge, sicurezza, prevenzione delle frodi o risoluzione di controversie, solo per il tempo necessario a tali fini. Crashlytics conserva i dati sugli arresti anomali caricati per 90 giorni prima di iniziare la rimozione dai sistemi attivi e di backup. Consulta l’informativa sulla privacy per ulteriori dettagli; nella risposta spiegheremo le eventuali conservazioni applicabili.",
+        "Puoi anche eliminare il tuo account nelle impostazioni dell’app.",
+        "Richiedi la cancellazione dell’account",
+        "Informativa sulla privacy"
+    ],
+    "ru": [
+        "Удаление аккаунта UnSolo",
+        "Ты можешь запросить удаление аккаунта UnSolo и связанных персональных данных по электронной почте, без установки или открытия приложения.",
+        "Напиши на unsolo.box@gmail.com с темой «Удалить мой аккаунт UnSolo». Если входишь через Apple или Google, укажи email, связанный с аккаунтом UnSolo (в том числе приватный адрес-посредник Apple, если он используется), и имя профиля. По возможности отправь запрос с этого адреса. Не присылай пароли, коды входа, токены доступа или документы, удостоверяющие личность, в первоначальном запросе.",
+        "Гостевые аккаунты: укажи имя профиля и сообщи, что использовал «Продолжить как гость». Одного имени профиля недостаточно для подтверждения владельца. Мы ответим и согласуем способ проверки. Без достаточных сведений для безопасного поиска аккаунта и подтверждения его принадлежности мы не можем удалить аккаунт только по имени. Для отправки запроса не нужно переустанавливать приложение.",
+        "Мы проверим, что аккаунт принадлежит тебе, и завершим удаление в течение 30 дней после подтверждения принадлежности аккаунта. Удаление необратимо, восстановить аккаунт нельзя.",
+        "Удалению подлежат аккаунт и связанные данные профиля, фотографии профиля, направления и даты поездок, предпочтения, совпадения, лайки, чаты и сообщения, а также хранящиеся у UnSolo токены push-уведомлений. При необходимости мы также обрабатываем запросы на удаление связанных данных у наших поставщиков услуг. Само по себе отключение аналитики не удаляет ранее собранные данные.",
+        "Ограниченные записи могут сохраняться, если это необходимо для выполнения правовых обязательств, обеспечения безопасности, предотвращения мошенничества или разрешения споров, только в течение необходимого для этих целей срока. Crashlytics хранит загруженные данные о сбоях 90 дней, после чего начинает удаление из рабочих и резервных систем. Подробности приведены в Политике конфиденциальности; применимые исключения и сроки хранения мы поясним в ответе на запрос.",
+        "Также ты можешь удалить аккаунт в настройках приложения.",
+        "Запросить удаление аккаунта",
+        "Политика конфиденциальности"
+    ],
+    "uk": [
+        "Видалення облікового запису UnSolo",
+        "Ти можеш надіслати запит на видалення облікового запису UnSolo та пов’язаних персональних даних електронною поштою, без встановлення чи відкриття застосунку.",
+        "Напиши на unsolo.box@gmail.com із темою «Видалити мій обліковий запис UnSolo». Якщо входиш через Apple або Google, вкажи email, пов’язаний з обліковим записом UnSolo (зокрема приватну адресу-посередник Apple, якщо вона використовується), та ім’я профілю. За можливості надішли запит із цієї адреси. Не надсилай паролі, коди входу, токени доступу або документи, що посвідчують особу, у початковому запиті.",
+        "Гостьові облікові записи: вкажи ім’я профілю та повідом, що використовував «Продовжити як гість». Одного імені профілю недостатньо для підтвердження власника. Ми відповімо та узгодимо спосіб перевірки. Без достатніх відомостей для безпечного пошуку облікового запису та підтвердження його належності ми не можемо видалити його лише за ім’ям. Для надсилання запиту не потрібно перевстановлювати застосунок.",
+        "Ми перевіримо, що обліковий запис належить тобі, і завершимо видалення протягом 30 днів після підтвердження належності. Видалення незворотне, відновити обліковий запис неможливо.",
+        "Видаленню підлягають обліковий запис і пов’язані дані профілю, фотографії профілю, напрямки й дати поїздок, уподобання, збіги, вподобання, чати й повідомлення, а також токени push-сповіщень, що зберігаються в UnSolo. За потреби ми також опрацьовуємо запити щодо видалення пов’язаних даних у наших постачальників послуг. Саме вимкнення аналітики не видаляє раніше зібрані дані.",
+        "Обмежені записи можуть зберігатися, якщо це необхідно для виконання правових зобов’язань, забезпечення безпеки, запобігання шахрайству чи вирішення спорів, лише протягом необхідного для цих цілей строку. Crashlytics зберігає завантажені дані про збої 90 днів, після чого починає видалення з робочих і резервних систем. Докладніше — у Політиці конфіденційності; застосовні винятки та строки зберігання ми пояснимо у відповіді на запит.",
+        "Також ти можеш видалити обліковий запис у налаштуваннях застосунку.",
+        "Надіслати запит на видалення",
+        "Політика конфіденційності"
+    ]
+};
+
         function detectLang() {
             try {
                 var saved = localStorage.getItem(STORAGE_KEY);
@@ -276,6 +387,16 @@
             document.getElementById('contact').innerHTML =
                 c.contactBefore + ' <a href="mailto:' + SUPPORT_EMAIL + '">' + SUPPORT_EMAIL + '</a>.';
             document.getElementById('downloadLink').textContent = c.download;
+            var d = DELETION_COPY[currentLang];
+            document.getElementById('deletion-title').textContent = d[0];
+            for (var i = 1; i <= 7; i++) document.getElementById('deletion-p' + i).textContent = d[i];
+            var request = document.getElementById('deleteRequest');
+            request.textContent = d[8];
+            request.href = 'mailto:' + SUPPORT_EMAIL + '?subject=' + encodeURIComponent(d[0]);
+            var privacy = document.getElementById('privacyLink');
+            privacy.textContent = d[9];
+            privacy.href = '../legal/privacy.html#' + currentLang;
+
         }
 
         function applyLang() {
