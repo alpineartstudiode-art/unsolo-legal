@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script>(function () {
+  var base = "/unsolo/styleguide";
+  var allowed = ["/_dev","/_dev/","/_dev/icons","/_dev/icons/","/_dev/modals","/_dev/modals/","/_dev/onboarding","/_dev/onboarding/","/_dev/primitives","/_dev/primitives/","/_dev/screens","/_dev/screens/","/_dev/sheets","/_dev/sheets/"];
+  var p = location.pathname;
+  if (p.indexOf(base + '/') !== 0 && p !== base) return;
+  var rest = p.slice(base.length) || '/';
+  if (allowed.indexOf(rest) !== -1) return;
+  history.replaceState(null, '', base + '/_dev/');
+})();</script>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>UnSolo</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  <link rel="icon" href="/unsolo/styleguide/favicon.ico" /></head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/unsolo/styleguide/_expo/static/js/web/entry-c86be854f5c7640bf13d63810cd14136.js" defer></script>
+</body>
+</html>
